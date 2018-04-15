@@ -1,5 +1,7 @@
 package ar.com.sge;
 
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Administrador extends Usuario{
 
@@ -13,8 +15,13 @@ public class Administrador extends Usuario{
 	public int getNumeroId() {
 		return numeroId;
 	}
-	public int tiempoEnElCargo() {
-		//retorna un tiempo
-		return 0;
+	public void tiempoEnElCargo() {
+		LocalDate ini = getAlta();
+		LocalDate fin = LocalDate.now();
+		int days = Period.between(ini,fin).getDays();
+		int months = Period.between(ini,fin).getMonths();
+		int years = Period.between(ini,fin).getYears();
+		System.out.println(years+" año, "+ months +" meses, "+days+" dias");
 	}
 }
+ 

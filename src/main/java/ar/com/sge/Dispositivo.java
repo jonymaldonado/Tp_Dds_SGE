@@ -29,7 +29,7 @@ public class Dispositivo {
 	public void tiempoDeCarga(int _tiempo) {
 		this.kwConsumido += (kwPorHora/60) * _tiempo;
 	}
-	public double getKwConsumido() {
+	public float getKwConsumido() {
 		return kwConsumido;
 	}
 	
