@@ -47,10 +47,6 @@ public class testCliente {
 		pw.close();
 		BufferedWriter buffertowrite = new BufferedWriter(new FileWriter(dao.getFilePath(), true));
 
-		//this.bufferToWrite.append(empleadoSerialized);
-
-
-
 		buffertowrite.write(indicadoresstring);
 
 		buffertowrite.close();
@@ -62,12 +58,17 @@ public class testCliente {
 		
 		clientes = repoCliente.getAllUsuario();
 		Cliente cliente1=clientes.get(0);
-		String nombre ="Snapchat";
+	
 		Assert.assertTrue(cliente1.cantidadDeDispositivos()==3);
-		Assert.assertTrue(clientes.size()==2);
+		
 		Assert.assertEquals(cliente1.getNombre(),"tomi");
+		Assert.assertEquals(cliente1.getContraseña(),"tomipe23");
+		Assert.assertEquals(cliente1.getNombreUsuario(),"tomipe23");
 		Assert.assertEquals(cliente1.getApellido(),"perez");
 		Assert.assertEquals(cliente1.getCategoria(),"r1");
+		Assert.assertTrue(cliente1.getAlta().getDayOfMonth()==21);
+		Assert.assertTrue(cliente1.getAlta().getYear()==2010);
+		Assert.assertTrue(cliente1.getAlta().getMonthValue()==10);
 		
 		
 		
@@ -75,10 +76,21 @@ public class testCliente {
 		
 		Assert.assertTrue(cliente1.cantidadDeDispositivos()==2);
 		Assert.assertEquals(cliente1.getNombre(),"roberto");
+		Assert.assertEquals(cliente1.getContraseña(),"robert.23");
+		Assert.assertEquals(cliente1.getContraseña(),"robert.23");
 		Assert.assertEquals(cliente1.getApellido(),"gonzales");
 		Assert.assertEquals(cliente1.getCategoria(),"r2");
+		Assert.assertTrue(cliente1.getAlta().getDayOfMonth()==10);
+		Assert.assertTrue(cliente1.getAlta().getYear()==2010);
+		Assert.assertTrue(cliente1.getAlta().getMonthValue()==11);
 		
 	}
+	@Test
+	public void cantidadDeClientes()throws IOException{
+		clientes = repoCliente.getAllUsuario();
+		Assert.assertTrue(clientes.size()==2);
+	}
+	
 	
 	@Test
 	public void cantidadEncendidoclienteTest()throws IOException {
@@ -98,6 +110,17 @@ public class testCliente {
 		
 		cliente1=clientes.get(1);
 		Assert.assertTrue(cliente1.cantidadDispositivosApagados()==0);
+	}
+	
+	@Test
+	public void cantidadTotalDispositivos()throws IOException{
+		clientes = repoCliente.getAllUsuario();
+		Cliente cliente1=clientes.get(0);
+		Assert.assertTrue(cliente1.cantidadDeDispositivos()==3);
+		
+		cliente1=clientes.get(1);
+		Assert.assertTrue(cliente1.cantidadDeDispositivos()==2);
+		
 	}
 	
 	@Test

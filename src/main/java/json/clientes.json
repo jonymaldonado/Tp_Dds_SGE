@@ -28,9 +28,16 @@
       "valorFijo": 18.79,
       "valorVariable": 0.64
     },
+    "nombre_usuario": "tomipe23",
+    "contraseña": "tomipe23",
     "nombre": "tomi",
     "apellido": "perez",
-    "domicilio": "boedo 2010"
+    "domicilio": "boedo 2010",
+    "alta": {
+      "year": 2010,
+      "month": 10,
+      "day": 21
+    }
   },
   {
     "tipoDoc": "dni",
@@ -55,8 +62,15 @@
       "valorFijo": 35.32,
       "valorVariable": 0.64
     },
+    "nombre_usuario": "robert.23",
+    "contraseña": "robert.23",
     "nombre": "roberto",
     "apellido": "gonzales",
-    "domicilio": "la plata 2010"
+    "domicilio": "la plata 2010",
+    "alta": {
+      "year": 2010,
+      "month": 11,
+      "day": 10
+    }
   }
 ]

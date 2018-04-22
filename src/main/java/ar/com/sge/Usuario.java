@@ -3,11 +3,12 @@ package ar.com.sge;
 import java.time.LocalDate;
 
 public abstract class Usuario {
-
+	private String nombre_usuario;
+	private String contraseña;
 	private String nombre;
 	private String apellido;
 	private String domicilio;
-	//private LocalDate alta;
+	private LocalDate alta;
 	
 	public Usuario(String _nombre,String _apellido) {
 		this.nombre = _nombre;
@@ -23,7 +24,16 @@ public abstract class Usuario {
 	public String getDomicilio() {
 		return domicilio;
 	}
-	//public LocalDate getAlta() {
-      //  return alta;
-	//}
+	public LocalDate getAlta() {
+        return alta;
+	}
+	
+	public String getNombreUsuario() {
+		return nombre_usuario;
+	}
+	public String getContraseña() {
+		return contraseña;
+	}
+	
+	
 }
