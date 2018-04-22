@@ -34,8 +34,8 @@ public class Cliente extends Usuario {
 	public String getCategoria() {
 		return categoria.getNombre();
 	}
-	public void agregarDispositivosCliente(List<Dispositivo> _dispositivo) {
-		listarDispositivos().addAll(_dispositivo);
+	public void agregarDispositivosCliente(Dispositivo _dispositivo) {
+		lstDispositivos.add(_dispositivo);
 	}
 	public List<Dispositivo> listarDispositivos(){
 		return lstDispositivos;
