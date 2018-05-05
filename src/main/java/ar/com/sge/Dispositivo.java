@@ -3,7 +3,9 @@ package ar.com.sge;
 public class Dispositivo {
 
 	private String nombre;
-	private Boolean encendido = false;
+	private EstadoDeDispositivo estadoDispositivo; 
+	//pense que en vez de saber si el dispositivo esta encendido o no
+	// ahora el dispositivo se setea el estado del dispositivo
 	private int kwPorHora;
 	private float kwConsumido = 0;	
 	
