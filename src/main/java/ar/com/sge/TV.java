@@ -1,6 +1,6 @@
 package ar.com.sge;
 
-public class TV extends Inteligente {
+public class TV extends DispositivoInteligente {
 	private int volumen;
 	private int reloj;
 	

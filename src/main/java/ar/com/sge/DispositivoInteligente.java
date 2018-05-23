@@ -3,11 +3,11 @@ package ar.com.sge;
 //import java.util.ArrayList;
 import java.util.List;
 
-public class Inteligente extends Dispositivo{
+public class DispositivoInteligente extends Dispositivo{
 	List<Actuador> lactuadores;
 	List<Sensor> lstSensores;
 	
-	public Inteligente(String _nombre, int _kwPorHora) {
+	public DispositivoInteligente(String _nombre, int _kwPorHora) {
 		super(_nombre, _kwPorHora);
 		
 	}
