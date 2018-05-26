@@ -5,7 +5,9 @@ public class Dispositivo {
 	private String nombre;
 	private Boolean encendido = false;
 	private int kwPorHora;
-	private float kwConsumido = 0;	
+	private float kwConsumido = 0;
+    private Estado estado;	
+	
 	
 	public Dispositivo(String _nombre, int _kwPorHora) {		
 		this.nombre = _nombre;
@@ -32,5 +34,10 @@ public class Dispositivo {
 	public float getKwConsumido() {
 		return kwConsumido;
 	}
-	
+	public Estado getEstado() {
+		return estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 }
