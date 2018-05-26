@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class Usuario {
 	private String nombre_usuario;
-	private String contraseña;
+	private String contrasenia;
 	private String nombre;
 	private String apellido;
 	private String domicilio;
@@ -31,8 +31,11 @@ public abstract class Usuario {
 	public String getNombreUsuario() {
 		return nombre_usuario;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasenia() {
+		return contrasenia;
+	}
+	public void setContrasenia(String unaContrasenia) {
+		this.contrasenia = unaContrasenia;
 	}
 	
 	

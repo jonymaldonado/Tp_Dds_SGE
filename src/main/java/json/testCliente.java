@@ -62,7 +62,7 @@ public class testCliente {
 		Assert.assertTrue(cliente1.cantidadDeDispositivos()==3);
 		
 		Assert.assertEquals(cliente1.getNombre(),"tomi");
-		Assert.assertEquals(cliente1.getContraseña(),"tomipe23");
+		Assert.assertEquals(cliente1.getContrasenia(),"tomipe23");
 		Assert.assertEquals(cliente1.getNombreUsuario(),"tomipe23");
 		Assert.assertEquals(cliente1.getApellido(),"perez");
 		Assert.assertEquals(cliente1.getCategoria(),"r1");
@@ -76,8 +76,8 @@ public class testCliente {
 		
 		Assert.assertTrue(cliente1.cantidadDeDispositivos()==2);
 		Assert.assertEquals(cliente1.getNombre(),"roberto");
-		Assert.assertEquals(cliente1.getContraseña(),"robert.23");
-		Assert.assertEquals(cliente1.getContraseña(),"robert.23");
+		Assert.assertEquals(cliente1.getContrasenia(),"robert.23");
+		Assert.assertEquals(cliente1.getContrasenia(),"robert.23");
 		Assert.assertEquals(cliente1.getApellido(),"gonzales");
 		Assert.assertEquals(cliente1.getCategoria(),"r2");
 		Assert.assertTrue(cliente1.getAlta().getDayOfMonth()==10);
