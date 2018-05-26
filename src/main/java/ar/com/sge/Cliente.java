@@ -36,12 +36,25 @@ public class Cliente extends Usuario {
 	public String getCategoria() {
 		return categoria.getNombre();
 	}
-	public void agregarDispositivosEstandar(DispositivoEstandar unDispositivoEstandar) {
+	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
 		lstDispositivosEstandares.add(unDispositivoEstandar);
 	}
-	public void agregarDispositivosInteligente(DispositivoInteligente unDispositivoInteligente) {
+	public void agregarDispositivosInteligentes(DispositivoInteligente unDispositivoInteligente) {
 		lstDispositivosInteligentes.add(unDispositivoInteligente);
 	}
+	public void quitarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
+		lstDispositivosEstandares.remove(unDispositivoEstandar);
+	}
+	public void quitarDispositivosInteligentes(DispositivoInteligente unDispositivoInteligente) {
+		lstDispositivosInteligentes.remove(unDispositivoInteligente);
+	}
+	
+	public void agregarUnModuloA(DispositivoEstandar unDispositivoEstandar, Modulo unModulo) {
+		unModulo.setDispositivoEstandar(unDispositivoEstandar);
+		agregarDispositivosInteligentes(unModulo);
+		quitarDispositivosEstandares(unDispositivoEstandar);		
+	}
+	
 	public void listarDispositivos(){
 		this.lstDispositivosEstandares.forEach(dispositivoEstandar -> System.out.println(dispositivoEstandar.getNombre()));
 		this.lstDispositivosInteligentes.forEach(dispositivosInteligente -> System.out.println(dispositivosInteligente.getNombre()));
