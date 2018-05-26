@@ -46,10 +46,19 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares.forEach(dispositivoEstandar -> System.out.println(dispositivoEstandar.getNombre()));
 		this.lstDispositivosInteligentes.forEach(dispositivosInteligente -> System.out.println(dispositivosInteligente.getNombre()));
 	}
-	/*
-	public List<DispositivoInteligentes> dispositivosEncendidos(){
-		List<Dispositivo> lstDispEnc;
-		lstDispEnc = listarDispositivos().stream().filter(d-> d.getEncendido()==true).collect(Collectors.toList());
+	
+	public int cantidadDeDispositivos() {
+		return this.lstDispositivosInteligentes.size() + this.lstDispositivosEstandares.size();
+	}
+	
+	public List<DispositivoInteligente> dispositivosEncendidos(){
+		List<DispositivoInteligente> lstDispEnc;
+		lstDispEnc = this.lstDispositivosInteligentes.stream().filter(dispoI-> dispoI.estasEncendido()).collect(Collectors.toList());
+		return lstDispEnc;	
+	}
+	public List<DispositivoInteligente> dispositivosApagados(){
+		List<DispositivoInteligente> lstDispEnc;
+		lstDispEnc = this.lstDispositivosInteligentes.stream().filter(dispoI-> dispoI.estasApagado()).collect(Collectors.toList());
 		return lstDispEnc;	
 	}
 	public int cantidadDispositivosEncendidos() {
@@ -58,9 +67,7 @@ public class Cliente extends Usuario {
 	public int cantidadDispositivosApagados() {
 		return cantidadDeDispositivos() - cantidadDispositivosEncendidos();
 	}
-	public int cantidadDeDispositivos() {
-		return this.lstDispositivosInteligentes.size() + this.lstDispositivosEstandares.size();
-	}	
+	/*	
 	public float consumoDeEnergiaDispositi() {
 		return listarDispositivos().stream().map(d->d.getKwConsumido()).count();
 	}
