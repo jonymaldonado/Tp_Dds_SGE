@@ -1,22 +1,28 @@
 package ar.com.sge;
 
-public class Encendido extends Estado{
+import java.time.LocalDate;
 
+
+public class Encendido extends Estado{
+	
 	public Encendido(DispositivoInteligente unDispositivo) {
 		super(unDispositivo);
-		// TODO Auto-generated constructor stub
+		this.nombre = "encendido";
+		this.fecha_inicio = LocalDate.now();
 	}
 
 	
-	public void encender() {
+	public void encender(DispositivoInteligente unDispositivo) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	
-	public void apagar() {
-		// TODO Auto-generated method stub
-		
+
+	public void apagar(DispositivoInteligente unDispositivo) {
+		this.fecha_fin = LocalDate.now();
+	//	tiempoConsumido = tiempoEnMinutos(fecha_inicio,fecha_fin);
+		unDispositivo.agregarAListaDeEstados(this);
+		unDispositivo.setEstado(new Apagado(unDispositivo));
 	}
 
 	

@@ -5,10 +5,10 @@ public abstract class Estado {
 	
 
 	private DispositivoInteligente dispo;
-	private LocalDate inicio;
-	private LocalDate fin;
-	private float consumo;
-	private String nombre;
+	protected LocalDate fecha_inicio;
+	protected LocalDate fecha_fin;
+	protected float consumo;
+	protected String nombre;
 	
 	public String getNombre() {
 		return nombre;
@@ -39,22 +39,22 @@ public abstract class Estado {
 
 
 	public LocalDate getInicio() {
-		return inicio;
+		return fecha_inicio;
 	}
 
 
 	public void setInicio(LocalDate inicio) {
-		this.inicio = inicio;
+		this.fecha_inicio = fecha_inicio;
 	}
 
 
 	public LocalDate getFin() {
-		return fin;
+		return fecha_fin;
 	}
 
 
 	public void setFin(LocalDate fin) {
-		this.fin = fin;
+		this.fecha_fin = fecha_fin;
 	}
 
 
