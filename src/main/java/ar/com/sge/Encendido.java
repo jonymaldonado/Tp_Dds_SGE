@@ -12,17 +12,17 @@ public class Encendido extends Estado{
 	}
 
 	
-	public void encender(DispositivoInteligente unDispositivo) {
+	public void encender() {
 		// TODO Auto-generated method stub
 		
 	}
 
 
-	public void apagar(DispositivoInteligente unDispositivo) {
+	public void apagar() {
 		this.fecha_fin = LocalDate.now();
 	//	tiempoConsumido = tiempoEnMinutos(fecha_inicio,fecha_fin);
-		unDispositivo.agregarAListaDeEstados(this);
-		unDispositivo.setEstado(new Apagado(unDispositivo));
+		this.getDispo().agregarAListaDeEstados(this);
+		this.getDispo().setEstado(new Apagado(this.getDispo()));
 	}
 
 	
