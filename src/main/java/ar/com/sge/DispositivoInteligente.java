@@ -2,14 +2,14 @@ package ar.com.sge;
 
 public class DispositivoInteligente {
 
+	private Estado estado;
 	private String nombre;
-	private Boolean encendido = false;
 	private int kwPorHora;
 	private float kwConsumido = 0;	
 	
-	public DispositivoInteligente(String _nombre, int _kwPorHora) {		
-		this.nombre = _nombre;
-		this.kwPorHora = _kwPorHora;
+	public DispositivoInteligente(String unNombre, int unKwPorHora) {		
+		this.nombre = unNombre;
+		this.kwPorHora = unKwPorHora;
 	}
 	public void setNombre(String unNombre) {
 		this.nombre = unNombre;
@@ -18,13 +18,19 @@ public class DispositivoInteligente {
 		return nombre;
 	}	
 	public void encender(){
-		this.encendido = true;
+		this.estado.encender();
 	}
 	public void apagar() {
-		this.encendido = false;
+		this.estado.apagar();
     }
-	public Boolean getEncendido(){
-		return encendido;
+	public void ahorroDeEnergia() {
+		this.estado.ahorroDeEnergia();
+    }	
+	public Boolean estasEncendido() {
+		return this.estado.getNombre().equals("Encendido");
+	}
+	public Boolean estasApagado() {
+		return this.estado.getNombre().equals("Apagado");
 	}
 	public void tiempoDeCarga(int _tiempo) {
 		this.kwConsumido += (kwPorHora/60) * _tiempo;

@@ -8,7 +8,9 @@ public class Cliente extends Usuario {
 	private String tipoDoc;
 	private int numeroDoc;
 	private int telefono;
-	private List<Dispositivo> lstDispositivos;
+	
+	private List<DispositivoInteligente> lstDispositivosInteligentes;
+	private List<DispositivoEstandar> lstDispositivosEstandares;
 	private Categoria categoria;
 	
 	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc) {		
@@ -34,13 +36,18 @@ public class Cliente extends Usuario {
 	public String getCategoria() {
 		return categoria.getNombre();
 	}
-	public void agregarDispositivosCliente(Dispositivo _dispositivo) {
-		lstDispositivos.add(_dispositivo);
+	public void agregarDispositivosEstandar(DispositivoEstandar unDispositivoEstandar) {
+		lstDispositivosEstandares.add(unDispositivoEstandar);
 	}
-	public List<Dispositivo> listarDispositivos(){
-		return lstDispositivos;
+	public void agregarDispositivosInteligente(DispositivoInteligente unDispositivoInteligente) {
+		lstDispositivosInteligentes.add(unDispositivoInteligente);
 	}
-	public List<Dispositivo> dispositivosEncendidos(){
+	public void listarDispositivos(){
+		this.lstDispositivosEstandares.forEach(dispositivoEstandar -> System.out.println(dispositivoEstandar.getNombre()));
+		this.lstDispositivosInteligentes.forEach(dispositivosInteligente -> System.out.println(dispositivosInteligente.getNombre()));
+	}
+	/*
+	public List<DispositivoInteligentes> dispositivosEncendidos(){
 		List<Dispositivo> lstDispEnc;
 		lstDispEnc = listarDispositivos().stream().filter(d-> d.getEncendido()==true).collect(Collectors.toList());
 		return lstDispEnc;	
@@ -52,9 +59,9 @@ public class Cliente extends Usuario {
 		return cantidadDeDispositivos() - cantidadDispositivosEncendidos();
 	}
 	public int cantidadDeDispositivos() {
-		return listarDispositivos().size();
+		return this.lstDispositivosInteligentes.size() + this.lstDispositivosEstandares.size();
 	}	
-	public float consumoDeEnergia() {
+	public float consumoDeEnergiaDispositi() {
 		return listarDispositivos().stream().map(d->d.getKwConsumido()).count();
 	}
 	public float estimarFacturacion() {
@@ -64,6 +71,6 @@ public class Cliente extends Usuario {
 		return resultado;
 	}
 	
-	
+	*/
 	
 }
