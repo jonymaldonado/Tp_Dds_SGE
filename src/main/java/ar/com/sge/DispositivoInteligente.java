@@ -78,7 +78,7 @@ public class DispositivoInteligente {
 	public float totalDeHoras (List<Estado> lstEstados) {		
 		float totalHoras = 0;		
 		for (Estado estado : lstEstados){
-			totalHoras += diferenciaHoras(estado.getFin(),estado.getInicio());
+			totalHoras += diferenciaHoras(estado.getInicio(),estado.getFin());
 		}
 		return totalHoras;
 	}
