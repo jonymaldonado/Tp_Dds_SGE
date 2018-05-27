@@ -12,6 +12,7 @@ public class DispositivoInteligente {
 	private int kwPorHora;
 	private float kwConsumido = 0;
 	private List<Estado> listaDeEstados;
+	private static final double coeficienteAhorroEnergia = 0.6 ;
 	
 	public DispositivoInteligente(String unNombre, int unKwPorHora) {		
 		this.nombre = unNombre;
@@ -68,11 +69,31 @@ public class DispositivoInteligente {
 		LocalDateTime fechaFin = LocalDateTime.now();
 		return this.consumidoEntre(fechaInicio, fechaFin);
 	}
-	public float consumidoEntre (LocalDateTime fechaInicio , LocalDateTime fechaFin) {
-		List<Estado> lstEstadosEntre;
-		lstEstadosEntre = 
-				(List<Estado>) this.listaDeEstados.stream().filter(e -> e.getInicio().isAfter(fechaInicio) && e.getFin().isBefore(fechaFin));
-		return this.totalDeHoras(lstEstadosEntre) * this.getKwPorHora();
+	public float consumidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
+		float totalHoras = 0;
+		float totalConsumo = 0;
+		List<Estado> lstEstados;
+		
+		//Calculo consumo encendidos 		
+		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Encendido");
+		totalHoras = this.totalDeHoras(lstEstados);
+		totalConsumo = totalHoras * this.getKwPorHora();
+		
+		//Calculo consumo ahorro de energia
+		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Ahorro de enegia");
+		totalHoras = this.totalDeHoras(lstEstados);
+		totalConsumo += totalHoras * this.getKwPorHora() * DispositivoInteligente.coeficienteAhorroEnergia;
+		
+		return totalConsumo;
+	}
+	
+	public List<Estado> listaDeEstadosSegun (LocalDateTime fechaInicio , LocalDateTime fechaFin, String tipoDeEstado) {
+		List<Estado> lstEstadosSegun;
+		lstEstadosSegun = 
+				(List<Estado>) this.listaDeEstados.stream().filter(e -> e.getInicio().isAfter(fechaInicio) 
+						&& e.getFin().isBefore(fechaFin)
+						&& e.getNombre().equals(tipoDeEstado));
+		return lstEstadosSegun;
 		 
 	}
 	public float totalDeHoras (List<Estado> lstEstados) {		
