@@ -87,6 +87,8 @@ public class DispositivoInteligente {
 		int dif= (int) ChronoUnit.HOURS.between(unahora, otrahora);
 		return dif;
 	}
+	
+	
 	//VA?????
 	
 	public void agregarAListaDeEstados(Estado unEstado) {
