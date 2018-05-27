@@ -1,6 +1,7 @@
 package ar.com.sge;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class Encendido extends Estado{
@@ -8,7 +9,7 @@ public class Encendido extends Estado{
 	public Encendido(DispositivoInteligente unDispositivo) {
 		super(unDispositivo);
 		this.nombre = "encendido";
-		this.fecha_inicio = LocalDate.now();
+		this.fecha_inicio = LocalDateTime.now();
 	}
 
 	
@@ -19,7 +20,7 @@ public class Encendido extends Estado{
 
 
 	public void apagar() {
-		this.fecha_fin = LocalDate.now();
+		this.fecha_fin = LocalDateTime.now();
 	//	tiempoConsumido = tiempoEnMinutos(fecha_inicio,fecha_fin);
 		this.getDispo().agregarAListaDeEstados(this);
 		this.getDispo().setEstado(new Apagado(this.getDispo()));

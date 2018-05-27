@@ -1,12 +1,12 @@
 package ar.com.sge;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Estado {
 	
 
 	private DispositivoInteligente dispo;
-	protected LocalDate fecha_inicio;
-	protected LocalDate fecha_fin;
+	protected LocalDateTime fecha_inicio;
+	protected LocalDateTime fecha_fin;
 	protected float consumo;
 	protected String nombre;
 	
@@ -38,22 +38,22 @@ public abstract class Estado {
 
 
 
-	public LocalDate getInicio() {
+	public LocalDateTime getInicio() {
 		return fecha_inicio;
 	}
 
 
-	public void setInicio(LocalDate inicio) {
+	public void setInicio(LocalDateTime inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
 
 
-	public LocalDate getFin() {
+	public LocalDateTime getFin() {
 		return fecha_fin;
 	}
 
 
-	public void setFin(LocalDate fin) {
+	public void setFin(LocalDateTime fin) {
 		this.fecha_fin = fecha_fin;
 	}
 

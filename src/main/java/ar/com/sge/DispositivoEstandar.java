@@ -10,6 +10,8 @@ public class DispositivoEstandar {
 		this.nombre = unNombre;
 		this.kwPorHora = unakwPorHora;
 	}
+	
+	// Getter and Setters
 	public void setNombre(String unNombre) {
 		this.nombre = unNombre;
 	}
@@ -28,6 +30,8 @@ public class DispositivoEstandar {
 	public void setHorasConsumidas(int horasCosumidas) {
 		this.horasConsumidas = horasCosumidas;
 	}
+	
+	// Calculo de consumo
 	public float consumoEnKw() {
 		return this.horasConsumidas *  this.kwPorHora;
 	}
