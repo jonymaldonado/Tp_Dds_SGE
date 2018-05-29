@@ -1,18 +1,18 @@
 package ar.com.sge;
 
 public class comandoprender implements comando{
-	private adapter adaptador;
+	private Adapter adaptador;
 	private String nombrecomando;
 	
 	public void ejecutar() {
-		adaptador.prendete();
+		//adaptador.prendete();
 	}
 
-	public adapter getAdaptador() {
+	public Adapter getAdaptador() {
 		return adaptador;
 	}
 
-	public void setAdaptador(adapter adaptador) {
+	public void setAdaptador(Adapter adaptador) {
 		this.adaptador = adaptador;
 	}
 

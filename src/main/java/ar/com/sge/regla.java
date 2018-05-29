@@ -1,33 +1,38 @@
 package ar.com.sge;
 
 public class regla {
-	private condicion condicion;
-	private actuador actuador;
+	private Condicion condicion;
+	private Actuador actuador;
 	private String accion;
-	
-	public void verificarregla(int valor) {
-		if(condicion.evaluar(valor)) {
+
+	public void verificarRegla(float valor) {
+		if (condicion.evaluar(valor)) {
 			actuador.ejecutaraccion(accion);
 		}
 	}
-	public condicion getCondicion() {
+
+	public Condicion getCondicion() {
 		return condicion;
 	}
-	public void setCondicion(condicion condicion) {
+
+	public void setCondicion(Condicion condicion) {
 		this.condicion = condicion;
 	}
-	public actuador getActuador() {
+
+	public Actuador getActuador() {
 		return actuador;
 	}
-	public void setActuador(actuador actuador) {
+
+	public void setActuador(Actuador actuador) {
 		this.actuador = actuador;
 	}
+
 	public String getAccion() {
 		return accion;
 	}
+
 	public void setAccion(String accion) {
 		this.accion = accion;
 	}
-	
 
 }
