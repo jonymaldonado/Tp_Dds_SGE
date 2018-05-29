@@ -3,29 +3,31 @@ package ar.com.sge;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class Actuador {
 
-	private List<comando> listacomandos;
+	private List<Comando> listacomandos;
 
 	public void ejecutaraccion(String accion) {
-		comando comandobuscado;
-		List<comando> listafiltrada;
-		listafiltrada = listacomandos.stream().filter(a -> a.getNombre().equalsIgnoreCase(accion))
+		Comando comandobuscado;
+		List<Comando> listafiltrada;
+		listafiltrada = listacomandos.stream()
+				.filter(a -> a.getNombre().equalsIgnoreCase(accion))
 				.collect(Collectors.toList());
 		comandobuscado = listafiltrada.get(0);
 		comandobuscado.ejecutar();
 
 	}
 
-	public List<comando> getListacomandos() {
+	public List<Comando> getListacomandos() {
 		return listacomandos;
 	}
 
-	public void setListacomandos(List<comando> listacomandos) {
+	public void setListacomandos(List<Comando> listacomandos) {
 		this.listacomandos = listacomandos;
 	}
 
-	public void addcomando(comando comandonuevo) {
+	public void addcomando(Comando comandonuevo) {
 		listacomandos.add(comandonuevo);
 	}
 

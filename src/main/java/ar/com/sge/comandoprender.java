@@ -1,6 +1,6 @@
 package ar.com.sge;
 
-public class comandoprender implements comando{
+public class ComandoPrender implements Comando{
 	private Adapter adaptador;
 	private String nombrecomando;
 	

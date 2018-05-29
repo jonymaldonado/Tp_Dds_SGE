@@ -1,6 +1,6 @@
 package ar.com.sge;
 
-public interface comando {
+public interface Comando {
 	
 	public void ejecutar();
 	public String getNombre();

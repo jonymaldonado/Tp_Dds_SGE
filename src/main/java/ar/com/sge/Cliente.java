@@ -1,5 +1,6 @@
 package ar.com.sge;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,55 +8,93 @@ public class Cliente extends Usuario {
 	
 	private String tipoDoc;
 	private int numeroDoc;
-	private int telefono;
-	private List<Dispositivo> lstDispositivos;
+	private int telefono;	
+	private List<DispositivoInteligente> lstDispositivosInteligentes = new ArrayList<>();
+	private List<DispositivoEstandar> lstDispositivosEstandares = new ArrayList<>();
 	private Categoria categoria;
+	private int puntos = 0;
 	
 	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc) {		
 		super(_nombre,_apellido);
 		this.tipoDoc = _tipoDoc;
 		this.numeroDoc = _numeroDoc;			
 	}
+	
 	public String getTipoDoc() {
 		return tipoDoc;
 	}
+	
 	public int getNumeroDoc() {
 		return numeroDoc;
 	}
+	
 	public void setTelefono(int _unNumero) {
 		this.telefono = _unNumero;
 	}
+	
 	public int getTelefono() {
 		return telefono;
 	}
+	
 	public void setCategoria(Categoria _categoria) {
 		this.categoria = _categoria;
 	}
 	public String getCategoria() {
 		return categoria.getNombre();
 	}
-	public void agregarDispositivosCliente(Dispositivo _dispositivo) {
-		lstDispositivos.add(_dispositivo);
+		
+	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
+		lstDispositivosEstandares.add(unDispositivoEstandar);
 	}
-	public List<Dispositivo> listarDispositivos(){
-		return lstDispositivos;
+	public void agregarDispositivosInteligentes(DispositivoInteligente unDispositivoInteligente) {
+		lstDispositivosInteligentes.add(unDispositivoInteligente);
+		puntos += 15;
 	}
-	public List<Dispositivo> dispositivosEncendidos(){
-		List<Dispositivo> lstDispEnc;
-		lstDispEnc = listarDispositivos().stream().filter(d-> d.getEncendido()==true).collect(Collectors.toList());
-		return lstDispEnc;	
+	public void quitarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
+		lstDispositivosEstandares.remove(unDispositivoEstandar);
 	}
+	public void quitarDispositivosInteligentes(DispositivoInteligente unDispositivoInteligente) {
+		lstDispositivosInteligentes.remove(unDispositivoInteligente);
+	}
+	
+	public void listarDispositivos(){
+		this.lstDispositivosEstandares.forEach(dispositivoEstandar -> System.out.println(dispositivoEstandar.getNombre()));
+		this.lstDispositivosInteligentes.forEach(dispositivosInteligente -> System.out.println(dispositivosInteligente.getNombre()));
+	}
+	
+	public List<DispositivoInteligente> dispositivosEncendidos(){
+		List<DispositivoInteligente> lstDispEnc;
+		lstDispEnc = lstDispositivosInteligentes.stream().filter(d-> d.estasEncendido()==true).collect(Collectors.toList());
+		return lstDispEnc;
+	}
+	
+	public List<DispositivoInteligente> dispositivosApagados(){
+		List<DispositivoInteligente> lstDispApag;
+		lstDispApag = lstDispositivosInteligentes.stream().filter(d->d.estasApagado()==true).collect(Collectors.toList());
+		return lstDispApag;
+	}
+	
 	public int cantidadDispositivosEncendidos() {
 		return dispositivosEncendidos().size();
 	}
+	
 	public int cantidadDispositivosApagados() {
-		return cantidadDeDispositivos() - cantidadDispositivosEncendidos();
+		return dispositivosApagados().size();
 	}
+	
 	public int cantidadDeDispositivos() {
-		return listarDispositivos().size();
+		return lstDispositivosInteligentes.size() + lstDispositivosEstandares.size();
 	}	
+	
 	public float consumoDeEnergia() {
-		return listarDispositivos().stream().map(d->d.getKwConsumido()).count();
+		float sum = 0;
+		for(DispositivoInteligente d: lstDispositivosInteligentes) { 
+			sum += d.consumoEnKw();
+		}
+		for(DispositivoEstandar d: lstDispositivosEstandares) { 
+			sum += d.consumoEnKw();
+		}
+		return sum;
 	}
 	public float estimarFacturacion() {
 		float vf = categoria.getValorFijo();
@@ -64,6 +103,16 @@ public class Cliente extends Usuario {
 		return resultado;
 	}
 	
+	public int getPuntos() {
+		return puntos;
+	}
+	
+	public void agregarUnModuloA(DispositivoEstandar unDispositivoEstandar, Modulo unModulo) {
+		unModulo.setDispositivoEstandar(unDispositivoEstandar);
+		lstDispositivosInteligentes.add(unModulo);
+		puntos += 10;
+		quitarDispositivosEstandares(unDispositivoEstandar);		
+	}
 	
 	
 }

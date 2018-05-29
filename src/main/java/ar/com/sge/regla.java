@@ -1,6 +1,6 @@
 package ar.com.sge;
 
-public class regla {
+public class Regla {
 	private Condicion condicion;
 	private Actuador actuador;
 	private String accion;
