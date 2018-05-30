@@ -1,6 +1,7 @@
 package ar.com.sge;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,17 +83,21 @@ public class DispositivoInteligente{
 	
 	public float consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
 		float totalConsumo = 0;
+		float totalHoras = 0;
 		List<Estado> lstEstados;
 		
 		//Calculo consumo encendidos 		
 		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Encendido");
-		totalConsumo += this.totalDeConsumo(lstEstados);
+		totalHoras = this.totalDeHoras(lstEstados, fechaInicio, fechaFin);
+		totalConsumo += totalHoras * this.getKwPorHora();
 		
 		//Calculo consumo ahorro de energia
 		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Ahorro de enegia");
-		totalConsumo += this.totalDeConsumo(lstEstados) * coeficienteAhorroEnergia;
+		totalHoras = this.totalDeHoras(lstEstados, fechaInicio, fechaFin);
+		totalConsumo += totalHoras * this.getKwPorHora() * coeficienteAhorroEnergia;
 		
 		return totalConsumo;
+		
 	}
 	
 	public List<Estado> listaDeEstadosSegun(LocalDateTime fechaInicio , LocalDateTime fechaFin, String tipoDeEstado) {
@@ -103,16 +108,52 @@ public class DispositivoInteligente{
 		 
 	}
 	
-	public float totalDeConsumo(List<Estado> lstEstados) {		
+	/*public float totalDeConsumo(List<Estado> lstEstados) {		
 		float totalConsumo = 0;		
 		for (Estado estado : lstEstados){
 			totalConsumo += estado.getConsumo();
 		}
 		return totalConsumo;
-	}
+	}*/
 		
 	public boolean cumpleCondicion(Estado e, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 		return (e.getFechaInicio().isBefore(fechaFin) && e.getFechaFin().isAfter(fechaInicio));
+	}
+	
+	public float totalDeHoras (List<Estado> lstEstados,  LocalDateTime fechaInicio, LocalDateTime fechaFin) {		
+		LocalDateTime fechaMinima;
+		LocalDateTime fechaMaxima;
+		float totalHoras = 0;
+			
+		for (Estado estado : lstEstados){
+			fechaMinima = this.fechaMaxima(fechaInicio, estado.getFechaInicio());
+			fechaMaxima = this.fechaMinima(fechaFin, estado.getFechaFin());
+			totalHoras += diferenciaHoras(fechaMinima, fechaMaxima);
+		}
+		return totalHoras;
+	}
+	
+	public int diferenciaHoras(LocalDateTime unahora, LocalDateTime otrahora){
+		int dif= (int) ChronoUnit.HOURS.between(unahora, otrahora);
+		return dif;
+	}
+	
+	public LocalDateTime fechaMaxima (LocalDateTime unaHora, LocalDateTime otraHora){
+		if (unaHora.isAfter(otraHora)){
+			return unaHora;
+		}
+		else {
+			return otraHora;		
+		}
+	}
+	
+	public LocalDateTime fechaMinima (LocalDateTime unaHora, LocalDateTime otraHora){
+		if (unaHora.isBefore(otraHora)){
+			return unaHora;
+		}
+		else {
+			return otraHora;		
+		}
 	}
 	
 	public void setSensor(Sensor sensor) {
