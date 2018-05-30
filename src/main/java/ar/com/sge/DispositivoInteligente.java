@@ -112,7 +112,7 @@ public class DispositivoInteligente{
 	}
 		
 	public boolean cumpleCondicion(Estado e, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-		return (e.getFechaInicio().isAfter(fechaInicio) && e.getFechaFin().isBefore(fechaFin));
+		return (e.getFechaInicio().isBefore(fechaFin) && e.getFechaFin().isAfter(fechaInicio));
 	}
 	
 	public void setSensor(Sensor sensor) {
