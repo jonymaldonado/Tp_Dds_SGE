@@ -1,7 +1,7 @@
 package ar.com.sge;
 
 public class ComandoPrender implements Comando{
-	private Adapter adaptador;
+	private AdapterPrender adaptador;
 	private String nombrecomando;
 	private DispositivoInteligente dispositivo;
 	
@@ -9,11 +9,11 @@ public class ComandoPrender implements Comando{
 		dispositivo.encender();
 	}
 
-	public Adapter getAdaptador() {
+	public AdapterPrender getAdaptador() {
 		return adaptador;
 	}
 
-	public void setAdaptador(Adapter adaptador) {
+	public void setAdaptador(AdapterPrender adaptador) {
 		this.adaptador = adaptador;
 	}
 
