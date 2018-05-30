@@ -3,9 +3,10 @@ package ar.com.sge;
 public class ComandoPrender implements Comando{
 	private Adapter adaptador;
 	private String nombrecomando;
+	private DispositivoInteligente dispositivo;
 	
 	public void ejecutar() {
-		//adaptador.prendete();
+		dispositivo.encender();
 	}
 
 	public Adapter getAdaptador() {
