@@ -7,8 +7,12 @@ import java.util.TimerTask;
 
 public class Sensor {
 	
-	private List<Regla> observadores = new ArrayList<>();
+	private List<Regla> observadores ;
 	private TimerTask tarea;
+	
+	public Sensor() {
+		this.observadores = new ArrayList<>();
+	}
 	
 	public void activate(DispositivoInteligente dispositivo,int horas){
 		programarTarea(dispositivo, horas);

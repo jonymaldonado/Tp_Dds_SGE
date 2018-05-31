@@ -9,8 +9,8 @@ public class Cliente extends Usuario {
 	private String tipoDoc;
 	private int numeroDoc;
 	private int telefono;	
-	private List<DispositivoInteligente> lstDispositivosInteligentes = new ArrayList<>();
-	private List<DispositivoEstandar> lstDispositivosEstandares = new ArrayList<>();
+	private List<DispositivoInteligente> lstDispositivosInteligentes;
+	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
 	private int puntos = 0;
 	
@@ -20,6 +20,21 @@ public class Cliente extends Usuario {
 		this.numeroDoc = _numeroDoc;			
 	}
 	
+	
+	
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria) {
+		super(_nombre, _apellido);
+		this.tipoDoc = tipoDoc;
+		this.numeroDoc = numeroDoc;
+		this.telefono = telefono;
+		this.lstDispositivosInteligentes  = new ArrayList<>();
+		this.lstDispositivosEstandares  = new ArrayList<>();
+		this.categoria = categoria;
+		this.puntos = 0;
+	}
+
+
+
 	public String getTipoDoc() {
 		return tipoDoc;
 	}
