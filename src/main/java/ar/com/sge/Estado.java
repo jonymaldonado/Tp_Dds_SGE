@@ -14,14 +14,16 @@ public abstract class Estado {
 		this.dispositivo = d;
 	}
 	
+	public Estado(String nombre,LocalDateTime fechaInicio,LocalDateTime fechaFin, float consumo) {
+		this.nombre = nombre;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.consumo = consumo;		
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}	
-	public abstract void encender();
-
-	public abstract void apagar();
-
-	public abstract void ahorroDeEnergia();
 	
 	public float getConsumo() {
 		return consumo;
@@ -42,6 +44,14 @@ public abstract class Estado {
 	public void setFechaFin(LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+	
+	public abstract void encender();
+
+	public abstract void apagar();
+
+	public abstract void ahorroDeEnergia();
+	
+	
 	
 	
 }

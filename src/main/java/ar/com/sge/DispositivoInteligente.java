@@ -11,12 +11,10 @@ public class DispositivoInteligente{
 
 	private String nombre;
 	protected float kwPorHora;
-	protected Boolean encendido = false;
 	private Estado estado;
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
 	private static final double coeficienteAhorroEnergia = 0.6;
 	private LocalDateTime inicioPeriodo;
-	private Sensor sensor;
 
 	public DispositivoInteligente(String nombre, float kw) {
 		this.nombre = nombre;
@@ -52,10 +50,10 @@ public class DispositivoInteligente{
 	}
 
 	public Boolean estasEncendido() {
-		return this.estado.getNombre().equals("Encendido");
+		return this.estado.getNombre().equals("encendido");
 	}
 	public Boolean estasApagado() {
-		return this.estado.getNombre().equals("Apagado");
+		return this.estado.getNombre().equals("apagado");
 	}
 
 	public void agregarEstado(Estado e) {
@@ -107,15 +105,7 @@ public class DispositivoInteligente{
 		return lstEstadosSegun;
 		 
 	}
-	
-	/*public float totalDeConsumo(List<Estado> lstEstados) {		
-		float totalConsumo = 0;		
-		for (Estado estado : lstEstados){
-			totalConsumo += estado.getConsumo();
-		}
-		return totalConsumo;
-	}*/
-		
+			
 	public boolean cumpleCondicion(Estado e, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 		return (e.getFechaInicio().isBefore(fechaFin) && e.getFechaFin().isAfter(fechaInicio));
 	}
@@ -154,19 +144,6 @@ public class DispositivoInteligente{
 		else {
 			return otraHora;		
 		}
-	}
-	
-	public void setSensor(Sensor sensor) {
-		this.sensor = sensor;
-	}
-
-	//activo el sensor y como parametro le indico las cada cuantas horas se va a ejecutar
-	public void activarSensor(int valor){
-		sensor.activate(this,valor);
-	}
-	
-	public void desactivarSensor() {
-		sensor.desactivate();
 	}
 
 }

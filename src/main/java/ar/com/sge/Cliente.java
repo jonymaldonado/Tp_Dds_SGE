@@ -9,8 +9,8 @@ public class Cliente extends Usuario {
 	private String tipoDoc;
 	private int numeroDoc;
 	private int telefono;	
-	private List<DispositivoInteligente> lstDispositivosInteligentes;
-	private List<DispositivoEstandar> lstDispositivosEstandares ;
+	private List<DispositivoInteligente> lstDispositivosInteligentes = new ArrayList<>();
+	private List<DispositivoEstandar> lstDispositivosEstandares = new ArrayList<>();
 	private Categoria categoria;
 	private int puntos = 0;
 	
@@ -21,7 +21,7 @@ public class Cliente extends Usuario {
 	}
 	
 	
-	
+	/*
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria) {
 		super(_nombre, _apellido);
 		this.tipoDoc = tipoDoc;
@@ -32,8 +32,7 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.puntos = 0;
 	}
-
-
+	*/
 
 	public String getTipoDoc() {
 		return tipoDoc;
@@ -85,7 +84,7 @@ public class Cliente extends Usuario {
 	
 	public List<DispositivoInteligente> dispositivosApagados(){
 		List<DispositivoInteligente> lstDispApag;
-		lstDispApag = lstDispositivosInteligentes.stream().filter(d->d.estasApagado()==true).collect(Collectors.toList());
+		lstDispApag = lstDispositivosInteligentes.stream().filter(d->(d.estasApagado()==true)).collect(Collectors.toList());
 		return lstDispApag;
 	}
 	
@@ -98,7 +97,7 @@ public class Cliente extends Usuario {
 	}
 	
 	public int cantidadDeDispositivos() {
-		return lstDispositivosInteligentes.size() + lstDispositivosEstandares.size();
+		return cantidadDispositivosInteligentes() + cantidadDispositivosEstandares();
 	}	
 	
 	public float consumoDeEnergia() {
@@ -129,5 +128,11 @@ public class Cliente extends Usuario {
 		quitarDispositivosEstandares(unDispositivoEstandar);		
 	}
 	
+	public int cantidadDispositivosInteligentes() {
+		return lstDispositivosInteligentes.size();
+	}
+	public int cantidadDispositivosEstandares() {
+		return lstDispositivosEstandares.size();
+	}
 	
 }
