@@ -1,8 +1,19 @@
 package ar.com.sge;
 
-public class AdapterEncender implements Adapter {
+public class AdapterEncender implements ComandoEncender {
 	
-	public void ejecutar(DispositivoInteligente dispositivo) {
-		dispositivo.encender();
+	private Fabricante fabricante;
+	
+	@override
+	public void ejecutar() {
+		fabricante.encender();
+	}
+	
+	public Fabricante getFabricante() {
+		return fabricante;
+	}
+	
+	public void setFabricante(Fabricante fabricante1) {
+		this.fabricante = fabricante1
 	}
 }

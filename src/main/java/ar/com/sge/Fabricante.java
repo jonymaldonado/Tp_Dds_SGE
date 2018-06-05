@@ -2,7 +2,11 @@ package ar.com.sge;
 
 public class Fabricante {
 	
-	public void prendete() {
+	public void encender() {
 		//prender dispositivo
+	}
+	
+	public void apagar() {
+		
 	}
 }

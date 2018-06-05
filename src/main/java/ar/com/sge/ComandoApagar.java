@@ -2,23 +2,23 @@ package ar.com.sge;
 
 public class ComandoApagar implements Comando{
 	
-	private AdapterApagar adaptador;
+	private DispositivoInteligente dispositivo;
 	private String nombreComando;
 	
 	public ComandoApagar() {
 		this.nombreComando = "apagar";
 	}
 	
-	public void ejecutar(DispositivoInteligente dispositivo) {
-		adaptador.ejecutar(dispositivo);
+	public void ejecutar() {
+		dispositivo.apagar();
 	}
 
-	public AdapterApagar getAdaptador() {
-		return adaptador;
+	public DispositiviInteligene getDispositivo() {
+		return dispositivo;
 	}
 
-	public void setAdaptador(AdapterApagar adaptador) {
-		this.adaptador = adaptador;
+	public void setDispositivo(DispositivoInteligente disp) {
+		this.dispositivo = disp;
 	}
 
 	public String getNombreComando() {

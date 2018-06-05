@@ -1,7 +1,7 @@
-package ar.com.sge;
+//package ar.com.sge;
 
-public interface Adapter {
+//public interface Adapter //{
 	
-	public void ejecutar(DispositivoInteligente dispo);
+//	public void ejecutar(DispositivoInteligente dispo);
 
-}
+//}
