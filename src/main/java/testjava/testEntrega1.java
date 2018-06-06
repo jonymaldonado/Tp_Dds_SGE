@@ -19,18 +19,20 @@ public class testEntrega1 {
 	private Comando comandoAhorroDeEnergia;
 	private DispositivoInteligente inteligente1;
 	private Encendido estado1 ,estado2;
+	private Apagado apagado1;
+	private AhorroDeEnergia estadoahorro;
 	private AdapterApagar adapterApagar;
 	private AdapterEncender adapterEncender;
 	private AdapterAhorroDeEnergia adapterAhorroDeEnergia;
-	private LocalDateTime inicioestado,inicioestado2;
-	private LocalDateTime finestado,finestado2;
+	private LocalDateTime inicioestado,inicioestado2,inicioapagado;
+	private LocalDateTime finestado,finestado2,finapagado;
 	
 	@Before
 	public void init(){
 		inteligente1=new DispositivoInteligente("tv", 28);
 		actuador1=new Actuador();
 		sensor1=new Sensor();
-		regla1=new Regla("mayor",25,"encender",actuador1);
+		regla1=new Regla("mayor",25,"apagar",actuador1);
 		sensor1.agregarObservador(regla1);
 		adapterApagar=new AdapterApagar();
 		adapterEncender=new AdapterEncender();
@@ -42,11 +44,16 @@ public class testEntrega1 {
 		inicioestado2=LocalDateTime.of(2018, 6, 5, 14, 00);
 		finestado2=LocalDateTime.of(2018, 6, 5, 15, 00);
 		estado2=new Encendido("encendido",inicioestado2,finestado2,28);
+		inicioapagado=LocalDateTime.of(2018, 6, 5, 12, 00);
+		finapagado=LocalDateTime.of(2018, 6, 5, 14, 00);
+		apagado1=new Apagado("apagado", inicioapagado, finapagado);
 		inteligente1.agregarEstado(estado1);
 		inteligente1.agregarEstado(estado2);
 		inteligente1.setSensor(sensor1);
+		actuador1.addcomando(comandoApagar);
+		actuador1.addcomando(comandoprender);
 		comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
-		
+		actuador1.addcomando(comandoAhorroDeEnergia);
 		
 			
 	}	
@@ -101,6 +108,21 @@ public class testEntrega1 {
 		comandoAhorroDeEnergia.ejecutar();
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "modo ahorro");
 	}
+	@Test
+	public void tomarmedicion() {
+		comandoprender.ejecutar();
+		Assert.assertTrue(inteligente1.getEstado().getNombre()== "encendido");
+		sensor1.setValor(30);
+		Assert.assertTrue(inteligente1.getEstado().getNombre()== "apagado");
+	}
+	@Test
+	public void tomarmedicionnocumpleRegla() {
+		comandoprender.ejecutar();
+		Assert.assertTrue(inteligente1.getEstado().getNombre()== "encendido");
+		sensor1.setValor(22);
+		Assert.assertFalse(inteligente1.getEstado().getNombre()== "apagado");
+	}
+	
 	
 		
 		
