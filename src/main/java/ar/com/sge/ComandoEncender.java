@@ -6,6 +6,13 @@ public class ComandoEncender implements Comando{
 	private String nombreComando;
 	private DispositivoInteligente dispositivo;
 	
+	public ComandoEncender(AdapterEncender adaptador, String nombreComando, DispositivoInteligente dispositivo) {
+		super();
+		this.adaptador = adaptador;
+		this.nombreComando = nombreComando;
+		this.dispositivo = dispositivo;
+	}
+
 	public void ejecutar() {
 		dispositivo.encender();
 	}

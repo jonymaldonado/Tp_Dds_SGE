@@ -6,6 +6,15 @@ public class ComandoApagar implements Comando {
 	private String nombreComando;
 	private DispositivoInteligente dispositivo;
 	
+	
+	
+	public ComandoApagar(AdapterApagar adaptador, String nombreComando, DispositivoInteligente dispositivo) {
+		super();
+		this.adaptador = adaptador;
+		this.nombreComando = nombreComando;
+		this.dispositivo = dispositivo;
+	}
+
 	public void ejecutar() {
 		dispositivo.apagar();
 	}

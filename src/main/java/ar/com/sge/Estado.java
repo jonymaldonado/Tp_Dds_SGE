@@ -14,6 +14,19 @@ public abstract class Estado {
 		this.dispositivo = d;
 	}
 	
+	
+	
+	public Estado(String nombre,  LocalDateTime fechaInicio, LocalDateTime fechaFin,
+			float consumo) {
+		super();
+		this.nombre = nombre;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.consumo = consumo;
+	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}	

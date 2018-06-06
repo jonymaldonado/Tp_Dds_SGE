@@ -1,12 +1,17 @@
 package ar.com.sge;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class Actuador {
+	
 
 	private List<Comando> listacomandos;
+	public Actuador() {
+		listacomandos= new ArrayList<>();
+	}
 
 	public void ejecutarAccion(String accion) {
 		Comando comandobuscado;

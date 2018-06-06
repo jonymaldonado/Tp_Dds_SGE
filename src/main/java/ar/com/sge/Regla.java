@@ -5,6 +5,14 @@ public class Regla {
 	private float valorcomparacion;
 	private Actuador actuador;
 	private String accion;
+	
+	public Regla(String operador,float valor,String accion,Actuador actuador) {
+		this.operador=operador;
+		this.valorcomparacion=valor;
+		this.accion=accion;
+		this.actuador=actuador;
+		
+	}
 
 	public void verificarRegla(float valor) {
 		if (evaluar(valor)) {

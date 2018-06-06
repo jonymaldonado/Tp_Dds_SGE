@@ -11,6 +11,20 @@ public class Encendido extends Estado {
 		this.nombre = "encendido";
 		fechaInicio = LocalDateTime.now();	
 	}
+	public Encendido (String nombre,LocalDateTime inicio,LocalDateTime fin,float consumo) {
+		super(nombre,inicio,fin,consumo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void encender() {
 		
