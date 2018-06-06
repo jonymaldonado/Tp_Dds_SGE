@@ -12,7 +12,7 @@ public class TestDispositivoEstandar {
 	@Before
 	public void initialize() {
 		unaCategoriaR1= new Categoria("R1", (float) 18.76,(float) 0.644);
-		unCliente= new Cliente("John", "Doe", "dni", 12345678, 1142453454, unaCategoriaR1);
+		unCliente= new Cliente("John", "Doe", "dni", 12345678);
 		unDispoEstandar= new DispositivoEstandar("Ventilador de techo", (float) 17.5, 7);
 		unCliente.agregarDispositivosEstandares(unDispoEstandar);
 	}//fin initialize
