@@ -1,7 +1,6 @@
 package ar.com.sge;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class Apagado extends Estado{
 
@@ -13,8 +12,7 @@ public class Apagado extends Estado{
 	
 	public void encender() {
 		fechaFin = LocalDateTime.now();
-		float tiempo = ChronoUnit.HOURS.between(fechaInicio,fechaFin);
-		consumo = tiempo * dispositivo.getKwPorHora();
+		consumo = 0;
 		dispositivo.agregarEstado(this);
 		dispositivo.setEstado(new Encendido(dispositivo));			
 	}
