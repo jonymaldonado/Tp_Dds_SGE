@@ -26,6 +26,12 @@ public class testEntrega1 {
 	private AdapterAhorroDeEnergia adapterAhorroDeEnergia;
 	private LocalDateTime inicioestado,inicioestado2,inicioapagado;
 	private LocalDateTime finestado,finestado2,finapagado;
+	private Categoria categoria1;
+	private Cliente cliente1;
+	private Modulo modulo;
+	private DispositivoEstandar estandar1;
+	
+	
 	
 	@Before
 	public void init(){
@@ -54,6 +60,10 @@ public class testEntrega1 {
 		actuador1.addcomando(comandoprender);
 		comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
 		actuador1.addcomando(comandoAhorroDeEnergia);
+		categoria1=new Categoria("R1",18,1);
+		cliente1=new Cliente("Marta","Farias","DNI",12123654);
+		estandar1=new DispositivoEstandar("radio",30,1);
+		modulo=new Modulo("radio",30);
 		
 			
 	}	
@@ -61,7 +71,7 @@ public class testEntrega1 {
 	@Test
 	public void obtenerconsumoestadosentreelrango() {
 		float consumo,horastotal;
-		consumo=inteligente1.consumidoUltimasNhoras(24);
+		consumo=inteligente1.consumidoUltimasNhoras(38);
 		Assert.assertTrue(inteligente1.getEstados().size()==2);
 		LocalDateTime hoy=LocalDateTime.of(2018, 6, 6, 9,0 );
 		LocalDateTime ayer=LocalDateTime.of(2018, 6, 5, 9,0 );
@@ -123,12 +133,16 @@ public class testEntrega1 {
 		Assert.assertFalse(inteligente1.getEstado().getNombre()== "apagado");
 	}
 	
-	
-		
-		
+	@Test
+	public void cambiarDeEstandarAInteligente() {
+		cliente1.agregarDispositivosEstandares(estandar1);
+		cliente1.agregarUnModuloA(estandar1,modulo);
+		Assert.assertTrue(cliente1.cantidadDeDispositivosEstandares()==0);
+		Assert.assertTrue(cliente1.cantidadDedispositivosInteligentes()==1);
+		Assert.assertTrue(cliente1.getPuntos()==10);
+		}		
+
 
 	
-	
-
 	
 }
