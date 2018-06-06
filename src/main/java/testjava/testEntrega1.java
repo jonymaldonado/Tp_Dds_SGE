@@ -17,9 +17,9 @@ public class testEntrega1 {
 	private Comando comandoprender;
 	private Comando comandoApagar;
 	private Comando comandoAhorroDeEnergia;
-	private DispositivoInteligente inteligente1;
-	private Encendido estado1 ,estado2;
-	private Apagado apagado1;
+	private DispositivoInteligente inteligente1,inteligente2;
+	private Encendido estado1 ,estado2,estado1inteligente2,estado2inteligente2;
+	private Apagado apagado1,apagadointeligente2;
 	private AhorroDeEnergia estadoahorro;
 	private AdapterApagar adapterApagar;
 	private AdapterEncender adapterEncender;
@@ -64,6 +64,11 @@ public class testEntrega1 {
 		cliente1=new Cliente("Marta","Farias","DNI",12123654);
 		estandar1=new DispositivoEstandar("radio",30,1);
 		modulo=new Modulo("radio",30);
+		inteligente2=new DispositivoInteligente("AireAcondicionado", 10);
+		estado1inteligente2=new Encendido("encendido",inicioestado,finestado,20);
+		estado2inteligente2=new Encendido("encendido",inicioestado2,finestado2,10);
+		inteligente2.agregarEstado(estado1inteligente2);
+		inteligente2.agregarEstado(estado2inteligente2);
 		
 			
 	}	
@@ -140,9 +145,31 @@ public class testEntrega1 {
 		Assert.assertTrue(cliente1.cantidadDeDispositivosEstandares()==0);
 		Assert.assertTrue(cliente1.cantidadDedispositivosInteligentes()==1);
 		Assert.assertTrue(cliente1.getPuntos()==10);
+		}	
+	@Test
+	public void cantidadpuntos() {
+		cliente1.agregarDispositivosEstandares(estandar1);
+		Assert.assertTrue(cliente1.cantidadDeDispositivosEstandares()==1);
+		cliente1.agregarUnModuloA(estandar1,modulo);
+		cliente1.agregarDispositivosInteligentes(inteligente1);
+		Assert.assertTrue(cliente1.cantidadDeDispositivosEstandares()==0);
+		Assert.assertTrue(cliente1.cantidadDedispositivosInteligentes()==2);
+		Assert.assertTrue(cliente1.getPuntos()==25);
+		
+		
+	}
+	@Test
+	public void consumoenergiaclienteEnPeriodo() {
+		cliente1.agregarDispositivosEstandares(estandar1);
+		cliente1.agregarDispositivosInteligentes(inteligente1);
+		cliente1.agregarDispositivosInteligentes(inteligente2);
+		cliente1.setCategoria(categoria1);
+		LocalDateTime iniciojunio=LocalDateTime.of(2018, 6, 1, 0, 0);
+		LocalDateTime finjunio=LocalDateTime.of(2018, 6, 30, 23, 0);
+		
+		float gasto=cliente1.facturacionEntre(iniciojunio, finjunio);
+		Assert.assertTrue(gasto==132);
+
+	
 		}		
-
-
-	
-	
 }

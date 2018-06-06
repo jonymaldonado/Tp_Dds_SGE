@@ -1,5 +1,6 @@
 package ar.com.sge;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -116,6 +117,18 @@ public class Cliente extends Usuario {
 		float vv = categoria.getValorVariable();
 		float resultado = vf + consumoDeEnergia() * vv;
 		return resultado;
+	}
+	public float facturacionEntre(LocalDateTime inicioPeriodo,LocalDateTime finPeriodo){
+		float resultado=0;
+		float resultadototal=0;
+		
+		float vf = categoria.getValorFijo();
+		float vv = categoria.getValorVariable();
+		for(DispositivoInteligente d: lstDispositivosInteligentes) { 
+			resultado += d.consumidoComprendidoEntre(inicioPeriodo, finPeriodo);
+		}
+		resultadototal = vf + resultado * vv;
+		return resultadototal;
 	}
 	
 	public int getPuntos() {
