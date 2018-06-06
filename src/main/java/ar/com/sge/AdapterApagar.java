@@ -1,10 +1,11 @@
 package ar.com.sge;
 
-public class AdapterApagar implements ComandoApagar {
-	
+public class AdapterApagar implements Comando {
+
 	private Fabricante fabricante;
+	private String nombre;
 	
-	@override
+	@Override
 	public void ejecutar() {
 		fabricante.apagar();
 	}
@@ -14,6 +15,10 @@ public class AdapterApagar implements ComandoApagar {
 	}
 	
 	public void setFabricante(Fabricante fabricante1) {
-		this.fabricante = fabricante1
+		this.fabricante = fabricante1;
+	}
+	
+	public String getNombre() {
+		return nombre;
 	}
 }

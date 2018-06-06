@@ -1,27 +1,29 @@
 package ar.com.sge;
 
-public class ComandoEncender implements Comando {
-
+public class ComandoEncender implements Comando{
+	
+	private AdapterEncender adaptador;
 	private String nombreComando;
 	private DispositivoInteligente dispositivo;
-	
-	public ComandoEncender() {
-		this.nombreComando = "encender";
-	}
 	
 	public void ejecutar() {
 		dispositivo.encender();
 	}
 
-	public DispositiviInteligene getDispositivo() {
-		return dispositivo;
+	public AdapterEncender getAdaptador() {
+		return adaptador;
 	}
 
-	public void setDispositivo(DispositivoInteligente disp) {
-		this.dispositivo = disp;
+	public void setAdaptador(AdapterEncender adaptador) {
+		this.adaptador = adaptador;
 	}
 
-	public String getNombreComando() {
+	public String getNombre() {
 		return nombreComando;
 	}
+
+	public void setNombrecomando(String nombrecomando) {
+		this.nombreComando = nombrecomando;
+	}
+
 }

@@ -1,10 +1,11 @@
 package ar.com.sge;
 
-public class AdapterEncender implements ComandoEncender {
+public class AdapterEncender implements Comando {
 	
 	private Fabricante fabricante;
+	private String nombre;
 	
-	@override
+	@Override
 	public void ejecutar() {
 		fabricante.encender();
 	}
@@ -14,6 +15,10 @@ public class AdapterEncender implements ComandoEncender {
 	}
 	
 	public void setFabricante(Fabricante fabricante1) {
-		this.fabricante = fabricante1
+		this.fabricante = fabricante1;
+	}
+	
+	public String getNombre() {
+		return nombre;
 	}
 }

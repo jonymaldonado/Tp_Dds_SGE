@@ -1,20 +1,38 @@
 package ar.com.sge;
 
 public class Regla {
-	
-	private Comando comando;
-	private float valorDeReferencia;
-	private DispositivoInteligente dispositivo;
+	private Condicion condicion;
+	private Actuador actuador;
+	private String accion;
 
-	public void notificar(float valor) {
-		elegirComando(valor);
-		comando.ejecutar(dispositivo);
-	}
-	public void elegirComando(float valor) {
-		if(valor>=valorDeReferencia) {
-			this.comando = new ComandoApagar();
-		}else {
-			this.comando = new ComandoEncender();
+	public void verificarRegla(float valor) {
+		if (condicion.evaluar(valor)) {
+			actuador.ejecutaraccion(accion);
 		}
 	}
+
+	public Condicion getCondicion() {
+		return condicion;
+	}
+
+	public void setCondicion(Condicion condicion) {
+		this.condicion = condicion;
+	}
+
+	public Actuador getActuador() {
+		return actuador;
+	}
+
+	public void setActuador(Actuador actuador) {
+		this.actuador = actuador;
+	}
+
+	public String getAccion() {
+		return accion;
+	}
+
+	public void setAccion(String accion) {
+		this.accion = accion;
+	}
+
 }
