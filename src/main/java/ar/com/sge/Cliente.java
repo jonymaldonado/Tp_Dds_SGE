@@ -10,15 +10,17 @@ public class Cliente extends Usuario {
 	private String tipoDoc;
 	private int numeroDoc;
 	private int telefono;	
-	private List<DispositivoInteligente> lstDispositivosInteligentes = new ArrayList<>();
-	private List<DispositivoEstandar> lstDispositivosEstandares = new ArrayList<>();
+	private List<DispositivoInteligente> lstDispositivosInteligentes ;
+	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
 	private int puntos = 0;
 	
 	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc) {		
 		super(_nombre,_apellido);
 		this.tipoDoc = _tipoDoc;
-		this.numeroDoc = _numeroDoc;			
+		this.numeroDoc = _numeroDoc;	
+		lstDispositivosInteligentes = new ArrayList<>();
+		lstDispositivosEstandares = new ArrayList<>();
 	}
 	
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos ) {
