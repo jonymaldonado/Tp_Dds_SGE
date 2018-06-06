@@ -8,17 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ar.com.sge.Actuador;
-import ar.com.sge.AdapterApagar;
-import ar.com.sge.AdapterEncender;
-import ar.com.sge.Comando;
-import ar.com.sge.ComandoApagar;
-import ar.com.sge.ComandoEncender;
-import ar.com.sge.DispositivoInteligente;
-import ar.com.sge.Encendido;
-import ar.com.sge.Estado;
-import ar.com.sge.Regla;
-import ar.com.sge.Sensor;
+import ar.com.sge.*;
 
 public class testEntrega1 {
 	private Actuador actuador1;
@@ -26,10 +16,12 @@ public class testEntrega1 {
 	private Regla regla1;
 	private Comando comandoprender;
 	private Comando comandoApagar;
+	private Comando comandoAhorroDeEnergia;
 	private DispositivoInteligente inteligente1;
 	private Encendido estado1 ,estado2;
 	private AdapterApagar adapterApagar;
 	private AdapterEncender adapterEncender;
+	private AdapterAhorroDeEnergia adapterAhorroDeEnergia;
 	private LocalDateTime inicioestado,inicioestado2;
 	private LocalDateTime finestado,finestado2;
 	
@@ -53,6 +45,8 @@ public class testEntrega1 {
 		inteligente1.agregarEstado(estado1);
 		inteligente1.agregarEstado(estado2);
 		inteligente1.setSensor(sensor1);
+		comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
+		
 		
 			
 	}	
@@ -75,6 +69,25 @@ public class testEntrega1 {
 		
 	}
 	
+	@Test
+	public void prenderDispositivo() {
+		comandoprender.ejecutar();
+		Assert.assertTrue(inteligente1.getEstado().getNombre()== "encendido");
+	}
+	
+	@Test
+	public void apagarDispositivo() {
+		comandoprender.ejecutar();
+		comandoApagar.ejecutar();
+		Assert.assertTrue(inteligente1.getEstado().getNombre()== "apagado");
+	}
+	
+	@Test
+	public void ahorroDeEnergiaDispositivo() {
+		comandoprender.ejecutar();
+		comandoAhorroDeEnergia.ejecutar();
+		Assert.assertTrue(inteligente1.getEstado().getNombre()== "modo ahorro");
+	}
 	
 		
 		

@@ -21,6 +21,7 @@ public class DispositivoInteligente{
 	public DispositivoInteligente(String nombre, float kw) {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
+		this.estado = new Apagado(this);
 	}
 
 	public String getNombre() {
