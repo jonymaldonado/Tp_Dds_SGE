@@ -1,23 +1,39 @@
 package ar.com.sge;
 
 public class Regla {
-	private Condicion condicion;
+	private String operador;
+	private float valorcomparacion;
 	private Actuador actuador;
 	private String accion;
 
 	public void verificarRegla(float valor) {
-		if (condicion.evaluar(valor)) {
-			actuador.ejecutaraccion(accion);
+		if (evaluar(valor)) {
+			actuador.ejecutarAccion(accion);
 		}
 	}
+	
+	public boolean evaluar(float valor) {
 
-	public Condicion getCondicion() {
-		return condicion;
+		boolean a;
+		
+		if (operador.equalsIgnoreCase("mayor")) {
+			a = valor>valorcomparacion;
+		}
+		else if(operador.equalsIgnoreCase("menor")) {
+			a = valor<valorcomparacion;
+		}
+		else {
+			a = valor==valorcomparacion;
+		}		
+		return a;		
+	}
+	public void setOperador(String operador) {
+		this.operador = operador;
+	}
+	public void setValorcomparacion(float valorcomparacion) {
+		this.valorcomparacion = valorcomparacion;
 	}
 
-	public void setCondicion(Condicion condicion) {
-		this.condicion = condicion;
-	}
 
 	public Actuador getActuador() {
 		return actuador;
