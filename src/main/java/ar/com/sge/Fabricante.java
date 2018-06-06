@@ -9,4 +9,8 @@ public class Fabricante {
 	public void apagar() {
 		
 	}
+	
+	public void ahorroDeEnergia() {
+		
+	}
 }

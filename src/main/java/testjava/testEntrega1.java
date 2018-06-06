@@ -70,10 +70,10 @@ public class testEntrega1 {
 		Assert.assertTrue(inteligente1.cumpleCondicion(estado1, ayer, hoy));
 		Assert.assertTrue(inteligente1.cumpleCondicion(estado2, ayer, hoy));
 		horastotal=inteligente1.totalDeHoras(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido"), ayer, hoy);
+
 		System.out.println("hora total "+horastotal);
 		Assert.assertTrue(horastotal==3);
-		
-		Assert.assertTrue(consumo==84);
+				Assert.assertTrue(consumo==84);
 		}
 	
 	@Test
