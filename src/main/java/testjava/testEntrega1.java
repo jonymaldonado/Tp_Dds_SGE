@@ -58,7 +58,7 @@ public class testEntrega1 {
 	}	
 	
 	@Test
-	public void obtenerconsumo() {
+	public void obtenerconsumoestadosentreelrango() {
 		float consumo,horastotal;
 		consumo=inteligente1.consumidoUltimasNhoras(24);
 		Assert.assertTrue(inteligente1.getEstados().size()==2);
@@ -70,9 +70,21 @@ public class testEntrega1 {
 		Assert.assertTrue(inteligente1.cumpleCondicion(estado1, ayer, hoy));
 		Assert.assertTrue(inteligente1.cumpleCondicion(estado2, ayer, hoy));
 		horastotal=inteligente1.totalDeHoras(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido"), ayer, hoy);
+		System.out.println("hora total "+horastotal);
 		Assert.assertTrue(horastotal==3);
 		
 		Assert.assertTrue(consumo==84);
+		}
+	
+	@Test
+	public void obtenerconsumoestadofuerarango() {
+		float consumo;
+		LocalDateTime hoy=LocalDateTime.of(2018, 6, 6, 9,0 );
+		LocalDateTime ayer=LocalDateTime.of(2018, 6, 5, 11,30 );
+		consumo=inteligente1.consumidoComprendidoEntre(ayer,hoy);
+		//Assert.assertTrue(consumo==56.0);
+		Assert.assertTrue(consumo==42.0);
+		
 		
 	}
 	

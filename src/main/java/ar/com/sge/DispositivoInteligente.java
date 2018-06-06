@@ -92,7 +92,7 @@ public class DispositivoInteligente{
 		//Calculo consumo encendidos 		
 		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "encendido");
 		totalHoras = this.totalDeHoras(lstEstados, fechaInicio, fechaFin);
-		totalConsumo = totalHoras * this.getKwPorHora();
+		totalConsumo = (totalHoras )* this.getKwPorHora();
 		
 		
 		//Calculo consumo ahorro de energia
@@ -138,7 +138,8 @@ public class DispositivoInteligente{
 	}
 	
 	public float diferenciaHoras(LocalDateTime unahora, LocalDateTime otrahora){
-		float dif=  ChronoUnit.HOURS.between(unahora, otrahora);
+		float dif=  ChronoUnit.MINUTES.between(unahora, otrahora);
+		dif=dif/60;
 		return dif;
 	}
 	
