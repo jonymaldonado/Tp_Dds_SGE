@@ -14,7 +14,7 @@ public class DispositivoInteligente{
 	protected Boolean encendido = false;
 	private Estado estado;
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
-	private static final double coeficienteAhorroEnergia = 0.6;
+	private static final float coeficienteAhorroEnergia = (float) 0.6;
 	private LocalDateTime inicioPeriodo;
 	private Sensor sensor;
 
@@ -56,10 +56,10 @@ public class DispositivoInteligente{
 	}
 
 	public Boolean estasEncendido() {
-		return this.estado.getNombre().equals("Encendido");
+		return this.estado.getNombre().equals("encendido");
 	}
 	public Boolean estasApagado() {
-		return this.estado.getNombre().equals("Apagado");
+		return this.estado.getNombre().equals("apagado");
 	}
 
 	public void agregarEstado(Estado e) {
