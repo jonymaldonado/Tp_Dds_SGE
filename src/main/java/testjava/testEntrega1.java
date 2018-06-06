@@ -49,7 +49,7 @@ public class testEntrega1 {
 		estado1=new Encendido("encendido",inicioestado,finestado,56);
 		inicioestado2=LocalDateTime.of(2018, 6, 5, 14, 00);
 		finestado2=LocalDateTime.of(2018, 6, 5, 15, 00);
-		estado1=new Encendido("encendido",inicioestado2,finestado2,28);
+		estado2=new Encendido("encendido",inicioestado2,finestado2,28);
 		inteligente1.agregarEstado(estado1);
 		inteligente1.agregarEstado(estado2);
 		inteligente1.setSensor(sensor1);
@@ -59,8 +59,19 @@ public class testEntrega1 {
 	
 	@Test
 	public void obtenerconsumo() {
-		float consumo;
+		float consumo,horastotal;
 		consumo=inteligente1.consumidoUltimasNhoras(24);
+		Assert.assertTrue(inteligente1.getEstados().size()==2);
+		LocalDateTime hoy=LocalDateTime.of(2018, 6, 6, 9,0 );
+		LocalDateTime ayer=LocalDateTime.of(2018, 6, 5, 9,0 );
+		float consumido=inteligente1.consumidoComprendidoEntre(ayer,hoy);
+		Assert.assertTrue(consumido==84.0);
+		Assert.assertTrue(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido").size()==2);
+		Assert.assertTrue(inteligente1.cumpleCondicion(estado1, ayer, hoy));
+		Assert.assertTrue(inteligente1.cumpleCondicion(estado2, ayer, hoy));
+		horastotal=inteligente1.totalDeHoras(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido"), ayer, hoy);
+		Assert.assertTrue(horastotal==3);
+		
 		Assert.assertTrue(consumo==84);
 		
 	}

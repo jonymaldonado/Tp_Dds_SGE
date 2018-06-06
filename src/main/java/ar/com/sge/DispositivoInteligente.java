@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class DispositivoInteligente{
 
 	private String nombre;
-	protected float kwPorHora;
+	private float kwPorHora;
 	protected Boolean encendido = false;
 	private Estado estado;
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
@@ -33,6 +33,9 @@ public class DispositivoInteligente{
 	
 	public void setEstado(Estado e) {
 		this.estado = e;
+	}
+	public List<Estado> getEstados(){
+		return this.listaDeEstados;
 	}
 	
 	public Estado getEstado() {
@@ -82,20 +85,21 @@ public class DispositivoInteligente{
 	}
 	
 	public float consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
-		float totalConsumo = 0;
-		float totalHoras = 0;
+		float totalConsumo ;
+		float totalHoras ;
 		List<Estado> lstEstados;
 		
 		//Calculo consumo encendidos 		
-		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Encendido");
+		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "encendido");
 		totalHoras = this.totalDeHoras(lstEstados, fechaInicio, fechaFin);
-		totalConsumo += totalHoras * this.getKwPorHora();
+		totalConsumo = totalHoras * this.getKwPorHora();
+		
 		
 		//Calculo consumo ahorro de energia
-		lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Ahorro de enegia");
+		/*lstEstados = this.listaDeEstadosSegun(fechaInicio, fechaFin, "Ahorro de enegia");
 		totalHoras = this.totalDeHoras(lstEstados, fechaInicio, fechaFin);
 		totalConsumo += totalHoras * this.getKwPorHora() * coeficienteAhorroEnergia;
-		
+		*/
 		return totalConsumo;
 		
 	}
@@ -133,8 +137,8 @@ public class DispositivoInteligente{
 		return totalHoras;
 	}
 	
-	public int diferenciaHoras(LocalDateTime unahora, LocalDateTime otrahora){
-		int dif= (int) ChronoUnit.HOURS.between(unahora, otrahora);
+	public float diferenciaHoras(LocalDateTime unahora, LocalDateTime otrahora){
+		float dif=  ChronoUnit.HOURS.between(unahora, otrahora);
 		return dif;
 	}
 	
