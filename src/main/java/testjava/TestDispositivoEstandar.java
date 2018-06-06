@@ -1,8 +1,12 @@
-package ar.com.sge;
+package testjava;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import ar.com.sge.Categoria;
+import ar.com.sge.Cliente;
+import ar.com.sge.DispositivoEstandar;
 
 public class TestDispositivoEstandar {
 	Categoria unaCategoriaR1;
