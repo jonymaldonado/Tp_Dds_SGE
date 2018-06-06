@@ -20,8 +20,6 @@ public class Cliente extends Usuario {
 		this.numeroDoc = _numeroDoc;			
 	}
 	
-	
-	
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos ) {
 		super(_nombre, _apellido);
 		this.tipoDoc = tipoDoc;
@@ -32,8 +30,6 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.puntos = 0;
 	}
-
-
 
 	public String getTipoDoc() {
 		return tipoDoc;
@@ -90,7 +86,7 @@ public class Cliente extends Usuario {
 	}
 	
 	public int cantidadDispositivosEncendidos() {
-		return dispositivosEncendidos().size();
+		return this.dispositivosEncendidos().size();
 	}
 	
 	public int cantidadDispositivosApagados() {

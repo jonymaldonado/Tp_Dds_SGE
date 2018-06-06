@@ -63,7 +63,7 @@ public class testEntrega1 {
 		categoria1=new Categoria("R1",18,1);
 		cliente1=new Cliente("Marta","Farias","DNI",12123654);
 		estandar1=new DispositivoEstandar("radio",30,1);
-		modulo=new Modulo("radio",30);
+		modulo=new Modulo(estandar1);
 		
 			
 	}	
@@ -141,8 +141,21 @@ public class testEntrega1 {
 		Assert.assertTrue(cliente1.cantidadDedispositivosInteligentes()==1);
 		Assert.assertTrue(cliente1.getPuntos()==10);
 		}		
-
-
 	
+	@Test
+	public void cantidadDeDispositivosEncendidos() {
+		DispositivoInteligente dispo2 = new DispositivoInteligente("smart",50);
+		cliente1.agregarDispositivosInteligentes(inteligente1);
+		cliente1.agregarDispositivosInteligentes(dispo2);
+		cliente1.agregarDispositivosEstandares(estandar1);
+		inteligente1.encender();
+		dispo2.encender();	
+		Assert.assertTrue(cliente1.cantidadDispositivosEncendidos()==2);
+	}
+
+	@Test
+	public void verificarCambio(){
+		Assert.assertEquals(modulo.getNombre(),"radio");
+	}
 	
 }
