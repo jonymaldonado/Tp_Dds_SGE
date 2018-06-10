@@ -1,4 +1,4 @@
-package ar.com.sge;
+package ar.com.sge.usuarios;
 
 import java.time.LocalDate;
 

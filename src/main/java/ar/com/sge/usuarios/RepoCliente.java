@@ -1,9 +1,12 @@
-package ar.com.sge;
+package ar.com.sge.usuarios;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import ar.com.sge.util.Dao;
+import ar.com.sge.util.DaoJsonCliente;
 
 public class RepoCliente {
 	private Dao daocliente;
@@ -35,7 +38,7 @@ public class RepoCliente {
 	 * List<Cliente> lista =
 	 * this.daocliente.getAll().stream().filter(s->s.getNombre().equalsIgnoreCase(
 	 * nombre)&&
-	 * s.getContraseña().equalsIgnoreCase(clave)).collect(Collectors.toList());
+	 * s.getContraseï¿½a().equalsIgnoreCase(clave)).collect(Collectors.toList());
 	 * return lista.get(0); }
 	 */
 

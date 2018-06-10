@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ar.com.sge.Categoria;
-import ar.com.sge.Cliente;
-import ar.com.sge.DispositivoEstandar;
+import ar.com.sge.dispositivos.DispositivoEstandar;
+import ar.com.sge.usuarios.Categoria;
+import ar.com.sge.usuarios.Cliente;
 
 public class TestDispositivoEstandar {
 	Categoria unaCategoriaR1;

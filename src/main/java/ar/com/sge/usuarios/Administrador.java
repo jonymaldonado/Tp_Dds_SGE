@@ -1,4 +1,4 @@
-package ar.com.sge;
+package ar.com.sge.usuarios;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -21,7 +21,7 @@ public class Administrador extends Usuario{
 		int days = Period.between(ini,fin).getDays();
 		int months = Period.between(ini,fin).getMonths();
 		int years = Period.between(ini,fin).getYears();
-		System.out.println(years+" año, "+ months +" meses, "+days+" dias");
+		System.out.println(years+" aï¿½o, "+ months +" meses, "+days+" dias");
 	}
 }
  

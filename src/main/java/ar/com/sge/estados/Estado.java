@@ -1,6 +1,8 @@
-package ar.com.sge;
+package ar.com.sge.estados;
 
 import java.time.LocalDateTime;
+
+import ar.com.sge.dispositivos.DispositivoInteligente;
 
 public abstract class Estado {
 	

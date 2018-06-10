@@ -1,9 +1,11 @@
-package ar.com.sge;
+package ar.com.sge.reglas;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import ar.com.sge.dispositivos.DispositivoInteligente;
 
 public class Sensor {
 	

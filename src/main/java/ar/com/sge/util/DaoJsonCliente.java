@@ -1,4 +1,4 @@
-package ar.com.sge;
+package ar.com.sge.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
+import ar.com.sge.usuarios.Cliente;
 
 public class DaoJsonCliente implements Dao {
 	private String filePath;

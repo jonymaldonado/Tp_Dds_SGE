@@ -1,10 +1,14 @@
-package ar.com.sge;
+package ar.com.sge.dispositivos;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import ar.com.sge.estados.Apagado;
+import ar.com.sge.estados.Estado;
+import ar.com.sge.reglas.Sensor;
 
 
 public class DispositivoInteligente{

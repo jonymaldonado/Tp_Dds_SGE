@@ -1,4 +1,4 @@
-package ar.com.sge;
+package ar.com.sge.dispositivos;
 
 
 public class Modulo extends DispositivoInteligente {

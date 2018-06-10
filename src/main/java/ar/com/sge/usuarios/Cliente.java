@@ -1,9 +1,13 @@
-package ar.com.sge;
+package ar.com.sge.usuarios;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import ar.com.sge.dispositivos.DispositivoEstandar;
+import ar.com.sge.dispositivos.DispositivoInteligente;
+import ar.com.sge.dispositivos.Modulo;
 
 public class Cliente extends Usuario {
 	

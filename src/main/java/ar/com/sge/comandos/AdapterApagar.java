@@ -1,13 +1,13 @@
-package ar.com.sge;
+package ar.com.sge.comandos;
 
-public class AdapterAhorroDeEnergia implements Comando {
+public class AdapterApagar implements Comando {
 
 	private Fabricante fabricante;
 	private String nombre;
 	
 	@Override
 	public void ejecutar() {
-		fabricante.ahorroDeEnergia();
+		fabricante.apagar();
 	}
 	
 	public Fabricante getFabricante() {

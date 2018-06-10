@@ -1,7 +1,9 @@
-package ar.com.sge;
+package ar.com.sge.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import ar.com.sge.usuarios.Cliente;
 
 public interface Dao {
 	public void add(Cliente cliente) throws IOException;

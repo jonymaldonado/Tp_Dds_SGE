@@ -1,4 +1,6 @@
-package ar.com.sge;
+package ar.com.sge.comandos;
+
+import ar.com.sge.dispositivos.DispositivoInteligente;
 
 public class ComandoApagar implements Comando {
 

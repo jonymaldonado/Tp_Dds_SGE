@@ -9,6 +9,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ar.com.sge.*;
+import ar.com.sge.comandos.AdapterAhorroDeEnergia;
+import ar.com.sge.comandos.AdapterApagar;
+import ar.com.sge.comandos.AdapterEncender;
+import ar.com.sge.comandos.Comando;
+import ar.com.sge.comandos.ComandoAhorroDeEnergia;
+import ar.com.sge.comandos.ComandoApagar;
+import ar.com.sge.comandos.ComandoEncender;
+import ar.com.sge.dispositivos.DispositivoEstandar;
+import ar.com.sge.dispositivos.DispositivoInteligente;
+import ar.com.sge.dispositivos.Modulo;
+import ar.com.sge.estados.AhorroDeEnergia;
+import ar.com.sge.estados.Apagado;
+import ar.com.sge.estados.Encendido;
+import ar.com.sge.reglas.Actuador;
+import ar.com.sge.reglas.Regla;
+import ar.com.sge.reglas.Sensor;
+import ar.com.sge.usuarios.Categoria;
+import ar.com.sge.usuarios.Cliente;
 
 public class testEntrega1 {
 	private Actuador actuador1;

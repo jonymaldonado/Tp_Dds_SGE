@@ -1,8 +1,10 @@
-package ar.com.sge;
+package ar.com.sge.reglas;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import ar.com.sge.comandos.Comando;
 
 
 public class Actuador {

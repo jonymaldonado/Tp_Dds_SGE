@@ -1,4 +1,4 @@
-package ar.com.sge;
+package ar.com.sge.comandos;
 
 public interface Comando {
 	
