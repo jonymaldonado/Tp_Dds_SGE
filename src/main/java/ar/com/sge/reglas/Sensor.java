@@ -35,8 +35,8 @@ public class Sensor {
 		float valor = dispositivo.consumoEnKw();
 		observadores.forEach(r -> r.verificarRegla(valor));
 	}
-	public void setValor(float valor) {
-		observadores.forEach(r -> r.verificarRegla(valor));
+	public void notificarALosObservadores(float valor) {
+		this.getObservadores().forEach(r -> r.verificarRegla(valor));
 		
 	}
 	
@@ -47,7 +47,12 @@ public class Sensor {
 	public void agregarObservador(Regla regla){
 		observadores.add(regla);
 	}
-	
+	public void setValor(float unValor) {
+		this.notificarALosObservadores(unValor);
+	}
+	public List<Regla> getObservadores() {
+		return observadores;
+	}
 }
 
 
