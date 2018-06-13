@@ -1,21 +1,20 @@
 package ar.com.sge.comandos;
 
-public class AdapterApagar implements Comando {
+import ar.com.sge.dispositivos.DispositivoInteligente;
 
-	private Fabricante fabricante;
+public class AdapterApagar extends ComandoApagar {
+	
 	private String nombre;
+	private DispositivoInteligente dispositivo;
+	
+	public AdapterApagar(String nombreComando, DispositivoInteligente dispositivo) {
+		super(nombreComando, dispositivo);
+		this.dispositivo=dispositivo;
+	}
 	
 	@Override
 	public void ejecutar() {
-		fabricante.apagar();
-	}
-	
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-	
-	public void setFabricante(Fabricante fabricante1) {
-		this.fabricante = fabricante1;
+		dispositivo.apagar();
 	}
 	
 	public String getNombre() {

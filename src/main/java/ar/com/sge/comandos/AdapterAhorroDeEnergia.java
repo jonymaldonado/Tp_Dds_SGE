@@ -1,21 +1,21 @@
 package ar.com.sge.comandos;
 
-public class AdapterAhorroDeEnergia implements Comando {
+import ar.com.sge.dispositivos.DispositivoInteligente;
 
-	private Fabricante fabricante;
+public class AdapterAhorroDeEnergia extends ComandoAhorroDeEnergia {
+	
+	private DispositivoInteligente dispositivo;
 	private String nombre;
+
+	public AdapterAhorroDeEnergia(String nombreComando,
+			DispositivoInteligente dispositivo) {
+		super(nombreComando, dispositivo);
+		this.dispositivo=dispositivo;
+	}
 	
 	@Override
 	public void ejecutar() {
-		fabricante.ahorroDeEnergia();
-	}
-	
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-	
-	public void setFabricante(Fabricante fabricante1) {
-		this.fabricante = fabricante1;
+		dispositivo.ahorroDeEnergia();
 	}
 	
 	public String getNombre() {

@@ -1,21 +1,22 @@
 package ar.com.sge.comandos;
 
-public class AdapterEncender implements Comando {
+import ar.com.sge.dispositivos.DispositivoInteligente;
+
+public class AdapterEncender extends ComandoEncender {
 	
-	private Fabricante fabricante;
+	private DispositivoInteligente dispositivo;
+	
+	public AdapterEncender(String nombreComando, DispositivoInteligente dispositivo) {
+		super(nombreComando, dispositivo);
+		this.dispositivo = dispositivo;
+	}
+
+	
 	private String nombre;
 	
 	@Override
 	public void ejecutar() {
-		fabricante.encender();
-	}
-	
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-	
-	public void setFabricante(Fabricante fabricante1) {
-		this.fabricante = fabricante1;
+		dispositivo.encender();
 	}
 	
 	public String getNombre() {

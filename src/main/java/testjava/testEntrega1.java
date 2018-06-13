@@ -58,10 +58,11 @@ public class testEntrega1 {
 		sensor1=new Sensor();
 		regla1=new Regla("mayor",25,"apagar",actuador1);
 		sensor1.agregarObservador(regla1);
-		adapterApagar=new AdapterApagar();
-		adapterEncender=new AdapterEncender();
-		comandoApagar=new ComandoApagar(adapterApagar,"apagar",inteligente1);
-		comandoprender=new ComandoEncender(adapterEncender,"encender",inteligente1);
+		adapterApagar=new AdapterApagar("apagar",inteligente1);
+		adapterAhorroDeEnergia= new AdapterAhorroDeEnergia("ahorroDeEnergia",inteligente1);
+		adapterEncender=new AdapterEncender("encender",inteligente1);
+		//comandoApagar=new ComandoApagar("apagar",inteligente1);
+		//comandoprender=new ComandoEncender("encender",inteligente1);
 		inicioestado=LocalDateTime.of(2018, 6, 5, 10, 00);
 		finestado=LocalDateTime.of(2018, 6, 5, 12, 00);
 		estado1=new Encendido("encendido",inicioestado,finestado,56);
@@ -76,7 +77,7 @@ public class testEntrega1 {
 		inteligente1.setSensor(sensor1);
 		actuador1.addcomando(comandoApagar);
 		actuador1.addcomando(comandoprender);
-		comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
+		//comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
 		actuador1.addcomando(comandoAhorroDeEnergia);
 		categoria1=new Categoria("R1",18,1);
 		cliente1=new Cliente("Marta","Farias","DNI",12123654);
@@ -111,7 +112,7 @@ public class testEntrega1 {
 
 		System.out.println("hora total "+horastotal);
 		Assert.assertTrue(horastotal==3);
-				Assert.assertTrue(consumo==84);
+		Assert.assertTrue(consumo==84);
 		}
 	
 	@Test
@@ -128,33 +129,40 @@ public class testEntrega1 {
 	
 	@Test
 	public void prenderDispositivo() {
-		comandoprender.ejecutar();
+		adapterEncender.ejecutar();
+		//comandoprender.ejecutar();
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "encendido");
 	}
 	
 	@Test
 	public void apagarDispositivo() {
-		comandoprender.ejecutar();
-		comandoApagar.ejecutar();
+		adapterEncender.ejecutar();
+		adapterApagar.ejecutar();
+		//comandoprender.ejecutar();
+		//comandoApagar.ejecutar();
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "apagado");
 	}
 	
 	@Test
 	public void ahorroDeEnergiaDispositivo() {
-		comandoprender.ejecutar();
-		comandoAhorroDeEnergia.ejecutar();
+		adapterEncender.ejecutar();
+		adapterAhorroDeEnergia.ejecutar();
+		//comandoprender.ejecutar();
+		//comandoAhorroDeEnergia.ejecutar();
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "modo ahorro");
 	}
 	@Test
 	public void tomarmedicion() {
-		comandoprender.ejecutar();
+		adapterEncender.ejecutar();
+		//comandoprender.ejecutar();
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "encendido");
 		sensor1.setValor(30);
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "apagado");
 	}
 	@Test
 	public void tomarmedicionnocumpleRegla() {
-		comandoprender.ejecutar();
+		adapterEncender.ejecutar();
+		//comandoprender.ejecutar();
 		Assert.assertTrue(inteligente1.getEstado().getNombre()== "encendido");
 		sensor1.setValor(22);
 		Assert.assertFalse(inteligente1.getEstado().getNombre()== "apagado");
