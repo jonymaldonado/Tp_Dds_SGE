@@ -21,5 +21,5 @@ public class Zona {
 		}// fin for
 		return consumoTotal;
 	}//fin consumoTotalDelaZona
-
+	
 }// fin zona
