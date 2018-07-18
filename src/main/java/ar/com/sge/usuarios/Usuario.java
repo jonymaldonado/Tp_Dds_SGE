@@ -2,17 +2,21 @@ package ar.com.sge.usuarios;
 
 import java.time.LocalDate;
 
+import ar.com.sge.geografia.Coordenada;
+
 public abstract class Usuario {
 	private String nombre_usuario;
 	private String contrasenia;
 	private String nombre;
 	private String apellido;
-	private String domicilio;
+	private Coordenada domicilio;
 	private LocalDate alta;
 	
-	public Usuario(String _nombre,String _apellido) {
+	public Usuario(String _nombre,String _apellido,double latitud,double longitud) {
 		this.nombre = _nombre;
 		this.apellido = _apellido;
+		this.direccion=new Coordenada(latitud, longitud);
+
 		//this.alta = LocalDate.now();
 	}
 	public String getNombre() {
@@ -21,7 +25,7 @@ public abstract class Usuario {
 	public String getApellido() {
 		return apellido;
 	}
-	public String getDomicilio() {
+	public Coordenada getDomicilio() {
 		return domicilio;
 	}
 	public LocalDate getAlta() {

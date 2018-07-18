@@ -1,10 +1,10 @@
 package ar.com.sge.geografia;
 
 public class Coordenada {
-	private long latitud;
-	private long longitud;
+	private double latitud;
+	private double longitud;
 	
-	public Coordenada(long unLatitud,long unLongitud) {
+	public Coordenada(double unLatitud,double unLongitud) {
 		this.latitud=unLatitud;
 		this.longitud=unLongitud;
 	}// constructor

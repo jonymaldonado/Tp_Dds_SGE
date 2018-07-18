@@ -17,7 +17,7 @@ public class Zona {
 	public float consumoTotalDelaZona() {
 		float consumoTotal=0;
 		for (Transformador unTransformador : listaDeTransformadores) {
-			consumoTotal+=unTransformador.consumoTotalDelTransformador;
+			consumoTotal+=unTransformador.consumoTotalDelTransformador();
 		}// fin for
 		return consumoTotal;
 	}//fin consumoTotalDelaZona

@@ -8,27 +8,29 @@ import java.util.stream.Collectors;
 import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 import ar.com.sge.dispositivos.Modulo;
+import ar.com.sge.geografia.Coordenada;
 
 public class Cliente extends Usuario {
 	
 	private String tipoDoc;
 	private int numeroDoc;
+//	private Coordenada domicilio;
 	private int telefono;	
 	private List<DispositivoInteligente> lstDispositivosInteligentes ;
 	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
 	private int puntos = 0;
 	
-	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc) {		
-		super(_nombre,_apellido);
+	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
+		super(_nombre,_apellido,latitud,longitud);
 		this.tipoDoc = _tipoDoc;
-		this.numeroDoc = _numeroDoc;	
+		this.numeroDoc = _numeroDoc;
 		lstDispositivosInteligentes = new ArrayList<>();
 		lstDispositivosEstandares = new ArrayList<>();
 	}
 	
-	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos ) {
-		super(_nombre, _apellido);
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,double latitud,double longitud ) {
+		super(_nombre, _apellido,latitud,longitud);
 		this.tipoDoc = tipoDoc;
 		this.numeroDoc = numeroDoc;
 		this.telefono = telefono;
@@ -58,7 +60,7 @@ public class Cliente extends Usuario {
 		this.categoria = _categoria;
 	}
 	public String getCategoria() {
-		return categoria.getNombre();
+		return categoria.getNombre();		
 	}
 		
 	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {

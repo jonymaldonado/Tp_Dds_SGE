@@ -20,8 +20,8 @@ public class Transformador {
 		float consumoDeEnergia=0;
 		for (Cliente unCliente : listaDeclientesConectados) {
 			consumoDeEnergia+=unCliente.consumoDeEnergia();
-			return consumoDeEnergia;
 		}//fin for
+		return consumoDeEnergia;
 	}
 	
 	
