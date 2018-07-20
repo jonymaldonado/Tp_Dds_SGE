@@ -15,9 +15,14 @@ public abstract class Usuario {
 	public Usuario(String _nombre,String _apellido,double latitud,double longitud) {
 		this.nombre = _nombre;
 		this.apellido = _apellido;
-		this.direccion=new Coordenada(latitud, longitud);
+		this.domicilio=new Coordenada(latitud, longitud);
 
 		//this.alta = LocalDate.now();
+	}
+	public Usuario(String _nombre,String _apellido) {
+		this.nombre = _nombre;
+		this.apellido = _apellido;
+		
 	}
 	public String getNombre() {
 		return nombre;

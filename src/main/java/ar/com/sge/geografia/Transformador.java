@@ -16,13 +16,31 @@ public class Transformador {
 		this.listaDeclientesConectados= new ArrayList<>(); 
 	};//constructor
 	
-	public float consumoTotalDelTransformador() {
+/*
+ * 	public float consumoTotalDelTransformador() {
 		float consumoDeEnergia=0;
 		for (Cliente unCliente : listaDeclientesConectados) {
 			consumoDeEnergia+=unCliente.consumoDeEnergia();
 		}//fin for
 		return consumoDeEnergia;
+	}*/
+	public int getIdtransformador() {
+		return idtransformador;
 	}
-	
-	
+	public void setIdtransformador(int idtransformador) {
+		this.idtransformador = idtransformador;
+	}
+	public Coordenada getPosTransformador() {
+		return posTransformador;
+	}
+	public void setPosTransformador(Coordenada posTransformador) {
+		this.posTransformador = posTransformador;
+	}
+	public int getIdZonaCorrespondiente() {
+		return idZonaCorrespondiente;
+	}
+	public void setIdZonaCorrespondiente(int idZonaCorrespondiente) {
+		this.idZonaCorrespondiente = idZonaCorrespondiente;
+	}
+	public void 
 }//fin Trasnformador
