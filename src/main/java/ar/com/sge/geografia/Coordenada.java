@@ -9,8 +9,18 @@ public class Coordenada {
 		this.longitud=unLongitud;
 	}// constructor
 	
+	public double getLatitud() {
+		return latitud;
+	}
 	
+	public double getLongitud() {
+		return longitud;
+	}
 	
+	public float distanciaAlPunto(Coordenada unPunto) {
+		float distancia, unNumero;
+		
+	}
 	
 	
 

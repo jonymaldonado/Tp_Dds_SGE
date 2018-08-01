@@ -14,12 +14,57 @@ public class Zona {
 		this.listaDeTransformadores=new ArrayList<>();
 	};//constructor
 	
-	public float consumoTotalDelaZona() {
-		float consumoTotal=0;
+	public float consumoTotalDeLaZona() {
+		float consumoTotalEnLaZona=0;
 		for (Transformador unTransformador : listaDeTransformadores) {
-			consumoTotal+=unTransformador.consumoTotalDelTransformador();
+			consumoTotalEnLaZona+=unTransformador.totalDeConsumoDelTransformadores();
 		}// fin for
-		return consumoTotal;
+		return consumoTotalEnLaZona;
 	}//fin consumoTotalDelaZona
+
+	public int getIdZona() {
+		return idZona;
+	}
+
+	public void setIdZona(int idZona) {
+		this.idZona = idZona;
+	}
+
+	public String getNombreDeLaZona() {
+		return nombreDeLaZona;
+	}
+
+	public void setNombreDeLaZona(String nombreDeLaZona) {
+		this.nombreDeLaZona = nombreDeLaZona;
+	}
+
+	public Coordenada getPosZonaCentral() {
+		return posZonaCentral;
+	}
+
+	public void setPosZonaCentral(Coordenada posZonaCentral) {
+		this.posZonaCentral = posZonaCentral;
+	}
+
+	public int getRadioEnMetros() {
+		return radioEnMetros;
+	}
+
+	public void setRadioEnMetros(int radioEnMetros) {
+		this.radioEnMetros = radioEnMetros;
+	}
+
+	public List<Transformador> getListaDeTransformadores() {
+		return listaDeTransformadores;
+	}
+
+	public void setListaDeTransformadores(List<Transformador> listaDeTransformadores) {
+		this.listaDeTransformadores = listaDeTransformadores;
+	}
+	
+	
+	
+	
+	
 	
 }// fin zona
