@@ -31,9 +31,15 @@ public class Administrador extends Usuario{
 	public List<Cliente> getListaDeClientes() {
 		return listaDeClientes;
 	}
-	public void agregarCliente(Cliente unClientes) {
-		this.listaDeClientes.add(unClientes);
+//	public void agregarCliente(Cliente unClientes) {
+//		this.listaDeClientes.add(unClientes);
+//	}
+	public void actualizarListasDeTransformadores() {
+		float transformadorMasCercano=0;
+		for (Cliente cliente : listaDeClientes) {
+			
+		}
+		
 	}
-	
 }
  

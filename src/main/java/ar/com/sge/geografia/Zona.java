@@ -12,15 +12,17 @@ public class Zona {
 	
 	public Zona() {
 		this.listaDeTransformadores=new ArrayList<>();
-	};//constructor
+	}//constructor
 	
+
+	//}//fin consumoTotalDelaZona
 	public float consumoTotalDeLaZona() {
-		float consumoTotalEnLaZona=0;
+		float consumoTotalEnLaZona = 0 ;
 		for (Transformador unTransformador : listaDeTransformadores) {
-			consumoTotalEnLaZona+=unTransformador.totalDeConsumoDelTransformadores();
-		}// fin for
+			consumoTotalEnLaZona +=  unTransformador.totalDeConsumoDelTransformadores();
+		}
 		return consumoTotalEnLaZona;
-	}//fin consumoTotalDelaZona
+	}
 
 	public int getIdZona() {
 		return idZona;
