@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import ar.com.sge.geografia.Transformador;
 import ar.com.sge.usuarios.Cliente;
 
-public class DaoJsontransformadores implements DaoTransFormadores{
+public class DaoJsonTransformadores implements DaoTransFormadores{
 	private String filePath;
 	private Gson myGson;
 	private BufferedReader bufferToReader;
@@ -27,7 +27,7 @@ public class DaoJsontransformadores implements DaoTransFormadores{
 	}
 
 
-	public DaoJsontransformadores() {
+	public DaoJsonTransformadores() {
 		super();
 		this.myGson = new GsonBuilder().setPrettyPrinting().create();
 	}
@@ -56,7 +56,7 @@ public class DaoJsontransformadores implements DaoTransFormadores{
 		return listaTranformadores;
 	}
 
-	public void update(Cliente cliente){
+	public void update(Transformador untransformador){
 		//aca deberia poner la actualizacion de la lista, creo
 
 	}

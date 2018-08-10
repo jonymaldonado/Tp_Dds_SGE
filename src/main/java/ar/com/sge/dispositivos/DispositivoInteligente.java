@@ -11,7 +11,7 @@ import ar.com.sge.estados.Estado;
 import ar.com.sge.reglas.Sensor;
 
 
-public class DispositivoInteligente{
+public class DispositivoInteligente implements IDispositivo{
 
 	private String nombre;
 	private float kwPorHora;
@@ -26,6 +26,16 @@ public class DispositivoInteligente{
 		this.nombre = nombre;
 		this.kwPorHora = kw;
 		this.estado = new Apagado(this);
+	}
+	@Override
+	public IDispositivo clone() throws CloneNotSupportedException{
+		DispositivoInteligente inteligente=null;
+		try {
+			inteligente=(DispositivoInteligente) clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return inteligente;
 	}
 
 	public String getNombre() {

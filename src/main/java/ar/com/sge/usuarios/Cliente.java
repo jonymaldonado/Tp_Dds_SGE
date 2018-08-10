@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
+import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
 import ar.com.sge.geografia.Coordenada;
 
@@ -70,6 +71,10 @@ public class Cliente extends Usuario {
 		lstDispositivosInteligentes.add(unDispositivoInteligente);
 		puntos += 15;
 	}
+	/*public void agregarDispositivosInteligentes(IDispositivo unDispositivoInteligente) {
+		lstDispositivosInteligentes.add(unDispositivoInteligente);
+		puntos += 15;
+	}*/
 	public void quitarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
 		lstDispositivosEstandares.remove(unDispositivoEstandar);
 	}

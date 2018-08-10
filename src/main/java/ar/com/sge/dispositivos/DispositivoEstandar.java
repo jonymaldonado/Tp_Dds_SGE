@@ -1,6 +1,6 @@
 package ar.com.sge.dispositivos;
 
-public class DispositivoEstandar {
+public class DispositivoEstandar implements IDispositivo{
 	
 	private String nombre;
 	protected float kwPorHora;
@@ -10,6 +10,17 @@ public class DispositivoEstandar {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
 		this.horasDeUso = hs;
+	}
+	
+	@Override
+	public IDispositivo clone() throws CloneNotSupportedException{
+		DispositivoInteligente inteligente=null;
+		try {
+			inteligente=(DispositivoInteligente) clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return inteligente;
 	}
 	
 	public String getNombre() {
