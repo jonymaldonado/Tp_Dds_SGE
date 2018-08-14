@@ -21,6 +21,7 @@ public class Cliente extends Usuario {
 	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
 	private int puntos = 0;
+	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
 	
 	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
 		super(_nombre,_apellido,latitud,longitud);
@@ -39,6 +40,7 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.categoria = categoria;
 		this.puntos = 0;
+		this.idTransformadorCorrespondiente = 0;
 	}
 
 	public String getTipoDoc() {
@@ -62,6 +64,13 @@ public class Cliente extends Usuario {
 	}
 	public String getCategoria() {
 		return categoria.getNombre();		
+	}
+	
+	public int getIdTransformadorCorrespondiente() {
+		return idTransformadorCorrespondiente;
+	}
+	public void setIdTransformadorCorrespondiente(int idTransformadorCorrespondiente) {
+		this.idTransformadorCorrespondiente = idTransformadorCorrespondiente;
 	}
 		
 	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
