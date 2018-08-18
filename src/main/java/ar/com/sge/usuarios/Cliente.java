@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
-import ar.com.sge.dispositivos.IDispositivo;
+//import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
-import ar.com.sge.geografia.Coordenada;
+//import ar.com.sge.geografia.Coordenada;
 
 public class Cliente extends Usuario {
 	
@@ -23,7 +23,7 @@ public class Cliente extends Usuario {
 	private int puntos = 0;
 	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
 	
-	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
+	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,float latitud,float longitud) {		
 		super(_nombre,_apellido,latitud,longitud);
 		this.tipoDoc = _tipoDoc;
 		this.numeroDoc = _numeroDoc;
@@ -31,7 +31,7 @@ public class Cliente extends Usuario {
 		lstDispositivosEstandares = new ArrayList<>();
 	}
 	
-	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,double latitud,double longitud ) {
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,float latitud,float longitud ) {
 		super(_nombre, _apellido,latitud,longitud);
 		this.tipoDoc = tipoDoc;
 		this.numeroDoc = numeroDoc;
