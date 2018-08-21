@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
-import ar.com.sge.dispositivos.IDispositivo;
+//import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
-import ar.com.sge.geografia.Coordenada;
+//import ar.com.sge.geografia.Coordenada;
 
 public class Cliente extends Usuario {
 	
@@ -21,8 +21,13 @@ public class Cliente extends Usuario {
 	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
 	private int puntos = 0;
+	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
 	
+
 	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
+=======
+	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,float latitud,float longitud) {		
+>>>>>>> 55d6153bb164c64abe9f3fcdd29e944e114d8019
 		super(_nombre,_apellido,latitud,longitud);
 		this.tipoDoc = _tipoDoc;
 		this.numeroDoc = _numeroDoc;
@@ -30,7 +35,7 @@ public class Cliente extends Usuario {
 		lstDispositivosEstandares = new ArrayList<>();
 	}*/
 	
-	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,double latitud,double longitud ) {
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,float latitud,float longitud ) {
 		super(_nombre, _apellido,latitud,longitud);
 		this.tipoDoc = tipoDoc;
 		this.numeroDoc = numeroDoc;
@@ -39,6 +44,7 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.categoria = categoria;
 		this.puntos = 0;
+		this.idTransformadorCorrespondiente = 0;
 	}
 
 	public String getTipoDoc() {
@@ -62,6 +68,13 @@ public class Cliente extends Usuario {
 	}
 	public String getCategoria() {
 		return categoria.getNombre();		
+	}
+	
+	public int getIdTransformadorCorrespondiente() {
+		return idTransformadorCorrespondiente;
+	}
+	public void setIdTransformadorCorrespondiente(int idTransformadorCorrespondiente) {
+		this.idTransformadorCorrespondiente = idTransformadorCorrespondiente;
 	}
 		
 	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
