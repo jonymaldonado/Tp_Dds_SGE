@@ -22,13 +22,13 @@ public class Cliente extends Usuario {
 	private Categoria categoria;
 	private int puntos = 0;
 	
-	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
+	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
 		super(_nombre,_apellido,latitud,longitud);
 		this.tipoDoc = _tipoDoc;
 		this.numeroDoc = _numeroDoc;
 		lstDispositivosInteligentes = new ArrayList<>();
 		lstDispositivosEstandares = new ArrayList<>();
-	}
+	}*/
 	
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,double latitud,double longitud ) {
 		super(_nombre, _apellido,latitud,longitud);

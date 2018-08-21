@@ -20,6 +20,8 @@ public class DispositivoInteligente implements IDispositivo{
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
 	private static final float coeficienteAhorroEnergia = (float) 0.6;
 	private LocalDateTime inicioPeriodo;
+	private double maximoconsumo;
+	private double minimoconsumo;
 	private Sensor sensor;
 
 	public DispositivoInteligente(String nombre, float kw) {
@@ -46,6 +48,18 @@ public class DispositivoInteligente implements IDispositivo{
 		return kwPorHora;
 	}
 	
+	public double getMaximoconsumo() {
+		return maximoconsumo;
+	}
+	public void setMaximoconsumo(double maximoconsumo) {
+		this.maximoconsumo = maximoconsumo;
+	}
+	public double getMinimoconsumo() {
+		return minimoconsumo;
+	}
+	public void setMinimoconsumo(double minimoconsumo) {
+		this.minimoconsumo = minimoconsumo;
+	}
 	public void setEstado(Estado e) {
 		this.estado = e;
 	}

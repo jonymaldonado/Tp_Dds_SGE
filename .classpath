@@ -16,5 +16,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/omar cristian coca/Desktop/Simplex-Solution-Final-master.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simplex-implementation-java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
