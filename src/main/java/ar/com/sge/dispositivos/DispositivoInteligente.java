@@ -14,7 +14,7 @@ import ar.com.sge.reglas.Sensor;
 public class DispositivoInteligente implements IDispositivo{
 
 	private String nombre;
-	private float kwPorHora;
+	private double kwPorHora;
 	protected Boolean encendido = false;
 	private Estado estado;
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
@@ -24,7 +24,7 @@ public class DispositivoInteligente implements IDispositivo{
 	private double minimoconsumo;
 	private Sensor sensor;
 
-	public DispositivoInteligente(String nombre, float kw) {
+	public DispositivoInteligente(String nombre, double kw) {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
 		this.estado = new Apagado(this);
@@ -44,7 +44,7 @@ public class DispositivoInteligente implements IDispositivo{
 		return nombre;
 	}
 		
-	public float getKwPorHora() {
+	public double getKwPorHora() {
 		return kwPorHora;
 	}
 	
@@ -103,18 +103,18 @@ public class DispositivoInteligente implements IDispositivo{
 	}
 	
 	//consumo en lo que va del mes
-	public float consumoEnKw() {
+	public double consumoEnKw() {
 		return consumidoComprendidoEntre(inicioPeriodo, LocalDateTime.now());		
 	}
 			
-	public float consumidoUltimasNhoras (int cantHoras) {
+	public double consumidoUltimasNhoras (int cantHoras) {
 		LocalDateTime fechaInicio = LocalDateTime.now().minusHours(cantHoras);
 		LocalDateTime fechaFin = LocalDateTime.now();
 		return this.consumidoComprendidoEntre(fechaInicio, fechaFin);
 	}
 	
-	public float consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
-		float totalConsumo ;
+	public double consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
+		double totalConsumo ;
 		float totalHoras ;
 		List<Estado> lstEstados;
 		

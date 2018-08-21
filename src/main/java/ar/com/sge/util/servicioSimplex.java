@@ -3,6 +3,7 @@ package ar.com.sge.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
@@ -13,7 +14,7 @@ import simplex.facade.SimplexFacade;
 
 public class servicioSimplex {
 	private SimplexFacade simplex;
-	public void consultarSimplex(List<DispositivoInteligente> lista){
+	public PointValuePair consultarSimplex(List<DispositivoInteligente> lista){
 		ArrayList<Double> listavariables=new ArrayList<Double>();
 		simplex = new SimplexFacade(GoalType.MAXIMIZE, true);
 		double[] variables= new double[lista.size()];
@@ -44,10 +45,11 @@ public class servicioSimplex {
 				
 			
 		}
+		simplex.agregarRestriccion(Relationship.GEQ,elemento.getMinimoconsumo() , variables);
 		simplex.agregarRestriccion(Relationship.LEQ,elemento.getMaximoconsumo() , variables);
-		simplex.agregarRestriccion(Relationship.GEQ,elemento.getMaximoconsumo() , variables);
 		}
-		
+		PointValuePair solucion = simplex.resolver();	
+		return solucion;
 	}
 
 }

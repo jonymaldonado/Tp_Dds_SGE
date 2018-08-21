@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.math3.optim.PointValuePair;
+
 import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 //import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
+import ar.com.sge.util.servicioSimplex;
 //import ar.com.sge.geografia.Coordenada;
 
 public class Cliente extends Usuario {
@@ -170,5 +173,28 @@ public class Cliente extends Usuario {
 	
 	public int cantidadDeDispositivosEstandares() {
 		return lstDispositivosEstandares.size();
+	}
+	
+	public PointValuePair consultarASimplex() {
+		servicioSimplex servicio=new servicioSimplex();
+		PointValuePair solucion=servicio.consultarSimplex(getLstDispositivosInteligentes());
+		return solucion;
+		
+	}
+
+	public List<DispositivoInteligente> getLstDispositivosInteligentes() {
+		return lstDispositivosInteligentes;
+	}
+
+	public void setLstDispositivosInteligentes(List<DispositivoInteligente> lstDispositivosInteligentes) {
+		this.lstDispositivosInteligentes = lstDispositivosInteligentes;
+	}
+
+	public List<DispositivoEstandar> getLstDispositivosEstandares() {
+		return lstDispositivosEstandares;
+	}
+
+	public void setLstDispositivosEstandares(List<DispositivoEstandar> lstDispositivosEstandares) {
+		this.lstDispositivosEstandares = lstDispositivosEstandares;
 	}
 }
