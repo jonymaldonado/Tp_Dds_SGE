@@ -2,6 +2,8 @@ package testjava;
 
 import static org.junit.Assert.*;
 
+import java.awt.List;
+
 import org.apache.commons.math3.optim.PointValuePair;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,8 +13,14 @@ import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.repositorioDispositivo;
+import ar.com.sge.geografia.Coordenada;
+import ar.com.sge.geografia.Transformador;
+import ar.com.sge.usuarios.Administrador;
 import ar.com.sge.usuarios.Categoria;
 import ar.com.sge.usuarios.Cliente;
+import java.util.ArrayList;
+import java.util.*;
+
 
 public class TestSimplex {
 	
@@ -23,6 +31,12 @@ public class TestSimplex {
 	private DispositivoInteligente tv , lavarropa,ventilador;
 	private Categoria categoria1;
 	private PointValuePair solucion;
+	private Transformador trans1, trans2;
+	private Coordenada cor1, cor2;
+	private Administrador admin;
+	private List<Cliente> lista;
+	
+	
 	
 	@Before
 	public void init() {
@@ -52,6 +66,19 @@ public class TestSimplex {
 		repositorio.agregar(tv32);
 		repositorio.agregarStandar(plancha_vapor);
 		repositorio.agregarStandar(ventilador_pie);
+		
+		//Transformadores
+		trans1 = new Transformador();
+		trans2 = new Transformador();
+		cor1 = new Coordenada(3.5,5);
+		cor2 = new Coordenada(6,7.5);
+		admin = new Administrador("Pepito","Alvarez",1);
+		trans1.setPosTransformador(cor1);
+		trans2.setPosTransformador(cor2);
+		admin.setListaDeClientes(clientenuevo);
+		admin.setListaDeClientes(cliente1);
+		admin.setListaDeTransformadoresActivos();
+		
 	}
 	
 	@Test
@@ -70,6 +97,9 @@ public class TestSimplex {
 		Assert.assertTrue(clientenuevo.cantidadDeDispositivosEstandares()==1);
 		Assert.assertTrue(clientenuevo.cantidadDeDispositivos()==2);
 	}
+	
+	@test 
+	
 
 	
 

@@ -19,7 +19,7 @@ public class Administrador extends Usuario{
 	private int numeroId;
 	private List<Cliente>listaDeClientes;
 	private List<Transformador> listaDeTransformadoresActivos;
-	private List<Zona> listaDeZonas;
+	private List<Zona> listaDeZonas; 
 	
 	
 	public Administrador(String _nombre, String _apellido, int _numeroId) {
@@ -35,12 +35,17 @@ public class Administrador extends Usuario{
 	public List<Zona> getListaDeZonas() {
 		return listaDeZonas;
 	}
-	public void setListaDeClientes(List<Cliente> listaDeClientes) {
+	/*public void setListaDeClientes(Cliente cliente) {
+		this.listaDeClientes.add(cliente);
+	}*/
+	public void setListaDeClientes(List<Cliente> listaDeClientes) { 
 		this.listaDeClientes = listaDeClientes;
 	}
+	
 	public void setListaDeTransformadoresActivos(List<Transformador> listaDeTransformadoresActivos) {
 		this.listaDeTransformadoresActivos = listaDeTransformadoresActivos;
 	}
+	
 	public void setListaDeZonas(List<Zona> listaDeZonas) {
 		this.listaDeZonas = listaDeZonas;
 	}
@@ -71,6 +76,8 @@ public class Administrador extends Usuario{
 		return transformadoresActivos;
 	}
 	
+	//public list<Cliente> 
+	
 	
 	public List<Zona> cargarJsonZonas(String archivoJson) throws FileNotFoundException{
 		List<Zona> listaDeZona= new ArrayList<Zona>();
@@ -90,10 +97,10 @@ public class Administrador extends Usuario{
 	public void actualizarListasDeTransformadores() {
 	    for (Cliente cliente : listaDeClientes) {
 	    	Transformador transformador = cliente.getTransformador();
-            Float distanciaMin = cliente.getDomicilio().distanciaAlPunto(cliente.getTransformador().getPosTransformador());
+            double distanciaMin = cliente.getDomicilio().distanciaAlPunto(cliente.getTransformador().getPosTransformador());
 	    	
             for (Transformador _transformador : listaDeTransformadoresActivos) {	            
-	          Float  distancia=cliente.getDomicilio().distanciaAlPunto(_transformador.getPosTransformador());
+            	double  distancia=cliente.getDomicilio().distanciaAlPunto(_transformador.getPosTransformador());
 	                if(distancia <= distanciaMin ){
 	                    distanciaMin = distancia;
 	                    transformador = _transformador;
