@@ -43,13 +43,13 @@ public class RepoTransformador {
 		daoTransformador.update(transformador);
 	}
 	
-	public void ubicarCliente(RepoCliente unrepo) throws IOException{
+	/*public void ubicarCliente(RepoCliente unrepo) throws IOException{
 		List<Cliente> listaUsuario=unrepo.getAllUsuario();
 		listaTransformadores
 		
 		
 		
-	}
+	}*/
 	
 
 }

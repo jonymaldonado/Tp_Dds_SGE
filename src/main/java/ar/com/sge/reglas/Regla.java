@@ -14,13 +14,13 @@ public class Regla {
 		
 	}
 
-	public void verificarRegla(float valor) {
+	public void verificarRegla(double valor) {
 		if (evaluar(valor)) {
 			actuador.ejecutarAccion(accion);
 		}
 	}
 	
-	public boolean evaluar(float valor) {
+	public boolean evaluar(double valor) {
 
 		boolean a;
 		

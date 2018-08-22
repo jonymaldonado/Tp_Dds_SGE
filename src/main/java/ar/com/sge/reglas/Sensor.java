@@ -32,7 +32,7 @@ public class Sensor {
 	}
 
 	public void medir(DispositivoInteligente dispositivo){
-		float valor = dispositivo.consumoEnKw();
+		double valor = dispositivo.consumoEnKw();
 		observadores.forEach(r -> r.verificarRegla(valor));
 	}
 	public void notificarALosObservadores(float valor) {
