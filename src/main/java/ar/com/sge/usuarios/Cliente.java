@@ -9,7 +9,7 @@ import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 //import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
-//import ar.com.sge.geografia.Coordenada;
+import ar.com.sge.geografia.*;
 
 public class Cliente extends Usuario {
 	
@@ -22,6 +22,7 @@ public class Cliente extends Usuario {
 	private Categoria categoria;
 	private int puntos = 0;
 	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
+	private Transformador transformadorCercano;
 	
 	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,float latitud,float longitud) {		
 		super(_nombre,_apellido,latitud,longitud);
@@ -30,6 +31,8 @@ public class Cliente extends Usuario {
 		lstDispositivosInteligentes = new ArrayList<>();
 		lstDispositivosEstandares = new ArrayList<>();
 	}
+	
+	
 	
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,float latitud,float longitud ) {
 		super(_nombre, _apellido,latitud,longitud);
@@ -41,6 +44,18 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.puntos = 0;
 		this.idTransformadorCorrespondiente = 0;
+	}
+	
+	
+	public void setTransformadorCercano(Transformador transformadorCercano) {
+		this.transformadorCercano = transformadorCercano;
+	}
+	
+	public Transformador getTransformadorCercano() {
+		return transformadorCercano;
+	}
+	public List<DispositivoInteligente> getLstDispositivosInteligentes() {
+		return lstDispositivosInteligentes;
 	}
 
 	public String getTipoDoc() {
@@ -121,9 +136,9 @@ public class Cliente extends Usuario {
 	}	
 	
 	public float consumoDeEnergia() {
-		float sum = 0;
+		float sum = 0.0f;
 		for(DispositivoInteligente d: lstDispositivosInteligentes) { 
-			sum = sum + d.consumoEnKw();
+			sum += d.consumoEnKw();
 		}
 		for(DispositivoEstandar d: lstDispositivosEstandares) { 
 			sum += d.consumoEnKw();

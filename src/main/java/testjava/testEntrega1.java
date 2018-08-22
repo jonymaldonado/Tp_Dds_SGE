@@ -80,7 +80,7 @@ public class testEntrega1 {
 		//comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
 		actuador1.addcomando(comandoAhorroDeEnergia);
 		categoria1=new Categoria("R1",18,1);
-		cliente1=new Cliente("Marta","Farias","DNI",12123654);
+		cliente1=new Cliente("Marta","Farias","DNI",12123654,5.94f,3.56f);
 		estandar1=new DispositivoEstandar("radio",30,1);
 
 		//modulo=new Modulo("radio",30);
@@ -111,8 +111,8 @@ public class testEntrega1 {
 		horastotal=inteligente1.totalDeHoras(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido"), ayer, hoy);
 
 		System.out.println("hora total "+horastotal);
-		Assert.assertTrue(horastotal==3);
-		Assert.assertTrue(consumo==84);
+		Assert.assertTrue(horastotal==3f);
+		Assert.assertTrue(consumo==84f);
 		}
 	
 	@Test

@@ -1,17 +1,22 @@
 package ar.com.sge.usuarios;
 
+import java.time.LocalDateTime;
+
 import ar.com.sge.dispositivos.DispositivoInteligente;
+import ar.com.sge.estados.Encendido;
 import ar.com.sge.geografia.Transformador;
 
-public class AdmistradorMain {
+public class AdministradorMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stu
 		Transformador transformador1, transformador2, transformador3;
 		Cliente cliente1,cliente2,cliente3,cliente4,cliente5; 
 		Categoria unaCategoriaR1;
 		DispositivoInteligente unTV40,aire1,unaHeladera,unaHeladera2, pc1, pc2, aire2; 
 		Administrador admin;
+		LocalDateTime inicioestado,finestado;
+		Encendido estado1;
 		
 		admin= new Administrador("Jony", "Maldo",1986);
 		
@@ -35,6 +40,15 @@ public class AdmistradorMain {
 		pc2=new DispositivoInteligente("pc2", 0.4f);
 		aire2 =new DispositivoInteligente("aire2", 1613f);
 		
+		inicioestado=LocalDateTime.of(2018, 8, 21, 18, 00);
+		finestado=LocalDateTime.of(2018, 8, 22, 19, 00);
+		estado1=new Encendido("encendido",inicioestado,finestado,1.0f);
+		//estado1=new Encendido("encendido",inicioestado,finestado,aire1.getKwPorHora());
+		//>estado1=new Encendido("encendido",inicioestado,finestado,aire2.getKwPorHora());
+		//estado1=new Encendido("encendido",inicioestado,finestado,unaHeladera.getKwPorHora());
+		//estado1=new Encendido("encendido",inicioestado,finestado,pc1.getKwPorHora());
+		unTV40.setEstado(estado1);
+		
 		
 		cliente1.agregarDispositivosInteligentes(pc1);
 		cliente1.agregarDispositivosInteligentes(aire2);
@@ -42,7 +56,7 @@ public class AdmistradorMain {
 		
 		cliente2.agregarDispositivosInteligentes(unTV40);
 		
-		cliente3.agregarDispositivosInteligentes(aire2);
+		cliente3.agregarDispositivosInteligentes(aire1);
 		cliente3.agregarDispositivosInteligentes(aire2);
 		cliente3.agregarDispositivosInteligentes(pc2);
 		cliente3.agregarDispositivosInteligentes(pc1);
@@ -50,7 +64,7 @@ public class AdmistradorMain {
 		cliente4.agregarDispositivosInteligentes(aire2);
 		cliente4.agregarDispositivosInteligentes(pc2);
 		
-		cliente5.agregarDispositivosInteligentes(unaHeladera2);
+		cliente5.agregarDispositivosInteligentes(unaHeladera);
 		cliente5.agregarDispositivosInteligentes(pc1);
 		cliente5.agregarDispositivosInteligentes(unTV40);
 		
@@ -69,12 +83,24 @@ public class AdmistradorMain {
 		//PRUEBAS
 		System.out.println("--------------------- DISTANCIA DE LOS CLIENTES CON EL TRANSFORMADOR 1");
 
-		
+		System.out.println("--------1-------------");		
 		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente1.getDomicilio()));
 		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente2.getDomicilio()));
 		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente3.getDomicilio()));
 		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente4.getDomicilio()));
 		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente5.getDomicilio()));
+		System.out.println("---------2------------");		
+		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente1.getDomicilio()));
+		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente2.getDomicilio()));
+		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente3.getDomicilio()));
+		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente4.getDomicilio()));
+		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente5.getDomicilio()));
+		System.out.println("----------3-----------");		
+		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente1.getDomicilio()));
+		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente2.getDomicilio()));
+		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente3.getDomicilio()));
+		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente4.getDomicilio()));
+		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente5.getDomicilio()));
 		
 		System.out.println("---------------------  CANTIDAD DE CLIENTES EN LAS LISTAS DE LOS TRANSFORMADORES ");
 		
@@ -100,7 +126,13 @@ public class AdmistradorMain {
 		
 		
 		System.out.println("---------------------");
+		System.out.println(cliente1.getLstDispositivosInteligentes().size());
+		System.out.println(cliente2.getLstDispositivosInteligentes().size());
+		System.out.println(cliente3.getLstDispositivosInteligentes().size());
+		System.out.println(cliente4.getLstDispositivosInteligentes().size());
+		System.out.println(cliente5.getLstDispositivosInteligentes().size());
 		System.out.println("---------------------");
+		
 		System.out.println("---------------------");
 		System.out.println("---------------------");
 		System.out.println("---------------------");

@@ -2,6 +2,7 @@ package ar.com.sge.usuarios;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.Period;
@@ -13,6 +14,8 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import ar.com.sge.geografia.*;
+import ar.com.sge.util.DaoJsonTransformadores;
+import ar.com.sge.util.DaoTransFormadores;
 
 public class Administrador extends Usuario{
 
@@ -65,12 +68,27 @@ public class Administrador extends Usuario{
 	public void agregarTransformadores(Transformador unTransformador) {
 		this.listaDeTransformadoresActivos.add(unTransformador);
 	}
-	public  List<Transformador> cargarJsonTransformadores(String archivoJson) throws FileNotFoundException{
+	public  List<Transformador> cargarJsonTransformadores2(String archivoJson) throws FileNotFoundException{
 		List<Transformador> transformadoresActivos= new ArrayList<Transformador>();
-		Type type= new TypeToken<ArrayList<Transformador>>() { }.getType();
+		Type type= new TypeToken<ArrayList<Transformador>>() {}.getType();
+		
 		Gson gson =new Gson();
 		JsonReader json= new JsonReader(new FileReader(archivoJson));
 		transformadoresActivos =gson.fromJson(json,type);
+		return transformadoresActivos;
+	}
+	public  List<Transformador> cargarJsonTransformadores(String archivoJson) throws FileNotFoundException{
+		List<Transformador> transformadoresActivos= new ArrayList<Transformador>();
+		DaoJsonTransformadores dao = null;
+		
+		try {
+			dao.setFilePath(archivoJson);
+			transformadoresActivos= dao.getAll();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return transformadoresActivos;
 	}
 	
