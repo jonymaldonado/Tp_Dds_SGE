@@ -35,7 +35,7 @@ public class servicioSimplex {
 		simplex.agregarRestriccion(Relationship.LEQ, 440640, variableskw);
 		for(DispositivoInteligente elemento:lista) {
 		
-			for(int a=0; i<lista.size();i++) {
+			for(int a=0; a<lista.size();a++) {
 				if (elemento.getKwPorHora() == variableskw[a]) {
 					variables[a] = 1;
 				} else {

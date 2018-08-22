@@ -7,14 +7,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 import ar.com.sge.dispositivos.IDispositivo;
+import ar.com.sge.dispositivos.repositorioDispositivo;
 import ar.com.sge.usuarios.Categoria;
 import ar.com.sge.usuarios.Cliente;
 
 public class TestSimplex {
 	
-	private Cliente cliente1;
+	private Cliente cliente1,clientenuevo;
+	private repositorioDispositivo repositorio;
+	private DispositivoInteligente Aire2200,tv32; 
+	private DispositivoEstandar ventilador_pie,plancha_vapor;
 	private DispositivoInteligente tv , lavarropa,ventilador;
 	private Categoria categoria1;
 	private PointValuePair solucion;
@@ -35,6 +40,18 @@ public class TestSimplex {
 		cliente1.agregarDispositivosInteligentes(tv);
 		cliente1.agregarDispositivosInteligentes(lavarropa);
 		cliente1.agregarDispositivosInteligentes(ventilador);
+		
+		//prototype
+		clientenuevo=new Cliente("lucas", "lopez", "dni",4232342,4321432, categoria1, 0, 42, 21);
+		repositorio=new repositorioDispositivo();
+		Aire2200=new DispositivoInteligente("aire2200",1.013); 
+		tv32=new DispositivoInteligente("tv32", 0.055);
+		ventilador_pie=new DispositivoEstandar("ventilador_pie", 0.09);
+		plancha_vapor=new DispositivoEstandar("plancha_vapor", 0.75);
+		repositorio.agregar(Aire2200);
+		repositorio.agregar(tv32);
+		repositorio.agregarStandar(plancha_vapor);
+		repositorio.agregarStandar(ventilador_pie);
 	}
 	
 	@Test
@@ -44,6 +61,14 @@ public class TestSimplex {
 		Assert.assertEquals(360, solucion.getPoint()[0], 0.01); // <--- X2
 		Assert.assertEquals(30, solucion.getPoint()[1], 0.01); // <--- X1
 		Assert.assertEquals(370, solucion.getPoint()[2], 0.01); // <--- X0
+	}
+	@Test
+	public void clonar_objeto() throws CloneNotSupportedException{
+		repositorio.seleccionarInteligente(clientenuevo, "tv32");
+		repositorio.seleccionarStandar(clientenuevo, "ventilador_pie");
+		Assert.assertTrue(clientenuevo.cantidadDedispositivosInteligentes()==1);
+		Assert.assertTrue(clientenuevo.cantidadDeDispositivosEstandares()==1);
+		Assert.assertTrue(clientenuevo.cantidadDeDispositivos()==2);
 	}
 
 	
