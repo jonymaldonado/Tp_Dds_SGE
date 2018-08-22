@@ -33,7 +33,7 @@ public class DispositivoInteligente implements IDispositivo{
 	public IDispositivo clone() throws CloneNotSupportedException{
 		DispositivoInteligente inteligente=null;
 		try {
-			inteligente=(DispositivoInteligente) clone();
+			inteligente=(DispositivoInteligente) super.clone();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}

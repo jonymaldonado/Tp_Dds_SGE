@@ -10,7 +10,7 @@ public abstract class Estado {
 	protected DispositivoInteligente dispositivo;
 	protected LocalDateTime fechaInicio;
 	protected LocalDateTime fechaFin;
-	protected float consumo;
+	protected double consumo;
 
 	public Estado(DispositivoInteligente d) {
 		this.dispositivo = d;
@@ -38,7 +38,7 @@ public abstract class Estado {
 
 	public abstract void ahorroDeEnergia();
 	
-	public float getConsumo() {
+	public double getConsumo() {
 		return consumo;
 	}
 

@@ -20,14 +20,14 @@ public class servicioSimplex {
 		double[] variables= new double[lista.size()];
 		double[] variableskw= new double[lista.size()];
 		int i=0;
-		int tamaño=lista.size()-1;
+		int tamanio=lista.size()-1;
 		
 		for(DispositivoInteligente elemento:lista) {
 			//listavariables.add(1);
 			variables[i]=1;
-			variableskw[tamaño]=elemento.getKwPorHora();
+			variableskw[tamanio]=elemento.getKwPorHora();
 			i++;
-			tamaño--;
+			tamanio--;
 			
 			
 		}

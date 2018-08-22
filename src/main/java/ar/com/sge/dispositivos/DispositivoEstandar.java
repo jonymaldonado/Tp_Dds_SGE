@@ -19,9 +19,9 @@ public class DispositivoEstandar implements IDispositivo{
 	
 	@Override
 	public IDispositivo clone() throws CloneNotSupportedException{
-		DispositivoInteligente inteligente=null;
+		DispositivoEstandar inteligente=null;
 		try {
-			inteligente=(DispositivoInteligente) clone();
+			inteligente=(DispositivoEstandar) super.clone();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}

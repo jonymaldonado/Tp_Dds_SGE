@@ -88,7 +88,7 @@ public class Administrador extends Usuario{
 	
 	
 
-	public void actualizarListasDeTransformadores() {
+	/*public void actualizarListasDeTransformadores() {
 		float transformadorMasCercano=0;
 		for (Cliente cliente : listaDeClientes) {
 			for (Transformador transformador : listaDeTransformadoresActivos) {
@@ -97,6 +97,6 @@ public class Administrador extends Usuario{
 			
 		}
 		
-	}
+	}*/
 }
  
