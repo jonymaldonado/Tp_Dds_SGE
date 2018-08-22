@@ -87,6 +87,22 @@ public class Administrador extends Usuario{
 	}
 	
 	
+	public void actualizarListasDeTransformadores() {
+	    for (Cliente cliente : listaDeClientes) {
+	    	Transformador transformador = cliente.getTransformador();
+            Float distanciaMin = cliente.getDomicilio().distanciaAlPunto(cliente.getTransformador().getPosTransformador());
+	    	
+            for (Transformador _transformador : listaDeTransformadoresActivos) {	            
+	          Float  distancia=cliente.getDomicilio().distanciaAlPunto(_transformador.getPosTransformador());
+	                if(distancia <= distanciaMin ){
+	                    distanciaMin = distancia;
+	                    transformador = _transformador;
+	                }
+	            }
+	       cliente.setTransformador(transformador);
+	        
+	    }
+	}
 
 	/*public void actualizarListasDeTransformadores() {
 		float transformadorMasCercano=0;

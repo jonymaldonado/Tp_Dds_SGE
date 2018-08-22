@@ -11,6 +11,7 @@ import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 //import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
+import ar.com.sge.geografia.Transformador;
 import ar.com.sge.util.servicioSimplex;
 //import ar.com.sge.geografia.Coordenada;
 
@@ -25,7 +26,7 @@ public class Cliente extends Usuario {
 	private Categoria categoria;
 	private int puntos = 0;
 	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
-	
+	private Transformador transformador;
 
 	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
 =======
@@ -38,6 +39,14 @@ public class Cliente extends Usuario {
 		lstDispositivosEstandares = new ArrayList<>();
 	}*/
 	
+	public Transformador getTransformador() {
+		return transformador;
+	}
+
+	public void setTransformador(Transformador transformador) {
+		this.transformador = transformador;
+	}
+
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,float latitud,float longitud ) {
 		super(_nombre, _apellido,latitud,longitud);
 		this.tipoDoc = tipoDoc;
