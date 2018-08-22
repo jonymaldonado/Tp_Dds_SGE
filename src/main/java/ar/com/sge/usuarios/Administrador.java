@@ -42,6 +42,11 @@ public class Administrador extends Usuario{
 		this.listaDeClientes = listaDeClientes;
 	}
 	
+	public void agregarCliente(Cliente unCliente) { 
+		this.listaDeClientes.add(unCliente);
+	}
+	
+	
 	public void setListaDeTransformadoresActivos(List<Transformador> listaDeTransformadoresActivos) {
 		this.listaDeTransformadoresActivos = listaDeTransformadoresActivos;
 	}

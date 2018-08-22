@@ -58,6 +58,17 @@ public class Cliente extends Usuario {
 		this.puntos = 0;
 		this.idTransformadorCorrespondiente = 0;
 	}
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono,double latitud,double longitud ) {
+		super(_nombre,_apellido,latitud,longitud);
+		this.tipoDoc = tipoDoc;
+		this.numeroDoc = numeroDoc;
+		this.telefono = telefono;
+		this.lstDispositivosInteligentes  = new ArrayList<>();
+		this.lstDispositivosEstandares  = new ArrayList<>();
+		this.puntos = 0;
+		this.idTransformadorCorrespondiente = 0;
+		
+	}
 
 	public String getTipoDoc() {
 		return tipoDoc;
