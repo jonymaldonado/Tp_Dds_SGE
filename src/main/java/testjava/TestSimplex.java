@@ -34,6 +34,7 @@ public class TestSimplex {
 	private Transformador trans1, trans2;
 	private Coordenada cor1, cor2;
 	private Administrador admin;
+
 	//private List<Cliente> lista;
 	
 	
@@ -78,6 +79,7 @@ public class TestSimplex {
 		admin.agregarCliente(clientenuevo);
 		admin.agregarCliente(cliente1);
 		//admin.setListaDeTransformadoresActivos();
+
 		
 	}
 	
@@ -98,8 +100,7 @@ public class TestSimplex {
 		Assert.assertTrue(clientenuevo.cantidadDeDispositivos()==2);
 	}
 	
-	//@test 
-	
+
 
 	
 

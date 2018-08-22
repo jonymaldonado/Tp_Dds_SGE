@@ -23,3 +23,4 @@ public class AdapterEncender extends ComandoEncender {
 		return nombre;
 	}
 }
+

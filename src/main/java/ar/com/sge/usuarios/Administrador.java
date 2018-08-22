@@ -2,6 +2,7 @@ package ar.com.sge.usuarios;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.Period;
@@ -13,13 +14,15 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import ar.com.sge.geografia.*;
+import ar.com.sge.util.DaoJsonTransformadores;
+import ar.com.sge.util.DaoTransFormadores;
 
 public class Administrador extends Usuario{
 
 	private int numeroId;
 	private List<Cliente>listaDeClientes;
 	private List<Transformador> listaDeTransformadoresActivos;
-	private List<Zona> listaDeZonas; 
+	private List<Zona> listaDeZonas;
 	
 	
 	public Administrador(String _nombre, String _apellido, int _numeroId) {
@@ -35,22 +38,12 @@ public class Administrador extends Usuario{
 	public List<Zona> getListaDeZonas() {
 		return listaDeZonas;
 	}
-	/*public void setListaDeClientes(Cliente cliente) {
-		this.listaDeClientes.add(cliente);
-	}*/
-	public void setListaDeClientes(List<Cliente> listaDeClientes) { 
+	public void setListaDeClientes(List<Cliente> listaDeClientes) {
 		this.listaDeClientes = listaDeClientes;
 	}
-	
-	public void agregarCliente(Cliente unCliente) { 
-		this.listaDeClientes.add(unCliente);
-	}
-	
-	
 	public void setListaDeTransformadoresActivos(List<Transformador> listaDeTransformadoresActivos) {
 		this.listaDeTransformadoresActivos = listaDeTransformadoresActivos;
 	}
-	
 	public void setListaDeZonas(List<Zona> listaDeZonas) {
 		this.listaDeZonas = listaDeZonas;
 	}
@@ -69,19 +62,35 @@ public class Administrador extends Usuario{
 	public List<Cliente> getListaDeClientes() {
 		return listaDeClientes;
 	}
-//	public void agregarCliente(Cliente unClientes) {
-//		this.listaDeClientes.add(unClientes);
-//	}
-	public  List<Transformador> cargarJsonTransformadores(String archivoJson) throws FileNotFoundException{
+	public void agregarCliente(Cliente unClientes) {
+		this.listaDeClientes.add(unClientes);
+	}
+	public void agregarTransformadores(Transformador unTransformador) {
+		this.listaDeTransformadoresActivos.add(unTransformador);
+	}
+	public  List<Transformador> cargarJsonTransformadores2(String archivoJson) throws FileNotFoundException{
 		List<Transformador> transformadoresActivos= new ArrayList<Transformador>();
-		Type type= new TypeToken<ArrayList<Transformador>>() { }.getType();
+		Type type= new TypeToken<ArrayList<Transformador>>() {}.getType();
+		
 		Gson gson =new Gson();
 		JsonReader json= new JsonReader(new FileReader(archivoJson));
 		transformadoresActivos =gson.fromJson(json,type);
 		return transformadoresActivos;
 	}
-	
-	//public list<Cliente> 
+	public  List<Transformador> cargarJsonTransformadores(String archivoJson) throws FileNotFoundException{
+		List<Transformador> transformadoresActivos= new ArrayList<Transformador>();
+		DaoJsonTransformadores dao = null;
+		
+		try {
+			dao.setFilePath(archivoJson);
+			transformadoresActivos= dao.getAll();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return transformadoresActivos;
+	}
 	
 	
 	public List<Zona> cargarJsonZonas(String archivoJson) throws FileNotFoundException{
@@ -98,33 +107,41 @@ public class Administrador extends Usuario{
 		this.setListaDeZonas(this.cargarJsonZonas(archivoJsonZonas));
 	}
 	
+	public Transformador buscarTransformador (int idTransformador) {
+		Transformador transformadorElegido=null;
+		for (Transformador t : listaDeTransformadoresActivos) {
+			if (t.getIdtransformador()==idTransformador) {
+				transformadorElegido=t;
+			}//fin if
+		}//fin for
+		return transformadorElegido;
+	}
 	
 	public void actualizarListasDeTransformadores() {
-	    for (Cliente cliente : listaDeClientes) {
-	    	Transformador transformador = cliente.getTransformador();
-            double distanciaMin = cliente.getDomicilio().distanciaAlPunto(cliente.getTransformador().getPosTransformador());
-	    	
-            for (Transformador _transformador : listaDeTransformadoresActivos) {	            
-            	double  distancia=cliente.getDomicilio().distanciaAlPunto(_transformador.getPosTransformador());
-	                if(distancia <= distanciaMin ){
-	                    distanciaMin = distancia;
-	                    transformador = _transformador;
-	                }
-	            }
-	       cliente.setTransformador(transformador);
-	        
-	    }
-	}
-
-	/*public void actualizarListasDeTransformadores() {
-		float transformadorMasCercano=0;
-		for (Cliente cliente : listaDeClientes) {
-			for (Transformador transformador : listaDeTransformadoresActivos) {
-				cliente.
-			}
-			
+		try {
+			Transformador transformadorElegido;
+			double transformadorMasCercano=0;
+			double distancia;
+			for (Cliente cliente : listaDeClientes) {
+				for (Transformador transformador : listaDeTransformadoresActivos) {
+					distancia=cliente.getDomicilio().distanciaAlPunto(transformador.getPosTransformador());
+					distancia=Math.abs(distancia);
+					transformadorMasCercano=Math.abs(transformadorMasCercano);
+						if ((transformadorMasCercano==0)||(transformadorMasCercano>distancia) ) {
+							transformadorMasCercano=distancia;
+							cliente.setIdTransformadorCorrespondiente(transformador.getIdtransformador()); 
+						};//fin if
+				};//fin for transfo
+				transformadorElegido=this.buscarTransformador(cliente.getIdTransformadorCorrespondiente());
+				transformadorElegido.agregarCliente(cliente);
+			};//fin for clientes
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
-	}*/
+		
+		
+	}// fin actializarlistas
+		
 }
  

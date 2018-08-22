@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "TransformadoresActivos": [
     1,
@@ -5,3 +6,25 @@
     3
   ]
 }
+=======
+[
+    {
+      "id": 1,
+      "latitud": -34.61f,
+      "longitud": -58.41f,
+      "zona": 5
+    },
+    {
+      "id": 2,
+      "latitud": -77.61f,
+      "longitud": -88.54f,
+      "zona": 5
+    },
+    {
+      "id": 3,
+      "latitud": -88.22f,
+      "longitud": -8.23f,
+      "zona": 4
+    }
+]
+>>>>>>> origin/jony

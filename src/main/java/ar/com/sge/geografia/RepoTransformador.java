@@ -11,7 +11,9 @@ import ar.com.sge.util.DaoJsonTransformadores;
 import ar.com.sge.util.DaoTransFormadores;
 public class RepoTransformador {
 	private DaoTransFormadores daoTransformador;
+
 	private List<Transformador> listaTransformadores;
+
 
 	private static RepoTransformador instance;
 
@@ -43,6 +45,7 @@ public class RepoTransformador {
 		daoTransformador.update(transformador);
 	}
 	
+
 	/*public void ubicarCliente(RepoCliente unrepo) throws IOException{
 		List<Cliente> listaUsuario=unrepo.getAllUsuario();
 		listaTransformadores
@@ -51,5 +54,6 @@ public class RepoTransformador {
 		
 	}*/
 	
+
 
 }
