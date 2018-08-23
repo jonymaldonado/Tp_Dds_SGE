@@ -34,7 +34,7 @@ public class Cliente extends Usuario {
 	
 	
 	
-	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,float latitud,float longitud ) {
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,float latitud,float longitud ) {
 		super(_nombre, _apellido,latitud,longitud);
 		this.tipoDoc = tipoDoc;
 		this.numeroDoc = numeroDoc;

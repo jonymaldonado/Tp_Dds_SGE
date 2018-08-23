@@ -34,7 +34,7 @@ public class TestListaDeAlgo {
 		transformadoresActivos.add(t1);
 		transformadoresActivos.add(t2);
 		transformadoresActivos.add(t3);
-		admin.cargarJsonTransformadores("document.json");
+		admin.cargarJsonTransformadores2("document.json");
 		Assert.assertEquals(admin.getListaDeTransformadoresActivos(), transformadoresActivos); 
 	
 	}

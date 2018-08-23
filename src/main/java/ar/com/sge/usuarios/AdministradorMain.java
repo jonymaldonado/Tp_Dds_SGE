@@ -26,11 +26,11 @@ public class AdministradorMain {
 		
 		unaCategoriaR1= new Categoria("R1", (float) 18.76,(float) 0.644);
 		
-		cliente1= new Cliente("Carlos","Ligorria", "DNI", 14555666, 54363366, unaCategoriaR1, 0, 54.44f, 2.65f);
-		cliente2= new Cliente("Leonardo","Silva", "DNI", 66664554, 86543345, unaCategoriaR1, 0, 5.44f, 65.65f);
-		cliente3= new Cliente("Gustavo","Apaza", "DNI", 37543232, 54674744, unaCategoriaR1, 0, -22.44f, 6.87f);
-		cliente4= new Cliente("Roberto","Castro", "DNI", 44545532, 54676744, unaCategoriaR1, 0, -5.44f, 33.65f);
-		cliente5= new Cliente("Susana ","Mosquera", "DNI", 54876578, 78874744, unaCategoriaR1, 0, 9.44f, 65.00f);
+		cliente1= new Cliente("Carlos","Ligorria", "DNI", 14555666, 54363366, unaCategoriaR1,54.44f, 2.65f);
+		cliente2= new Cliente("Leonardo","Silva", "DNI", 66664554, 86543345, unaCategoriaR1,  5.44f, 65.65f);
+		cliente3= new Cliente("Gustavo","Apaza", "DNI", 37543232, 54674744, unaCategoriaR1,  -22.44f, 6.87f);
+		cliente4= new Cliente("Roberto","Castro", "DNI", 44545532, 54676744, unaCategoriaR1,  -5.44f, 33.65f);
+		cliente5= new Cliente("Susana ","Mosquera", "DNI", 54876578, 78874744, unaCategoriaR1,  9.44f, 65.00f);
 		
 		unTV40=new DispositivoInteligente("unTV40", 0.08f);
 		aire1=new DispositivoInteligente("aire1", 1013f);
@@ -42,7 +42,7 @@ public class AdministradorMain {
 		
 		inicioestado=LocalDateTime.of(2018, 8, 21, 18, 00);
 		finestado=LocalDateTime.of(2018, 8, 22, 19, 00);
-		estado1=new Encendido("encendido",inicioestado,finestado,1.0f);
+		estado1=new Encendido("encendido",inicioestado,finestado,1);
 		//estado1=new Encendido("encendido",inicioestado,finestado,aire1.getKwPorHora());
 		//>estado1=new Encendido("encendido",inicioestado,finestado,aire2.getKwPorHora());
 		//estado1=new Encendido("encendido",inicioestado,finestado,unaHeladera.getKwPorHora());
@@ -125,7 +125,7 @@ public class AdministradorMain {
 		System.out.println(cliente5.consumoDeEnergia());
 		
 		
-		System.out.println("---------------------");
+		System.out.println("--------------------CANTIDAD DE DISPOSITIVOS EN LA LISTA DE CADA CLIENTES-");
 		System.out.println(cliente1.getLstDispositivosInteligentes().size());
 		System.out.println(cliente2.getLstDispositivosInteligentes().size());
 		System.out.println(cliente3.getLstDispositivosInteligentes().size());
