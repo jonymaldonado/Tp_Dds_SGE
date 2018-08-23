@@ -41,7 +41,7 @@ public class RepoTransformador {
 		daoTransformador.add(untransformador);
 	}
 
-	public void modificarCliente(Transformador transformador) throws IOException {
+	public void modificarTransformador(Transformador transformador) throws IOException {
 		daoTransformador.update(transformador);
 	}
 	
