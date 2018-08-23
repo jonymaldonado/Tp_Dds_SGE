@@ -9,6 +9,7 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
 import ar.com.sge.dispositivos.DispositivoInteligente;
 import ar.com.sge.dispositivos.IDispositivo;
+import ar.com.sge.usuarios.Cliente;
 import simplex.facade.SimplexFacade;
 
 
@@ -50,6 +51,20 @@ public class servicioSimplex {
 		}
 		PointValuePair solucion = simplex.resolver();	
 		return solucion;
+	}
+	public void ejecutarSimplex(Cliente un_cliente) {
+		
+		PointValuePair solucion=consultarSimplex(un_cliente.getLstDispositivosInteligentes());
+		List<DispositivoInteligente> lista=un_cliente.getLstDispositivosInteligentes();
+		int i=lista.size()-1;
+		for(DispositivoInteligente elemento:lista) {
+			if(solucion.getPoint()[i]<elemento.consumoEnKw()) {
+				elemento.apagar();
+			}
+				
+			
+		}
+		
 	}
 
 }
