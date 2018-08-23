@@ -1,30 +1,28 @@
-<<<<<<< HEAD
-{
-  "TransformadoresActivos": [
-    1,
-    2,
-    3
-  ]
-}
-=======
-[
-    {
-      "id": 1,
-      "latitud": -34.61f,
-      "longitud": -58.41f,
-      "zona": 5
-    },
-    {
-      "id": 2,
-      "latitud": -77.61f,
-      "longitud": -88.54f,
-      "zona": 5
-    },
-    {
-      "id": 3,
-      "latitud": -88.22f,
-      "longitud": -8.23f,
-      "zona": 4
-    }
+[{
+		"idtransformador": 1,
+		"posTransformador" : {
+							"latitud" : 24,
+							"longitud" : 45
+							},
+		"idZonaCorrespondiente": 5,
+		"listaDeclientesConectados" : []
+	},
+	{
+		"idtransformador": 2,
+		"posTransformador" : {
+							"latitud" : 30,
+							"longitud" : 40
+							},
+		"idZonaCorrespondiente": 5,
+		"listaDeclientesConectados" : []
+	},
+	{
+		"idtransformador": 3,
+		"posTransformador" : {
+							"latitud" : 10,
+							"longitud" : 15
+							},
+		"idZonaCorrespondiente": 4,
+		"listaDeclientesConectados" : []
+	}
 ]
->>>>>>> origin/jony

@@ -52,7 +52,7 @@ public class DaoJsonTransformadores implements DaoTransFormadores{
 	public ArrayList<Transformador> getAll() throws IOException{
 		FileReader reader = new	FileReader(this.filePath);
 		this.bufferToReader = new BufferedReader(reader);
-		ArrayList<Transformador> listaTranformadores= myGson.fromJson(getJson(), new TypeToken<ArrayList<Cliente>>(){}.getType());
+		ArrayList<Transformador> listaTranformadores= myGson.fromJson(getJson(), new TypeToken<ArrayList<Transformador>>(){}.getType());
 		return listaTranformadores;
 	}
 
