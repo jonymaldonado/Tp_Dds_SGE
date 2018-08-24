@@ -27,6 +27,7 @@ public class Cliente extends Usuario {
 	private int puntos = 0;
 	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
 	private Transformador transformador;
+	private servicioSimple servicio;
 
 	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
 =======
@@ -57,6 +58,7 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.puntos = 0;
 		this.idTransformadorCorrespondiente = 0;
+		this.servicio = null;
 	}
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono,double latitud,double longitud ) {
 		super(_nombre,_apellido,latitud,longitud);
@@ -67,6 +69,7 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.puntos = 0;
 		this.idTransformadorCorrespondiente = 0;
+		this.servicio = null;
 		
 	}
 
@@ -196,8 +199,7 @@ public class Cliente extends Usuario {
 	}
 	
 	public PointValuePair consultarASimplex() {
-		servicioSimplex servicio=new servicioSimplex();
-		PointValuePair solucion=servicio.consultarSimplex(getLstDispositivosInteligentes());
+		PointValuePair solucion = this.getServicioSimplex().consultarSimplex(getLstDispositivosInteligentes());
 		return solucion;
 		
 	}
