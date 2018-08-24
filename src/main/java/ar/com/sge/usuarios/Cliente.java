@@ -27,7 +27,7 @@ public class Cliente extends Usuario {
 	private int puntos = 0;
 	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
 	private Transformador transformador;
-	private servicioSimple servicio;
+	private servicioSimplex servicio;
 
 	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
 =======
@@ -218,5 +218,12 @@ public class Cliente extends Usuario {
 
 	public void setLstDispositivosEstandares(List<DispositivoEstandar> lstDispositivosEstandares) {
 		this.lstDispositivosEstandares = lstDispositivosEstandares;
+	}
+	
+	public servicioSimplex getServicioSimplex() {
+		if(this.servicio == null) {
+			this.servicio = new servicioSimplex();
+		}
+		return this.servicio;
 	}
 }
