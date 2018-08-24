@@ -1,7 +1,7 @@
 package ar.com.sge.geografia;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.List;
 
 import ar.com.sge.usuarios.Cliente;

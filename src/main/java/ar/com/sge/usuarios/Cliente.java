@@ -217,4 +217,49 @@ public class Cliente extends Usuario {
 	public void setLstDispositivosEstandares(List<DispositivoEstandar> lstDispositivosEstandares) {
 		this.lstDispositivosEstandares = lstDispositivosEstandares;
 	}
+	
+	
+	public class IdDistancia{
+		private int id;
+		private double distancia;
+		
+		public IdDistancia (){
+			
+		}
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		public double getDistancia() {
+			return distancia;
+		}
+		public void setDistancia(double distancia) {
+			this.distancia = distancia;
+		}
+			
+	}
+	
+	public int calcularMinimo (ArrayList<IdDistancia> lista) {
+		double unValor=1000;
+		int idlocal=0;
+		for (IdDistancia idDistancia : lista) {
+			if (idDistancia.getDistancia()<unValor) {
+				unValor=idDistancia.getDistancia();
+				unValor=idDistancia.getId();
+			}
+		}
+		
+		return idlocal;
+	}
+//	public IdDistancia[] inicializarArray(IdDistancia[] array){
+//		for (int i = 0; i < array.length; i++) {
+//			array[i].setId(0);
+//			array[i].setDistancia(0);
+//		}
+//		return array;
+//	}
+
+
 }
