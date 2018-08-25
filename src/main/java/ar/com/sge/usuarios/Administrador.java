@@ -121,14 +121,14 @@ public class Administrador extends Usuario{
 	public void actualizarListasDeTransformadores() {
 		try {
 			Transformador transfElegido;
-			double transformadorMasCercano=1000;
 			double distancia;
 			for (Cliente cliente : listaDeClientes) {
+				double transformadorMasCercano = cliente.getDomicilio().distanciaAlPunto(listaDeTransformadoresActivos.get(0).getPosTransformador());
 				for (Transformador transformador : listaDeTransformadoresActivos) {
 					distancia=cliente.getDomicilio().distanciaAlPunto(transformador.getPosTransformador());
 					distancia=Math.abs(distancia);
 					transformadorMasCercano=Math.abs(transformadorMasCercano);
-					if (transformadorMasCercano>distancia)  {
+					if (transformadorMasCercano>=distancia)  {
 						transformadorMasCercano=distancia;
 						cliente.setIdTransformadorCorrespondiente(transformador.getIdtransformador()); 
 					};//fin if
@@ -140,55 +140,6 @@ public class Administrador extends Usuario{
 			// TODO: handle exception
 		}
 	}// fin actializarlistas
-//	public class IdDistancia{
-//		private int id;
-//		private double distancia;
-//		
-//		public IdDistancia (){
-//			
-//		}
-//		public IdDistancia[] inicializar(IdDistancia[] array) {
-//			
-//			for (int i = 0; i < array.length; i++) {
-//				array[i].id=0;
-//				array[i].distancia=0;
-//			}//fin for
-//			return array;
-//		} 
-//			
-//	}
-	
-	// probando otra forma de actualizar las listas
-	public void actualizarListasDeTransformadores2() {
-		try {
-			ArrayList<IdDistancia> lista_id_distancia;
-			Transformador transformadorElegido;
-//			double transformadorMasCercano=0;
-			double distancia;
-			for (Cliente cliente : listaDeClientes) {
-				lista_id_distancia= new ArrayList<>();
-				IdDistancia idDist;
-				for (Transformador transformador : listaDeTransformadoresActivos) {
-					distancia=cliente.getDomicilio().distanciaAlPunto(transformador.getPosTransformador());
-					distancia=Math.abs(distancia);
-					idDist=cliente.new IdDistancia();
-					idDist.setId(transformador.getIdtransformador());
-					idDist.setDistancia(distancia);
-					lista_id_distancia.add(idDist);
-					
-				};//fin for transfo
-				cliente.setIdTransformadorCorrespondiente(cliente.calcularMinimo(lista_id_distancia));
-				transformadorElegido=this.buscarTransformador(cliente.getIdTransformadorCorrespondiente());
-				transformadorElegido.agregarCliente(cliente);
-			};//fin for clientes
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-			
-	}// fin actializarlist
-	
-
 
 }
  
