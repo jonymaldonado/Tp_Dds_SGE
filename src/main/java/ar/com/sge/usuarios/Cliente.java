@@ -27,6 +27,7 @@ public class Cliente extends Usuario {
 	private int puntos = 0;
 	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
 	private Transformador transformador;
+	private servicioSimplex servicio;
 
 	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
 =======
@@ -57,6 +58,7 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 		this.puntos = 0;
 		this.idTransformadorCorrespondiente = 0;
+		this.servicio = null;
 	}
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono,double latitud,double longitud ) {
 		super(_nombre,_apellido,latitud,longitud);
@@ -67,6 +69,7 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.puntos = 0;
 		this.idTransformadorCorrespondiente = 0;
+		this.servicio = null;
 		
 	}
 
@@ -196,8 +199,7 @@ public class Cliente extends Usuario {
 	}
 	
 	public PointValuePair consultarASimplex() {
-		servicioSimplex servicio=new servicioSimplex();
-		PointValuePair solucion=servicio.consultarSimplex(getLstDispositivosInteligentes());
+		PointValuePair solucion = this.getServicioSimplex().consultarSimplex(getLstDispositivosInteligentes());
 		return solucion;
 		
 	}
@@ -218,48 +220,10 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares = lstDispositivosEstandares;
 	}
 	
-	
-	public class IdDistancia{
-		private int id;
-		private double distancia;
-		
-		public IdDistancia (){
-			
+	public servicioSimplex getServicioSimplex() {
+		if(this.servicio == null) {
+			this.servicio = new servicioSimplex();
 		}
-		public int getId() {
-			return id;
-		}
-		public void setId(int id) {
-			this.id = id;
-		}
-		public double getDistancia() {
-			return distancia;
-		}
-		public void setDistancia(double distancia) {
-			this.distancia = distancia;
-		}
-			
+		return this.servicio;
 	}
-	
-	public int calcularMinimo (ArrayList<IdDistancia> lista) {
-		double unValor=1000;
-		int idlocal=0;
-		for (IdDistancia idDistancia : lista) {
-			if (idDistancia.getDistancia()<unValor) {
-				unValor=idDistancia.getDistancia();
-				unValor=idDistancia.getId();
-			}
-		}
-		
-		return idlocal;
-	}
-//	public IdDistancia[] inicializarArray(IdDistancia[] array){
-//		for (int i = 0; i < array.length; i++) {
-//			array[i].setId(0);
-//			array[i].setDistancia(0);
-//		}
-//		return array;
-//	}
-
-
 }
