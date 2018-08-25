@@ -14,7 +14,6 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import ar.com.sge.geografia.*;
-import ar.com.sge.usuarios.Cliente.IdDistancia;
 import ar.com.sge.util.DaoJsonTransformadores;
 //import ar.com.sge.util.DaoTransFormadores;
 

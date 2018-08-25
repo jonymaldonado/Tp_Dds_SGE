@@ -61,7 +61,9 @@ public class servicioSimplex {
 		int i = lista.size() - 1;
 		for (DispositivoInteligente elemento : lista) {
 			if (solucion.getPoint()[i] < elemento.consumoEnKw()) {
-				elemento.apagar();
+				if(elemento.apagadoAutomaticoPorSimplex()) {
+					elemento.apagar();
+				}
 			}
 		}
 

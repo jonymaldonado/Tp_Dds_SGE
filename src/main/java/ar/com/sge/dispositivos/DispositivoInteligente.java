@@ -15,7 +15,7 @@ public class DispositivoInteligente implements IDispositivo{
 
 	private String nombre;
 	private double kwPorHora;
-	protected Boolean encendido = false;
+	protected boolean encendido = false;
 	private Estado estado;
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
 	private static final float coeficienteAhorroEnergia = (float) 0.6;
@@ -23,11 +23,13 @@ public class DispositivoInteligente implements IDispositivo{
 	private double maximoconsumo;
 	private double minimoconsumo;
 	private Sensor sensor;
+	private boolean apagarPorSimplex;
 
 	public DispositivoInteligente(String nombre, double kw) {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
 		this.estado = new Apagado(this);
+		this.apagarPorSimplex = false;
 	}
 	@Override
 	public IDispositivo clone() throws CloneNotSupportedException{
@@ -201,6 +203,14 @@ public class DispositivoInteligente implements IDispositivo{
 	
 	public void desactivarSensor() {
 		sensor.desactivate();
+	}
+	
+	public void apagarPorSimplex(boolean valor) {
+		this.apagarPorSimplex = valor;
+	}
+	
+	public boolean apagadoAutomaticoPorSimplex() {
+		return this.apagarPorSimplex;
 	}
 
 }
