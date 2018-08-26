@@ -14,6 +14,14 @@ public class Zona {
 		this.listaDeTransformadores=new ArrayList<>();
 	}//constructor
 	
+	public Zona(int id, String nombre, double latitud, double longitud,int radio) {
+		this.setIdZona(id);
+		this.setNombreDeLaZona(nombre);
+		this.setPosZonaCentral(new Coordenada(latitud, longitud));
+		this.setRadioEnMetros(radio);
+		this.listaDeTransformadores=new ArrayList<>();
+	}//constructor
+	
 
 	//}//fin consumoTotalDelaZona
 	public float consumoTotalDeLaZona() {
@@ -62,6 +70,10 @@ public class Zona {
 
 	public void setListaDeTransformadores(List<Transformador> listaDeTransformadores) {
 		this.listaDeTransformadores = listaDeTransformadores;
+	}
+
+	public void agregarTransformador(Transformador transformador) {
+		this.getListaDeTransformadores().add(transformador);		
 	}
 	
 	

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import ar.com.sge.dispositivos.DispositivoInteligente;
 import ar.com.sge.estados.Encendido;
-import ar.com.sge.geografia.Transformador;
+import ar.com.sge.geografia.*;
 
 public class AdministradorMain {
 
@@ -17,12 +17,13 @@ public class AdministradorMain {
 		Administrador admin;
 //		LocalDateTime inicioestado,finestado;
 //		Encendido estado1;
+		Zona zona1, zona2, zona3;
 		
 		admin= new Administrador("Jony", "Maldo",1986);
 		
-		transformador1=new Transformador(001, -43.55f, 3.44f,01);
-		transformador2=new Transformador(002, 54.47f,-24.55f,02);
-		transformador3=new Transformador(003, 55.55f, 3.23f,01);
+		transformador1=new Transformador(001, -43.55f, 3.44f,243);
+		transformador2=new Transformador(002, 54.47f,-24.55f,446);
+		transformador3=new Transformador(003, 55.55f, 3.23f,446);
 		
 //		unaCategoriaR1= new Categoria("R1", (float) 18.76,(float) 0.644);
 //		CLIENTES
@@ -80,6 +81,13 @@ public class AdministradorMain {
 		
 		admin.actualizarListasDeTransformadores();
 		
+		zona1=new Zona(243, "zona1", 45.86, 33.12, 15);
+		zona2=new Zona(876, "zona2", -54.54, -55.32, 5);
+		zona3=new Zona(446, "zona3", 60.00, 3.82, 39);
+		admin.agregarZonas(zona1);
+		admin.agregarZonas(zona2);
+		admin.agregarZonas(zona3);
+		admin.actualizarListasDeZonas();
 		//PRUEBAS
 		System.out.println("--------------------- DISTANCIA DE LOS CLIENTES CON LOS TRANSFORMADORES" );
 
@@ -152,6 +160,26 @@ public class AdministradorMain {
 			System.out.println(c.getNumeroDoc());
 		}
 		System.out.println("---------------------");
+		System.out.println("zona1");
+		System.out.println(zona1.getListaDeTransformadores().size());
+		for (Transformador t : zona1.getListaDeTransformadores()) {
+			System.out.print("zona1 - ");
+			System.out.println(t.getIdtransformador());
+		}
+		System.out.println("zona2");
+		System.out.println(zona2.getListaDeTransformadores().size());	
+		for (Transformador t : zona2.getListaDeTransformadores()) {
+			System.out.print("zona2 - ");
+			System.out.println(t.getIdtransformador());
+		}
+		System.out.println("zona3");
+		System.out.println(zona3.getListaDeTransformadores().size());	
+		for (Transformador t : zona3.getListaDeTransformadores()) {
+			System.out.print("zona3 - ");
+			System.out.println(t.getIdtransformador());
+		}
+		System.out.println("---------------------");	
+		System.out.println("---------------------");	
 		System.out.println("---------------------");	
 		
 

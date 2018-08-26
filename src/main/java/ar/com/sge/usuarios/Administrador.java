@@ -68,6 +68,9 @@ public class Administrador extends Usuario{
 	public void agregarTransformadores(Transformador unTransformador) {
 		this.listaDeTransformadoresActivos.add(unTransformador);
 	}
+	public void agregarZonas(Zona unaZona) {
+		this.getListaDeZonas().add(unaZona);
+	}
 	public  List<Transformador> cargarJsonTransformadores2(String archivoJson) throws FileNotFoundException{
 		List<Transformador> transformadoresActivos= new ArrayList<Transformador>();
 		Type type= new TypeToken<ArrayList<Transformador>>() {}.getType();
@@ -139,6 +142,15 @@ public class Administrador extends Usuario{
 			// TODO: handle exception
 		}
 	}// fin actializarlistas
+	public void actualizarListasDeZonas() {
+		for (Zona zona: this.getListaDeZonas()) {
+			for (Transformador transformador : this.getListaDeTransformadoresActivos()) {
+				if (zona.getIdZona()==transformador.getIdZonaCorrespondiente()) {
+					zona.agregarTransformador(transformador);
+				}
+			}
+		}
+	}
 
 }
  
