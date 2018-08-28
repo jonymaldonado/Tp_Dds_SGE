@@ -1,6 +1,7 @@
 package ar.com.sge.geografia;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.sge.util.DaoJsonZona;
@@ -17,6 +18,7 @@ public class RepoZona {
 
 	public RepoZona(DaoJsonZona dao) {
 		this.daoZonas = dao;
+		listaZona=new ArrayList<Zona>();
 
 	}
 
@@ -30,9 +32,17 @@ public class RepoZona {
 		this.daoZonas.delete(zona);
 
 	}
+	public void getZonasjson() throws IOException {
+		
+		
+
+		listaZona = daoZonas.getAll();
+	}
 
 	public List<Zona> getAllZonas() throws IOException {
-		return daoZonas.getAll();
+		
+		return listaZona;
+		//return daoZonas.getAll();
 	}
 
 	public void addZona(Zona unaZona) throws IOException {
@@ -41,6 +51,16 @@ public class RepoZona {
 
 	public void modificarZona(Zona zona) throws IOException {
 		daoZonas.update(zona);
+	}
+	
+	public void actualizarListasDeZonas(RepoTransformador un_repo) throws IOException{
+		for (Zona zona: this.getAllZonas()) {
+			for (Transformador transformador : un_repo.getAllTransformadores()) {
+				if (zona.getIdZona()==transformador.getIdZonaCorrespondiente()) {
+					zona.agregarTransformador(transformador);
+				}
+			}
+		}
 	}
 	
 

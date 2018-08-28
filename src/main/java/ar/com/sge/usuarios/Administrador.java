@@ -120,7 +120,7 @@ public class Administrador extends Usuario{
 		return transformadorElegido;
 	}
 	
-	public void actualizarListasDeTransformadores() {
+/*	public void actualizarListasDeTransformadores() {
 		Transformador transfElegido=new Transformador();
 		try {
 			
@@ -143,8 +143,18 @@ public class Administrador extends Usuario{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-	}// fin actializarlistas
-	public void actualizarListasDeZonas() {
+	}// fin actializarlistas*/
+	public void actualizarListasDeTransformadores(RepoTransformador repo_transfor,RepoCliente repo_cliente) {
+		repo_transfor.actualizarListasDeTransformadores(repo_cliente);
+	}
+	
+	public void actualizarListasDeZonas(RepoZona repo_zona,RepoTransformador repo_transfor)  throws IOException{
+		repo_zona.actualizarListasDeZonas(repo_transfor);
+	}
+	
+	
+	
+	/*public void actualizarListasDeZonas() {
 		for (Zona zona: this.getListaDeZonas()) {
 			for (Transformador transformador : this.getListaDeTransformadoresActivos()) {
 				if (zona.getIdZona()==transformador.getIdZonaCorrespondiente()) {
@@ -152,7 +162,7 @@ public class Administrador extends Usuario{
 				}
 			}
 		}
-	}
+	}*/
 
 }
  
