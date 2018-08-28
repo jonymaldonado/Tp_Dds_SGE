@@ -24,9 +24,9 @@ public class Cliente extends Usuario {
 	private List<DispositivoInteligente> lstDispositivosInteligentes ;
 	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
-	private int puntos = 0;
-	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
-	private Transformador transformador;
+	private int puntos ;
+	//private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
+	//private Transformador transformador;
 	private servicioSimplex servicio;
 
 	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
@@ -40,13 +40,13 @@ public class Cliente extends Usuario {
 		lstDispositivosEstandares = new ArrayList<>();
 	}*/
 	
-	public Transformador getTransformador() {
+	/*public Transformador getTransformador() {
 		return transformador;
-	}
+	}*/
 
-	public void setTransformador(Transformador transformador) {
+	/*public void setTransformador(Transformador transformador) {
 		this.transformador = transformador;
-	}
+	}*/
 
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,double latitud,double longitud ) {
 		super(_nombre,_apellido,latitud,longitud);
@@ -57,7 +57,7 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.categoria = categoria;
 		this.puntos = 0;
-		this.idTransformadorCorrespondiente = 0;
+		//this.idTransformadorCorrespondiente = 0;
 		this.servicio = null;
 	}
 	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono,double latitud,double longitud ) {
@@ -68,7 +68,7 @@ public class Cliente extends Usuario {
 		this.lstDispositivosInteligentes  = new ArrayList<>();
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.puntos = 0;
-		this.idTransformadorCorrespondiente = 0;
+		//this.idTransformadorCorrespondiente = 0;
 		this.servicio = null;
 		
 	}
@@ -96,12 +96,12 @@ public class Cliente extends Usuario {
 		return categoria.getNombre();		
 	}
 	
-	public int getIdTransformadorCorrespondiente() {
+	/*public int getIdTransformadorCorrespondiente() {
 		return idTransformadorCorrespondiente;
 	}
 	public void setIdTransformadorCorrespondiente(int idTransformadorCorrespondiente) {
 		this.idTransformadorCorrespondiente = idTransformadorCorrespondiente;
-	}
+	}*/
 		
 	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
 		lstDispositivosEstandares.add(unDispositivoEstandar);

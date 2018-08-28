@@ -121,8 +121,9 @@ public class Administrador extends Usuario{
 	}
 	
 	public void actualizarListasDeTransformadores() {
+		Transformador transfElegido=new Transformador();
 		try {
-			Transformador transfElegido;
+			
 			double distancia;
 			for (Cliente cliente : listaDeClientes) {
 				double transformadorMasCercano = cliente.getDomicilio().distanciaAlPunto(listaDeTransformadoresActivos.get(0).getPosTransformador());
@@ -132,10 +133,11 @@ public class Administrador extends Usuario{
 					transformadorMasCercano=Math.abs(transformadorMasCercano);
 					if (transformadorMasCercano>=distancia)  {
 						transformadorMasCercano=distancia;
-						cliente.setIdTransformadorCorrespondiente(transformador.getIdtransformador()); 
+						//cliente.setIdTransformadorCorrespondiente(transformador.getIdtransformador());
+						transfElegido=transformador;
 					};//fin if
-				};//fin for transfo
-				transfElegido=this.buscarTransformador(cliente.getIdTransformadorCorrespondiente());
+				}//fin for transfo
+				//transfElegido=this.buscarTransformador(cliente.getIdTransformadorCorrespondiente());
 				transfElegido.agregarCliente(cliente);
 			};//fin for clientes
 		} catch (Exception e) {
