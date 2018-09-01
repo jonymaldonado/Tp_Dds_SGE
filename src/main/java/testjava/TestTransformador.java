@@ -27,8 +27,9 @@ public class TestTransformador {
 	@Before
 	public void init()throws IOException{
 		DaoJsonTransformadores dao = new DaoJsonTransformadores();
-		dao.setFilePath("D:\\Users\\juamp\\git\\Tp_Dds_SGE\\document.json");
+		dao.setFilePath("C:\\Users\\Jony\\DDS\\Tp_Dds_SGE\\document.json");
 		repoTransformador = new RepoTransformador(dao);
+		repoTransformador.getTransformadoresjson();
 		listainicial=repoTransformador.getAllTransformadores();
 	
 	}
