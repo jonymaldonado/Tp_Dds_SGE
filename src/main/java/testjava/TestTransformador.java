@@ -37,7 +37,7 @@ public class TestTransformador {
 	public void reiniciarEstadoInit() throws IOException{
 		
 		DaoJsonCliente dao = new DaoJsonCliente();
-		dao.setFilePath("D:\\Users\\juamp\\git\\Tp_Dds_SGE\\bin\\src\\main\\java\\json\\clientes.json");
+		dao.setFilePath("D:\\Users\\juamp\\git\\Tp_Dds_SGE\\document.json");
 		String indicadoresstring=dao.getMyGson().toJson(listainicial);
 		PrintWriter pw = new PrintWriter(dao.getFilePath());
 		pw.close();
