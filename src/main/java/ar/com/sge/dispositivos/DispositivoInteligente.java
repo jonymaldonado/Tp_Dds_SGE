@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.com.sge.estados.Apagado;
-import ar.com.sge.estados.Estado;
-import ar.com.sge.reglas.Sensor;
-
+import ar.com.sge.estados.*;
+import ar.com.sge.reglas.*;
 
 public class DispositivoInteligente implements IDispositivo{
 
@@ -17,19 +15,22 @@ public class DispositivoInteligente implements IDispositivo{
 	private double kwPorHora;
 	protected boolean encendido = false;
 	private Estado estado;
-	private List<Estado> listaDeEstados = new ArrayList<Estado>();
-	private static final float coeficienteAhorroEnergia = (float) 0.6;
+	private List<Estado> listaDeEstados;
+	private static final double coeficienteAhorroEnergia = 0.6;
 	private LocalDateTime inicioPeriodo;
 	private double maximoconsumo;
 	private double minimoconsumo;
 	private Sensor sensor;
 	private boolean apagarPorSimplex;
+	private boolean estadoDispositivo;
 
 	public DispositivoInteligente(String nombre, double kw) {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
-		this.estado = new Apagado(this);
+		this.estado = new Apagado();
 		this.apagarPorSimplex = false;
+		this.estadoDispositivo = false;
+		this.listaDeEstados = new ArrayList<Estado>();
 	}
 	@Override
 	public IDispositivo clone() throws CloneNotSupportedException{
@@ -43,7 +44,7 @@ public class DispositivoInteligente implements IDispositivo{
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 		
 	public double getKwPorHora() {
@@ -74,24 +75,24 @@ public class DispositivoInteligente implements IDispositivo{
 	}
 
 	public void encender() {
-		estado.encender();
+		estado.encender(this);
 	}
 
 	public void apagar() {
-		estado.apagar();
+		estado.apagar(this);
 	}
 
 	public void ahorroDeEnergia() {
-		estado.ahorroDeEnergia();
+		estado.ahorroDeEnergia(this);
 	}
 
 	public Boolean estasEncendido() {
-		return this.estado.getNombre().equals("encendido");
+		return this.estadoDispositivo;
 	}
 	public Boolean estasApagado() {
-		return this.estado.getNombre().equals("apagado");
+		return this.estadoDispositivo;
 	}
-
+    
 	public void agregarEstado(Estado e) {
 		listaDeEstados.add(e);
 	}
@@ -117,7 +118,7 @@ public class DispositivoInteligente implements IDispositivo{
 	
 	public double consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
 		double totalConsumo ;
-		float totalHoras ;
+		double totalHoras ;
 		List<Estado> lstEstados;
 		
 		//Calculo consumo encendidos 		
@@ -143,8 +144,8 @@ public class DispositivoInteligente implements IDispositivo{
 		 
 	}
 	
-	/*public float totalDeConsumo(List<Estado> lstEstados) {		
-		float totalConsumo = 0;		
+	/*public double totalDeConsumo(List<Estado> lstEstados) {		
+		double totalConsumo = 0;		
 		for (Estado estado : lstEstados){
 			totalConsumo += estado.getConsumo();
 		}
@@ -155,10 +156,10 @@ public class DispositivoInteligente implements IDispositivo{
 		return (e.getFechaInicio().isBefore(fechaFin) && e.getFechaFin().isAfter(fechaInicio));
 	}
 	
-	public float totalDeHoras (List<Estado> lstEstados,  LocalDateTime fechaInicio, LocalDateTime fechaFin) {		
+	public double totalDeHoras (List<Estado> lstEstados,  LocalDateTime fechaInicio, LocalDateTime fechaFin) {		
 		LocalDateTime fechaMinima;
 		LocalDateTime fechaMaxima;
-		float totalHoras = 0;
+		double totalHoras = 0;
 			
 		for (Estado estado : lstEstados){
 			fechaMinima = this.fechaMaxima(fechaInicio, estado.getFechaInicio());
@@ -168,8 +169,8 @@ public class DispositivoInteligente implements IDispositivo{
 		return totalHoras;
 	}
 	
-	public float diferenciaHoras(LocalDateTime unahora, LocalDateTime otrahora){
-		float dif=  ChronoUnit.MINUTES.between(unahora, otrahora);
+	public double diferenciaHoras(LocalDateTime unahora, LocalDateTime otrahora){
+		double dif=  ChronoUnit.MINUTES.between(unahora, otrahora);
 		dif=dif/60;
 		return dif;
 	}
@@ -211,6 +212,10 @@ public class DispositivoInteligente implements IDispositivo{
 	
 	public boolean apagadoAutomaticoPorSimplex() {
 		return this.apagarPorSimplex;
+	}
+	
+	public void setEstadoDipositivo(boolean valor) {
+		this.estadoDispositivo = valor;
 	}
 
 }

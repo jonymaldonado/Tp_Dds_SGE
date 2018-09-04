@@ -42,12 +42,12 @@ public class RepoTransformador {
 	}
 	
 	public void getTransformadoresjson() throws IOException {
-		listaTransformadores.clear();
+		//listaTransformadores.clear();
 		listaTransformadores= daoTransformador.getAll();
 	}
 
 	public List<Transformador> getAllTransformadores() throws IOException {
-		return listaTransformadores;
+		return daoTransformador.getAll();
 	}
 	
 	/*public List<Zona> getAllZona() throws IOException {

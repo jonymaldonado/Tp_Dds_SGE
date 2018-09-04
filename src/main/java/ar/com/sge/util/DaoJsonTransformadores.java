@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,7 +38,7 @@ public class DaoJsonTransformadores implements DaoTransFormadores{
 	}
 
 	public void delete(Transformador unTransformador) throws IOException{
-		ArrayList<Transformador> listaTransformadores= new ArrayList<Transformador>();
+		List<Transformador> listaTransformadores= new ArrayList<Transformador>();
 		listaTransformadores.addAll((getAll()));
 		listaTransformadores.removeIf(transformador->transformador.getIdtransformador()==(unTransformador.getIdtransformador()));
 		for(Transformador otroTransformador:listaTransformadores)
@@ -49,10 +50,10 @@ public class DaoJsonTransformadores implements DaoTransFormadores{
 
 	}
 
-	public ArrayList<Transformador> getAll() throws IOException{
+	public List<Transformador> getAll() throws IOException{
 		FileReader reader = new	FileReader(this.filePath);
 		this.bufferToReader = new BufferedReader(reader);
-		ArrayList<Transformador> listaTranformadores= myGson.fromJson(getJson(), new TypeToken<ArrayList<Transformador>>(){}.getType());
+		List<Transformador> listaTranformadores= myGson.fromJson(getJson(), new TypeToken<List<Transformador>>(){}.getType());
 		return listaTranformadores;
 	}
 
