@@ -8,7 +8,7 @@ import ar.com.sge.geografia.Transformador;
 
 public class AdministradorMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stu
 		Transformador transformador1, transformador2, transformador3;
 		Cliente cliente1,cliente2,cliente3,cliente4,cliente5; 
@@ -21,16 +21,16 @@ public class AdministradorMain {
 		admin= new Administrador("Jony", "Maldo",1986);
 		
 		transformador1=new Transformador(001, -43.55f, 3.44f,01);
-		transformador2=new Transformador(002, 44.47f,-24.55f,02);
+		transformador2=new Transformador(002, 54.47f,-24.55f,02);
 		transformador3=new Transformador(003, 55.55f, 3.23f,01);
 		
 		unaCategoriaR1= new Categoria("R1", (float) 18.76,(float) 0.644);
 		
-		cliente1= new Cliente("Carlos","Ligorria", "DNI", 14555666, 54363366, unaCategoriaR1,54.44f, 2.65f);
-		cliente2= new Cliente("Leonardo","Silva", "DNI", 66664554, 86543345, unaCategoriaR1,  5.44f, 65.65f);
-		cliente3= new Cliente("Gustavo","Apaza", "DNI", 37543232, 54674744, unaCategoriaR1,  -22.44f, 6.87f);
-		cliente4= new Cliente("Roberto","Castro", "DNI", 44545532, 54676744, unaCategoriaR1,  -5.44f, 33.65f);
-		cliente5= new Cliente("Susana ","Mosquera", "DNI", 54876578, 78874744, unaCategoriaR1,  9.44f, 65.00f);
+		cliente1= new Cliente("Carlos","Ligorria", "DNI", 14555666, 54363366, unaCategoriaR1, 0, 54.44f, 2.65f);
+		cliente2= new Cliente("Leonardo","Silva", "DNI", 66664554, 86543345, unaCategoriaR1, 0, 55.44f, 65.65f);
+		cliente3= new Cliente("Gustavo","Apaza", "DNI", 37543232, 54674744, unaCategoriaR1, 0, 22.44f, 6.87f);
+		cliente4= new Cliente("Roberto","Castro", "DNI", 44545532, 54676744, unaCategoriaR1, 0, -5.44f, 33.65f);
+		cliente5= new Cliente("Susana ","Mosquera", "DNI", 54876578, 78874744, unaCategoriaR1, 0, 9.44f, 65.00f);
 		
 		unTV40=new DispositivoInteligente("unTV40", 0.08f);
 		aire1=new DispositivoInteligente("aire1", 1013f);
@@ -42,7 +42,7 @@ public class AdministradorMain {
 		
 		inicioestado=LocalDateTime.of(2018, 8, 21, 18, 00);
 		finestado=LocalDateTime.of(2018, 8, 22, 19, 00);
-		estado1=new Encendido("encendido",inicioestado,finestado,1);
+		estado1=new Encendido("encendido",inicioestado,finestado,1.0f);
 		//estado1=new Encendido("encendido",inicioestado,finestado,aire1.getKwPorHora());
 		//>estado1=new Encendido("encendido",inicioestado,finestado,aire2.getKwPorHora());
 		//estado1=new Encendido("encendido",inicioestado,finestado,unaHeladera.getKwPorHora());
@@ -81,34 +81,37 @@ public class AdministradorMain {
 		admin.actualizarListasDeTransformadores();
 		
 		//PRUEBAS
-		System.out.println("--------------------- DISTANCIA DE LOS CLIENTES CON EL TRANSFORMADOR 1");
+		System.out.println("--------------------- DISTANCIA DE LOS CLIENTES CON LOS TRANSFORMADORES" );
 
-		System.out.println("--------1-------------");		
-		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente1.getDomicilio()));
-		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente2.getDomicilio()));
-		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente3.getDomicilio()));
-		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente4.getDomicilio()));
-		System.out.println(transformador1.getPosTransformador().distanciaAlPunto(cliente5.getDomicilio()));
-		System.out.println("---------2------------");		
-		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente1.getDomicilio()));
-		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente2.getDomicilio()));
-		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente3.getDomicilio()));
-		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente4.getDomicilio()));
-		System.out.println(transformador2.getPosTransformador().distanciaAlPunto(cliente5.getDomicilio()));
-		System.out.println("----------3-----------");		
-		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente1.getDomicilio()));
-		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente2.getDomicilio()));
-		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente3.getDomicilio()));
-		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente4.getDomicilio()));
-		System.out.println(transformador3.getPosTransformador().distanciaAlPunto(cliente5.getDomicilio()));
+			
+		System.out.println("cliente1");
+		System.out.print(cliente1.getDomicilio().distanciaAlPunto(transformador1.getPosTransformador()));System.out.println(" x");
+		System.out.println(cliente1.getDomicilio().distanciaAlPunto(transformador2.getPosTransformador()));
+		System.out.println(cliente1.getDomicilio().distanciaAlPunto(transformador3.getPosTransformador()));
+		System.out.println("cliente2");
+		System.out.print(cliente2.getDomicilio().distanciaAlPunto(transformador1.getPosTransformador()));System.out.println(" x");
+		System.out.println(cliente2.getDomicilio().distanciaAlPunto(transformador2.getPosTransformador()));
+		System.out.println(cliente2.getDomicilio().distanciaAlPunto(transformador3.getPosTransformador()));
+		System.out.println("cliente3");
+		System.out.println(cliente3.getDomicilio().distanciaAlPunto(transformador1.getPosTransformador()));
+		System.out.print(cliente3.getDomicilio().distanciaAlPunto(transformador2.getPosTransformador()));System.out.println(" x");
+		System.out.println(cliente3.getDomicilio().distanciaAlPunto(transformador3.getPosTransformador()));
+		System.out.println("cliente4");
+		System.out.println(cliente4.getDomicilio().distanciaAlPunto(transformador1.getPosTransformador()));
+		System.out.println(cliente4.getDomicilio().distanciaAlPunto(transformador2.getPosTransformador()));
+		System.out.print(cliente4.getDomicilio().distanciaAlPunto(transformador3.getPosTransformador()));System.out.println(" x");
+		System.out.println("cliente5");
+		System.out.println(cliente5.getDomicilio().distanciaAlPunto(transformador1.getPosTransformador()));
+	System.out.println(cliente5.getDomicilio().distanciaAlPunto(transformador2.getPosTransformador()));
+		System.out.print(cliente5.getDomicilio().distanciaAlPunto(transformador3.getPosTransformador()));System.out.println(" x");
 		
 		System.out.println("---------------------  CANTIDAD DE CLIENTES EN LAS LISTAS DE LOS TRANSFORMADORES ");
 		
 		
 		
-		System.out.println(transformador1.getListaDeclientesConectados().size());
-		System.out.println(transformador2.getListaDeclientesConectados().size());
-		System.out.println(transformador3.getListaDeclientesConectados().size());
+		System.out.print(transformador1.getListaDeclientesConectados().size());System.out.println("  DEBERIA SER 2");	
+		System.out.print(transformador2.getListaDeclientesConectados().size());System.out.println("  DEBERIA SER 1");	
+		System.out.print(transformador3.getListaDeclientesConectados().size());System.out.println("  DEBERIA SER 2");	
 		
 		System.out.println("--------------------- CONSUMO DE ENERGIA DE CADA CLIENTE ");
 		
@@ -125,18 +128,17 @@ public class AdministradorMain {
 		System.out.println(cliente5.consumoDeEnergia());
 		
 		
-		System.out.println("--------------------CANTIDAD DE DISPOSITIVOS EN LA LISTA DE CADA CLIENTES-");
+		System.out.println("---------------------");
 		System.out.println(cliente1.getLstDispositivosInteligentes().size());
 		System.out.println(cliente2.getLstDispositivosInteligentes().size());
 		System.out.println(cliente3.getLstDispositivosInteligentes().size());
 		System.out.println(cliente4.getLstDispositivosInteligentes().size());
 		System.out.println(cliente5.getLstDispositivosInteligentes().size());
+		System.out.println("---------------CANTIDAD DE CLIENTES EN LA LISTA-----");
+		System.out.println(admin.getListaDeClientes().size());
 		System.out.println("---------------------");
-		
 		System.out.println("---------------------");
-		System.out.println("---------------------");
-		System.out.println("---------------------");
-
+		System.out.println("---------------------");	
 		
 
 	}

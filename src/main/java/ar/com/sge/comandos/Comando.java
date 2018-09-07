@@ -6,3 +6,4 @@ public interface Comando {
 	public String getNombre();
 	
 }
+

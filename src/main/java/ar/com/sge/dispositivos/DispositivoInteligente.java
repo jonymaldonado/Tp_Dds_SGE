@@ -14,24 +14,28 @@ import ar.com.sge.reglas.Sensor;
 public class DispositivoInteligente implements IDispositivo{
 
 	private String nombre;
-	private float kwPorHora;
-	protected Boolean encendido = false;
+	private double kwPorHora;
+	private Boolean encendido ;
 	private Estado estado;
 	private List<Estado> listaDeEstados = new ArrayList<Estado>();
 	private static final float coeficienteAhorroEnergia = (float) 0.6;
 	private LocalDateTime inicioPeriodo;
+	private double maximoconsumo;
+	private double minimoconsumo;
 	private Sensor sensor;
+	private boolean apagarPorSimplex;
+	private boolean estadoDispositivo;
 
-	public DispositivoInteligente(String nombre, float kw) {
+	public DispositivoInteligente(String nombre, double kw) {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
-		this.estado = new Apagado(this);
+		this.estado = new Apagado();
 	}
 	@Override
 	public IDispositivo clone() throws CloneNotSupportedException{
 		DispositivoInteligente inteligente=null;
 		try {
-			inteligente=(DispositivoInteligente) clone();
+			inteligente=(DispositivoInteligente) super.clone();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
@@ -42,10 +46,22 @@ public class DispositivoInteligente implements IDispositivo{
 		return nombre;
 	}
 		
-	public float getKwPorHora() {
+	public double getKwPorHora() {
 		return kwPorHora;
 	}
 	
+	public double getMaximoconsumo() {
+		return maximoconsumo;
+	}
+	public void setMaximoconsumo(double maximoconsumo) {
+		this.maximoconsumo = maximoconsumo;
+	}
+	public double getMinimoconsumo() {
+		return minimoconsumo;
+	}
+	public void setMinimoconsumo(double minimoconsumo) {
+		this.minimoconsumo = minimoconsumo;
+	}
 	public void setEstado(Estado e) {
 		this.estado = e;
 	}
@@ -58,22 +74,22 @@ public class DispositivoInteligente implements IDispositivo{
 	}
 
 	public void encender() {
-		estado.encender();
+		estado.encender(this);
 	}
 
 	public void apagar() {
-		estado.apagar();
+		estado.apagar(this);
 	}
 
 	public void ahorroDeEnergia() {
-		estado.ahorroDeEnergia();
+		estado.ahorroDeEnergia(this);
 	}
 
 	public Boolean estasEncendido() {
-		return this.estado.getNombre().equals("encendido");
+		return this.estadoDispositivo;
 	}
 	public Boolean estasApagado() {
-		return this.estado.getNombre().equals("apagado");
+		return this.estadoDispositivo;
 	}
 
 	public void agregarEstado(Estado e) {
@@ -89,18 +105,18 @@ public class DispositivoInteligente implements IDispositivo{
 	}
 	
 	//consumo en lo que va del mes
-	public float consumoEnKw() {
+	public double consumoEnKw() {
 		return consumidoComprendidoEntre(inicioPeriodo, LocalDateTime.now());		
 	}
 			
-	public float consumidoUltimasNhoras (int cantHoras) {
+	public double consumidoUltimasNhoras (int cantHoras) {
 		LocalDateTime fechaInicio = LocalDateTime.now().minusHours(cantHoras);
 		LocalDateTime fechaFin = LocalDateTime.now();
 		return this.consumidoComprendidoEntre(fechaInicio, fechaFin);
 	}
 	
-	public float consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
-		float totalConsumo ;
+	public double consumidoComprendidoEntre(LocalDateTime fechaInicio , LocalDateTime fechaFin) {
+		double totalConsumo ;
 		float totalHoras ;
 		List<Estado> lstEstados;
 		
@@ -188,5 +204,23 @@ public class DispositivoInteligente implements IDispositivo{
 	public void desactivarSensor() {
 		sensor.desactivate();
 	}
+	
+	public void activarApagadoAutomaticoSimplex() {
+		this.apagarPorSimplex = true;
+	}
+	
+	public void desactivarApagadoAutomaticoSimplex() {
+		this.apagarPorSimplex = false;
+	}
+	
+	public boolean apagadoAutomaticoPorSimplex() {
+		return this.apagarPorSimplex;
+	}
+	
+	public void setEstadoDipositivo(boolean valor) {
+		this.estadoDispositivo = valor;
+	}
+
 
 }
+

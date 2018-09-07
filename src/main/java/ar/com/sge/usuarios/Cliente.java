@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.math3.optim.PointValuePair;
+
 import ar.com.sge.dispositivos.DispositivoEstandar;
 import ar.com.sge.dispositivos.DispositivoInteligente;
 //import ar.com.sge.dispositivos.IDispositivo;
 import ar.com.sge.dispositivos.Modulo;
-import ar.com.sge.geografia.*;
+import ar.com.sge.geografia.Transformador;
+import ar.com.sge.util.servicioSimplex;
+//import ar.com.sge.geografia.Coordenada;
 
 public class Cliente extends Usuario {
 	
@@ -20,22 +24,32 @@ public class Cliente extends Usuario {
 	private List<DispositivoInteligente> lstDispositivosInteligentes ;
 	private List<DispositivoEstandar> lstDispositivosEstandares ;
 	private Categoria categoria;
-	private int puntos = 0;
-	private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
-	private Transformador transformadorCercano;
-	
+	private int puntos;
+	//private int idTransformadorCorrespondiente;//despues se vera si vale la pena poner este atributo
+	//private Transformador transformador;
+	private servicioSimplex servicio;
+
+	/*public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,double latitud,double longitud) {		
+=======
 	public Cliente(String _nombre, String _apellido,String _tipoDoc,int _numeroDoc,float latitud,float longitud) {		
+>>>>>>> 55d6153bb164c64abe9f3fcdd29e944e114d8019
 		super(_nombre,_apellido,latitud,longitud);
 		this.tipoDoc = _tipoDoc;
 		this.numeroDoc = _numeroDoc;
 		lstDispositivosInteligentes = new ArrayList<>();
 		lstDispositivosEstandares = new ArrayList<>();
+	}*/
+	
+	/*public Transformador getTransformador() {
+		return transformador;
 	}
-	
-	
-	
-	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,float latitud,float longitud ) {
-		super(_nombre, _apellido,latitud,longitud);
+
+	public void setTransformador(Transformador transformador) {
+		this.transformador = transformador;
+	}*/
+
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono, Categoria categoria,int puntos,double latitud,double longitud ) {
+		super(_nombre,_apellido,latitud,longitud);
 		this.tipoDoc = tipoDoc;
 		this.numeroDoc = numeroDoc;
 		this.telefono = telefono;
@@ -43,19 +57,18 @@ public class Cliente extends Usuario {
 		this.lstDispositivosEstandares  = new ArrayList<>();
 		this.categoria = categoria;
 		this.puntos = 0;
-		this.idTransformadorCorrespondiente = 0;
+	//	this.idTransformadorCorrespondiente = 0;
 	}
-	
-	
-	public void setTransformadorCercano(Transformador transformadorCercano) {
-		this.transformadorCercano = transformadorCercano;
-	}
-	
-	public Transformador getTransformadorCercano() {
-		return transformadorCercano;
-	}
-	public List<DispositivoInteligente> getLstDispositivosInteligentes() {
-		return lstDispositivosInteligentes;
+	public Cliente(String _nombre, String _apellido, String tipoDoc, int numeroDoc, int telefono,double latitud,double longitud ) {
+		super(_nombre,_apellido,latitud,longitud);
+		this.tipoDoc = tipoDoc;
+		this.numeroDoc = numeroDoc;
+		this.telefono = telefono;
+		this.lstDispositivosInteligentes  = new ArrayList<>();
+		this.lstDispositivosEstandares  = new ArrayList<>();
+		this.puntos = 0;
+		//this.idTransformadorCorrespondiente = 0;
+		
 	}
 
 	public String getTipoDoc() {
@@ -81,12 +94,12 @@ public class Cliente extends Usuario {
 		return categoria.getNombre();		
 	}
 	
-	public int getIdTransformadorCorrespondiente() {
+	/*public int getIdTransformadorCorrespondiente() {
 		return idTransformadorCorrespondiente;
 	}
 	public void setIdTransformadorCorrespondiente(int idTransformadorCorrespondiente) {
 		this.idTransformadorCorrespondiente = idTransformadorCorrespondiente;
-	}
+	}*/
 		
 	public void agregarDispositivosEstandares(DispositivoEstandar unDispositivoEstandar) {
 		lstDispositivosEstandares.add(unDispositivoEstandar);
@@ -136,7 +149,7 @@ public class Cliente extends Usuario {
 	}	
 	
 	public float consumoDeEnergia() {
-		float sum = 0.0f;
+		float sum = 0;
 		for(DispositivoInteligente d: lstDispositivosInteligentes) { 
 			sum += d.consumoEnKw();
 		}
@@ -182,4 +195,75 @@ public class Cliente extends Usuario {
 	public int cantidadDeDispositivosEstandares() {
 		return lstDispositivosEstandares.size();
 	}
+	
+	public PointValuePair consultarASimplex() {
+		PointValuePair solucion = this.getServicioSimplex().consultarSimplex(getLstDispositivosInteligentes());
+		return solucion;
+	}
+
+	public List<DispositivoInteligente> getLstDispositivosInteligentes() {
+		return lstDispositivosInteligentes;
+	}
+
+	public void setLstDispositivosInteligentes(List<DispositivoInteligente> lstDispositivosInteligentes) {
+		this.lstDispositivosInteligentes = lstDispositivosInteligentes;
+	}
+
+	public List<DispositivoEstandar> getLstDispositivosEstandares() {
+		return lstDispositivosEstandares;
+	}
+
+	public void setLstDispositivosEstandares(List<DispositivoEstandar> lstDispositivosEstandares) {
+		this.lstDispositivosEstandares = lstDispositivosEstandares;
+	}
+	
+	public class IdDistancia{
+		private int id;
+		private double distancia;
+		
+		public IdDistancia (){
+			
+		}
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		public double getDistancia() {
+			return distancia;
+		}
+		public void setDistancia(double distancia) {
+			this.distancia = distancia;
+		}
+			
+	}
+	
+	public int calcularMinimo (ArrayList<IdDistancia> lista) {
+		double unValor=1000;
+		int idlocal=0;
+		for (IdDistancia idDistancia : lista) {
+			if (idDistancia.getDistancia()<unValor) {
+				unValor=idDistancia.getDistancia();
+				unValor=idDistancia.getId();
+			}
+		}
+		
+		return idlocal;
+	}
+	
+//	public IdDistancia[] inicializarArray(IdDistancia[] array){
+//		for (int i = 0; i < array.length; i++) {
+//			array[i].setId(0);
+//			array[i].setDistancia(0);
+//		}
+//		return array;
+//	}
+	public servicioSimplex getServicioSimplex() {
+		if(this.servicio == null) {
+			this.servicio = new servicioSimplex();
+		}
+		return this.servicio;
+	}
+
 }

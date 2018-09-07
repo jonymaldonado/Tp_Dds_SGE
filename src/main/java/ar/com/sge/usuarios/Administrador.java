@@ -14,8 +14,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import ar.com.sge.geografia.*;
+import ar.com.sge.usuarios.Cliente.IdDistancia;
 import ar.com.sge.util.DaoJsonTransformadores;
-import ar.com.sge.util.DaoTransFormadores;
+//import ar.com.sge.util.DaoTransFormadores;
 
 public class Administrador extends Usuario{
 
@@ -117,31 +118,37 @@ public class Administrador extends Usuario{
 		return transformadorElegido;
 	}
 	
-	public void actualizarListasDeTransformadores() {
+	/*public void actualizarListasDeTransformadores() {
 		try {
-			Transformador transformadorElegido;
-			float transformadorMasCercano=0;
-			float distancia;
+			Transformador transfElegido;
+			double distancia;
 			for (Cliente cliente : listaDeClientes) {
+				double transformadorMasCercano = cliente.getDomicilio().distanciaAlPunto(listaDeTransformadoresActivos.get(0).getPosTransformador());
 				for (Transformador transformador : listaDeTransformadoresActivos) {
 					distancia=cliente.getDomicilio().distanciaAlPunto(transformador.getPosTransformador());
 					distancia=Math.abs(distancia);
 					transformadorMasCercano=Math.abs(transformadorMasCercano);
-						if ((transformadorMasCercano==0)||(transformadorMasCercano>distancia) ) {
-							transformadorMasCercano=distancia;
-							cliente.setIdTransformadorCorrespondiente(transformador.getIdtransformador()); 
-						};//fin if
+					if (transformadorMasCercano>=distancia)  {
+						transformadorMasCercano=distancia;
+						cliente.setIdTransformadorCorrespondiente(transformador.getIdtransformador()); 
+					};//fin if
 				};//fin for transfo
-				transformadorElegido=this.buscarTransformador(cliente.getIdTransformadorCorrespondiente());
-				transformadorElegido.agregarCliente(cliente);
+				transfElegido=this.buscarTransformador(cliente.getIdTransformadorCorrespondiente());
+				transfElegido.agregarCliente(cliente);
 			};//fin for clientes
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}// fin actializarlistas*/
+	
+	public void actualizarListasDeTransformadores(RepoTransformador repoTransformador,RepoCliente repo) throws IOException{
+		repoTransformador.actualizarListasDeTransformadores(repo);
 		
-		
-		
-	};// fin actializarlistas
-		
+		}
+	
+	public void actualizarListasZona(RepoZona repoZona,RepoTransformador repo) throws IOException{
+		repoZona.actualizarListasDeZonas(repo);
+	}
+
 }
  

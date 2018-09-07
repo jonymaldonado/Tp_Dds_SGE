@@ -80,7 +80,9 @@ public class testEntrega1 {
 		//comandoAhorroDeEnergia=new ComandoAhorroDeEnergia(adapterAhorroDeEnergia,"ahorroDeEnergia",inteligente1);
 		actuador1.addcomando(comandoAhorroDeEnergia);
 		categoria1=new Categoria("R1",18,1);
-		cliente1=new Cliente("Marta","Farias","DNI",12123654,5.94f,3.56f);
+
+		cliente1=new Cliente("Marta","Farias","DNI",12123,342324,5.94,3.56);
+
 		estandar1=new DispositivoEstandar("radio",30,1);
 
 		//modulo=new Modulo("radio",30);
@@ -98,12 +100,12 @@ public class testEntrega1 {
 	
 	@Test
 	public void obtenerconsumoestadosentreelrango() {
-		float consumo,horastotal;
+		double consumo,horastotal;
 		consumo=inteligente1.consumidoUltimasNhoras(38);
 		Assert.assertTrue(inteligente1.getEstados().size()==2);
 		LocalDateTime hoy=LocalDateTime.of(2018, 6, 6, 9,0 );
 		LocalDateTime ayer=LocalDateTime.of(2018, 6, 5, 9,0 );
-		float consumido=inteligente1.consumidoComprendidoEntre(ayer,hoy);
+		double consumido=inteligente1.consumidoComprendidoEntre(ayer,hoy);
 		Assert.assertTrue(consumido==84.0);
 		Assert.assertTrue(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido").size()==2);
 		Assert.assertTrue(inteligente1.cumpleCondicion(estado1, ayer, hoy));
@@ -111,13 +113,14 @@ public class testEntrega1 {
 		horastotal=inteligente1.totalDeHoras(inteligente1.listaDeEstadosSegun(ayer, hoy, "encendido"), ayer, hoy);
 
 		System.out.println("hora total "+horastotal);
-		Assert.assertTrue(horastotal==3f);
-		//Assert.assertTrue(consumo==84f);
+
+		Assert.assertTrue(horastotal==3);
+		Assert.assertTrue(consumo==84);
 		}
 	
 	@Test
 	public void obtenerconsumoestadofuerarango() {
-		float consumo;
+		double consumo;
 		LocalDateTime hoy=LocalDateTime.of(2018, 6, 6, 9,0 );
 		LocalDateTime ayer=LocalDateTime.of(2018, 6, 5, 11,30 );
 		consumo=inteligente1.consumidoComprendidoEntre(ayer,hoy);

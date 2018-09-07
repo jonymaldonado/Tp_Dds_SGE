@@ -3,20 +3,25 @@ package ar.com.sge.dispositivos;
 public class DispositivoEstandar implements IDispositivo{
 	
 	private String nombre;
-	protected float kwPorHora;
+	protected double kwPorHora;
 	private int horasDeUso;
 	
-	public DispositivoEstandar(String nombre, float kw, int hs) {
+	public DispositivoEstandar(String nombre, double kw, int hs) {
 		this.nombre = nombre;
 		this.kwPorHora = kw;
 		this.horasDeUso = hs;
 	}
+	public DispositivoEstandar(String nombre, double kw) {
+		this.nombre = nombre;
+		this.kwPorHora = kw;
+		
+	}
 	
 	@Override
 	public IDispositivo clone() throws CloneNotSupportedException{
-		DispositivoInteligente inteligente=null;
+		DispositivoEstandar inteligente=null;
 		try {
-			inteligente=(DispositivoInteligente) clone();
+			inteligente=(DispositivoEstandar) super.clone();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
@@ -27,7 +32,7 @@ public class DispositivoEstandar implements IDispositivo{
 		return nombre;
 	}
 		
-	public float getKwPorHora() {
+	public double getKwPorHora() {
 		return kwPorHora;
 	}
 	
@@ -39,7 +44,7 @@ public class DispositivoEstandar implements IDispositivo{
 		return horasDeUso;
 	}
 
-	public float consumoEnKw() {
+	public double consumoEnKw() {
 		return horasDeUso * this.getKwPorHora();
 	}
 	

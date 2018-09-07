@@ -12,7 +12,7 @@ public abstract class Usuario {
 	private Coordenada domicilio;
 	private LocalDate alta;
 	
-	public Usuario(String _nombre,String _apellido,float latitud,float longitud) {
+	public Usuario(String _nombre,String _apellido,double latitud,double longitud) {
 		this.nombre = _nombre;
 		this.apellido = _apellido;
 		this.domicilio=new Coordenada(latitud, longitud);

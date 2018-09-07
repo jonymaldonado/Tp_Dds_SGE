@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>pier</groupId>
-  <artifactId>Tp_Dds_SGE</artifactId>
+  <groupId>grupo10</groupId>
+  <artifactId>TP_DDS_SGE_2</artifactId>
   <version>1</version>
 
   <build>
@@ -22,6 +22,11 @@
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.12</version>
+      </dependency>
+       <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-math3</artifactId>
+        <version>3.6.1</version>
       </dependency>
       <dependency>
 			<groupId>com.google.code.gson</groupId>
